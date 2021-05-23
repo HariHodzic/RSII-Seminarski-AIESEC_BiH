@@ -7,11 +7,10 @@ namespace AiesecBiH.Model.Insert
 {
     public class LocalCommittee
     {
-        //[DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public string Name { get; set; }
+        //[DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime EstablishmentDate { get; set; }
-
-        //Implement computed property NumberOfMembers after finishing user profiles
+        
         public int CityId { get; set; }
         
     }

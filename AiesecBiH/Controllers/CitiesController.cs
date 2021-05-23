@@ -9,7 +9,7 @@ using AiesecBiH.IServices;
 
 namespace AiesecBiH.Controllers
 {
-    public class CitiesController : BaseCRUDController<Model.City, Model.Search.City, Model.Update.City, Model.Insert.City>
+    public class CitiesController : BaseCRUDController<Model.Response.City, Model.Search.City, Model.Update.City, Model.Insert.City>
     {
         public CitiesController(ICityService _service):base(_service)
         {

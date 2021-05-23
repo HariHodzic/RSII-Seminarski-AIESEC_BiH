@@ -6,7 +6,7 @@ using AiesecBiH.Services.BaseServices;
 
 namespace AiesecBiH.IServices
 {
-    public interface ICityService: ICRUDService<Model.City, Model.Search.City, Model.Update.City, Model.Insert.City>
+    public interface ICityService: ICRUDService<Model.Response.City, Model.Search.City, Model.Update.City, Model.Insert.City>
     {
     }
 }

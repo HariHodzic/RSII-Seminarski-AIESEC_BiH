@@ -8,7 +8,7 @@ namespace AiesecBiH.Database
         [Key]
         public int Id { get; set; }
         public DateTime CreatedDate { get; set; }
-        public bool Active { get; set; }
-        
+        public bool Active { get; set; } = true;
+
     }
 }

@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 
 namespace AiesecBiH.Database
 {
-    public class PositionOpening:BaseEntity
+    public class Role
     {
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }

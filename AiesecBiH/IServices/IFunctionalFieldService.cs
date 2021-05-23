@@ -7,7 +7,7 @@ using AiesecBiH.Services.BaseServices;
 
 namespace AiesecBiH.IServices
 {
-    public interface IFunctionalFieldService:ICRUDService<FunctionalField,object , Model.Update.FunctionalField, Model.Insert.FunctionalField>
+    public interface IFunctionalFieldService:ICRUDService<Model.Response.FunctionalField, Model.Search.FunctionalField , Model.Update.FunctionalField, Model.Insert.FunctionalField>
     {
 
     }

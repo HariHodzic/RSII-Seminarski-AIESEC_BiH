@@ -13,6 +13,7 @@ namespace AiesecBiH.Model.Update
 
         //Implement computed property NumberOfMembers after finishing user profiles
         public int CityId { get; set; }
-        
+        public string CityName { get; set; }
+
     }
 }

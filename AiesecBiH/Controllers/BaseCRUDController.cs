@@ -4,13 +4,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AiesecBiH.Model.Search;
 using AiesecBiH.Services.BaseServices;
 
 namespace AiesecBiH.Controllers
 {
     public class BaseCRUDController<T,TSearch,TUpdate, TInsert> : BaseReadController<T,TSearch>
         where T: class 
-        where TSearch:class 
+        where TSearch:BaseSearchModel 
         where TInsert:class 
         where TUpdate:class
     {
@@ -26,10 +27,16 @@ namespace AiesecBiH.Controllers
             return _crudService.Insert(request);
         }
 
-        //[HttpPut("{id}")]
-        //public T Update([FromQuery] int id, TUpdate request=null)
-        //{
-        //    return _crudService.Update(id, request);
-        //}
+        [HttpPut("{id}")]
+        public T Update(int id,[FromBody] TUpdate request = null)
+        {
+            return _crudService.Update(id, request);
+        }
+
+        [HttpDelete("{id}")]
+        public T Delete(int id)
+        {
+            return _crudService.Delete(id);
+        }
     }
 }

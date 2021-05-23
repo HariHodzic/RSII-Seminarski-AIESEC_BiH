@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using AiesecBiH.Model.Search;
 using AiesecBiH.Services.BaseServices;
 
 namespace AiesecBiH.Controllers
@@ -9,7 +10,7 @@ namespace AiesecBiH.Controllers
     [ApiController]
     public class BaseReadController<T,TSearch> : ControllerBase 
         where T:class 
-        where  TSearch:class
+        where  TSearch:BaseSearchModel
     {
         protected readonly IReadService<T, TSearch> _service;
 

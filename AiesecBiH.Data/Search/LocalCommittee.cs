@@ -5,13 +5,12 @@ using System.Threading.Tasks;
 
 namespace AiesecBiH.Model.Search
 {
-    public class LocalCommittee
+    public class LocalCommittee:BaseSearchModel
     {
         //[DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public string Name { get; set; }
         public DateTime EstablishmentDate { get; set; }
-
-        //Implement computed property NumberOfMembers after finishing user profiles
+        public string CityName { get; set; }
         public int CityId { get; set; }
         
     }

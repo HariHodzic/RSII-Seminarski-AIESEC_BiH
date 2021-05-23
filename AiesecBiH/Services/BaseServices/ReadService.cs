@@ -4,6 +4,8 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using AiesecBiH.EF;
+using AiesecBiH.Exceptions;
+using AiesecBiH.Model.Search;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,7 +14,7 @@ namespace AiesecBiH.Services.BaseServices
 {
     public class ReadService<T, TDb, TSearch> : IReadService<T, TSearch> 
         where T:class 
-        where TSearch:class
+        where TSearch:BaseSearchModel
         where TDb:class
     {
         protected readonly AiesecContext _context;
@@ -34,8 +36,10 @@ namespace AiesecBiH.Services.BaseServices
         {
             var entity = _context.Set<TDb>();
             var result = await entity.FindAsync(id);
-            //if (result != null)
+            if (result != null)
                 return _mapper.Map<T>(result);
+            else
+                throw new NotFoundException("Object with this Id not found!");
         }
     }
 }

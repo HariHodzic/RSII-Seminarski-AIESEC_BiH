@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace AiesecBiH.Model.Search
 {
-    public class City
+    public class City:BaseSearchModel
     {
         public int Id { get; set; }
         public string Name { get; set; }

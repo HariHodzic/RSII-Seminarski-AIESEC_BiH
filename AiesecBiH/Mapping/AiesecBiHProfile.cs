@@ -6,33 +6,41 @@ namespace AiesecBiH.Mapping
     {
         public AiesecBiHProfile()
         {
-            //FunctionalFields
-            CreateMap<Model.Insert.FunctionalField, Database.FunctionalField>();
-            CreateMap<Database.FunctionalField,Model.FunctionalField>();
+            //City
+            CreateMap<Model.Insert.City, Database.City>();
+            CreateMap<Model.Update.City, Database.City>();
+            CreateMap<Database.City, Model.Response.City>();
 
             //Events
             CreateMap<Model.Insert.Event, Database.Event>();
-            CreateMap<Database.Event, Model.Event>();
+            CreateMap<Database.Event, Model.Response.Event>();
 
-            //Office
-            CreateMap<Model.Insert.Office, Database.Office>();
-            CreateMap<Database.Office, Model.Office>();
-
-            //Report
-            CreateMap<Model.Insert.Report, Database.Report>();
-            CreateMap<Database.Report, Model.Report>();
-
+            //EventAttendance
+            CreateMap<Model.Insert.EventAttendance, Database.EventAttendance>();
+            
+            //FunctionalFields
+            CreateMap<Model.Insert.FunctionalField, Database.FunctionalField>();
+            CreateMap<Database.FunctionalField,Model.Response.FunctionalField>();
+            CreateMap<Model.Update.FunctionalField,Database.FunctionalField>();
             //LocalCommittees
             CreateMap<Model.Insert.LocalCommittee, Database.LocalCommittee>();
-            CreateMap<Database.LocalCommittee, Model.LocalCommittee>();
-
+            CreateMap<Model.Update.LocalCommittee, Database.LocalCommittee>();
+            CreateMap<Database.LocalCommittee, Model.Response.LocalCommittee>()
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(x => x.City.Name));
+            //Members
+            CreateMap<Model.Insert.Member, Database.Member>();
+            //Office
+            CreateMap<Model.Insert.Office, Database.Office>();
+            CreateMap<Database.Office, Model.Response.Office>();
+            //Report
+            CreateMap<Model.Insert.Report, Database.Report>();
+            CreateMap<Database.Report, Model.Response.Report>();
             //Task
             CreateMap<Model.Insert.Task, Database.Task>();
-            CreateMap<Database.Task, Model.Task>();
+            CreateMap<Database.Task, Model.Response.Task>();
 
-            //City
-            CreateMap<Model.Insert.City, Database.City>();
-            CreateMap<Database.City, Model.City>();
+
+            //
         }
     }
 }

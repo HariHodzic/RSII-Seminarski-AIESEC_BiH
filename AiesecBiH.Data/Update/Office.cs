@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace AiesecBiH.Model.Update
@@ -12,5 +13,6 @@ namespace AiesecBiH.Model.Update
         public DateTime EstablishmentDate { get; set; }
         public int CityID { get; set; }
         public int? LocalCommitteeId { get; set; }
+        public bool Active { get; set; }
     }
 }

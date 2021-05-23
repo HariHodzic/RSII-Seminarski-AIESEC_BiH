@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AiesecBiH.EF;
+using AiesecBiH.Filters;
 using AiesecBiH.IServices;
 using AiesecBiH.Services;
 using AiesecBiH.Services.BaseServices;
@@ -30,13 +31,16 @@ namespace AiesecBiH
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers(x => x.Filters.Add<ErrorFilters>());
+            //services.AddControllers();
             services.AddDbContext<AiesecContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("local")));
             services.AddAutoMapper(typeof(Startup));
             services.AddScoped<IFunctionalFieldService, FunctionalFieldService>();
+            services.AddScoped<ILocalCommitteeService, LocalCommitteeService>();
             services.AddScoped<IOfficeService, OfficeService>();
             services.AddScoped<ICityService, CityService>();
+            services.AddScoped<IEventService, EventService>();
             services.AddSwaggerGen(options =>
             {
                 options.CustomSchemaIds(type => type.ToString());

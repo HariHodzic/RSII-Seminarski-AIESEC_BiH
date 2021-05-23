@@ -8,7 +8,7 @@ using AiesecBiH.IServices;
 
 namespace AiesecBiH.Controllers
 {
-    public class LocalCommitteesController : BaseCRUDController<Model.LocalCommittee, Model.Search.LocalCommittee, Model.Update.LocalCommittee, Model.Insert.LocalCommittee>
+    public class LocalCommitteesController : BaseCRUDController<Model.Response.LocalCommittee, Model.Search.LocalCommittee, Model.Update.LocalCommittee, Model.Insert.LocalCommittee>
     {
         public LocalCommitteesController(ILocalCommitteeService service):base(service)
         {

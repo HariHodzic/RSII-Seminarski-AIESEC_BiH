@@ -3,13 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AiesecBiH.Model
+namespace AiesecBiH.Model.Response
 {
-    public class Event
+    public class Role
     {
         public string Name { get; set; }
-        public string Description { get; set; }
-        public DateTime Type { get; set; }
-
     }
 }

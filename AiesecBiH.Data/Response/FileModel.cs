@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AiesecBiH.Model.Search
+namespace AiesecBiH.Model.Response
 {
     public class FileModel
     {

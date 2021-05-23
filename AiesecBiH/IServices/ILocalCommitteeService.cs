@@ -7,7 +7,7 @@ using AiesecBiH.Services.BaseServices;
 
 namespace AiesecBiH.IServices
 {
-    public interface ILocalCommitteeService:ICRUDService<LocalCommittee, Model.Search.LocalCommittee, Model.Update.LocalCommittee, Model.Insert.LocalCommittee>
+    public interface ILocalCommitteeService:ICRUDService<Model.Response.LocalCommittee, Model.Search.LocalCommittee, Model.Update.LocalCommittee, Model.Insert.LocalCommittee>
     {
     }
 }

@@ -6,7 +6,7 @@ using AiesecBiH.Services.BaseServices;
 
 namespace AiesecBiH.IServices
 {
-    public interface IOfficeService:ICRUDService<Model.Office,Model.Search.Office,Model.Update.Office,Model.Insert.Office>
+    public interface IOfficeService:ICRUDService<Model.Response.Office,Model.Search.Office,Model.Update.Office,Model.Insert.Office>
     {
 
     }

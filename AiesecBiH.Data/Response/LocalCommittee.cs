@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
-namespace AiesecBiH.Model
+namespace AiesecBiH.Model.Response
 {
     public class LocalCommittee
     {
-        //[DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public string Name { get; set; }
         public DateTime EstablishmentDate { get; set; }
-
-        //Implement computed property NumberOfMembers after finishing user profiles
         public int CityId { get; set; }
-        
+        public City City { get; set; } 
+        public DateTime CreatedDate { get; set; }
+        public bool Active { get; set; }
+
     }
 }

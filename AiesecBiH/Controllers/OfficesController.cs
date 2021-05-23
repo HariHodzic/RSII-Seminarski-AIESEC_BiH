@@ -9,7 +9,7 @@ using AiesecBiH.IServices;
 
 namespace AiesecBiH.Controllers
 {
-    public class OfficesController : BaseCRUDController<Model.Office, Model.Search.Office, Model.Update.Office, Model.Insert.Office>
+    public class OfficesController : BaseCRUDController<Model.Response.Office, Model.Search.Office, Model.Update.Office, Model.Insert.Office>
     {
         public OfficesController(IOfficeService service):base(service)
         {
