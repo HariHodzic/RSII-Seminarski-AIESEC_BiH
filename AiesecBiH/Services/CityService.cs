@@ -25,7 +25,7 @@ namespace AiesecBiH.Services
             var entity = _context.Cities.FindAsync(id);
             if (entity == null)
                 throw new NotFoundException();
-            var result = await _context.Cities.Include(x => x.Offices.Where(x => x.CityId == id)).FirstOrDefaultAsync(x=>x.Id==id);
+            var result = await _context.Cities.FirstOrDefaultAsync(x => x.Id == id);
             var model =_mapper.Map<Model.Response.City>(result);
             return model;
         }

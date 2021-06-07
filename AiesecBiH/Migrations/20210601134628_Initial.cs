@@ -107,7 +107,7 @@ namespace AiesecBiH.Migrations
                         column: x => x.CityId,
                         principalTable: "Cities",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -204,7 +204,6 @@ namespace AiesecBiH.Migrations
                     Address = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: true),
                     Capacity = table.Column<int>(type: "int", nullable: false),
                     EstablishmentDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CityId = table.Column<int>(type: "int", nullable: false),
                     LocalCommitteeId = table.Column<int>(type: "int", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Active = table.Column<bool>(type: "bit", nullable: false)
@@ -212,12 +211,6 @@ namespace AiesecBiH.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Offices", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Offices_Cities_CityId",
-                        column: x => x.CityId,
-                        principalTable: "Cities",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Offices_LocalCommittees_LocalCommitteeId",
                         column: x => x.LocalCommitteeId,
@@ -325,12 +318,12 @@ namespace AiesecBiH.Migrations
                 columns: new[] { "Id", "Abbreviation", "Active", "CreatedDate", "Description", "Name" },
                 values: new object[,]
                 {
-                    { 1, "PD", true, new DateTime(2021, 5, 23, 18, 17, 3, 591, DateTimeKind.Local).AddTicks(3356), null, "Partnership Development" },
-                    { 2, "MKT", true, new DateTime(2021, 5, 23, 18, 17, 3, 599, DateTimeKind.Local).AddTicks(358), null, "Marketing" },
-                    { 3, "IGV", true, new DateTime(2021, 5, 23, 18, 17, 3, 599, DateTimeKind.Local).AddTicks(513), null, "Incomming Global Volounteere" },
-                    { 4, "OGV", true, new DateTime(2021, 5, 23, 18, 17, 3, 599, DateTimeKind.Local).AddTicks(530), null, "Outgoing Global Volounteere" },
-                    { 5, "P", true, new DateTime(2021, 5, 23, 18, 17, 3, 599, DateTimeKind.Local).AddTicks(539), null, "Presidency" },
-                    { 6, "TM", true, new DateTime(2021, 5, 23, 18, 17, 3, 599, DateTimeKind.Local).AddTicks(716), null, "Talent Management" }
+                    { 1, "PD", true, new DateTime(2021, 6, 1, 15, 46, 27, 390, DateTimeKind.Local).AddTicks(7318), null, "Partnership Development" },
+                    { 2, "MKT", true, new DateTime(2021, 6, 1, 15, 46, 27, 394, DateTimeKind.Local).AddTicks(8548), null, "Marketing" },
+                    { 3, "IGV", true, new DateTime(2021, 6, 1, 15, 46, 27, 394, DateTimeKind.Local).AddTicks(8658), null, "Incomming Global Volounteere" },
+                    { 4, "OGV", true, new DateTime(2021, 6, 1, 15, 46, 27, 394, DateTimeKind.Local).AddTicks(8670), null, "Outgoing Global Volounteere" },
+                    { 5, "P", true, new DateTime(2021, 6, 1, 15, 46, 27, 394, DateTimeKind.Local).AddTicks(8678), null, "Presidency" },
+                    { 6, "TM", true, new DateTime(2021, 6, 1, 15, 46, 27, 394, DateTimeKind.Local).AddTicks(8684), null, "Talent Management" }
                 });
 
             migrationBuilder.InsertData(
@@ -348,23 +341,23 @@ namespace AiesecBiH.Migrations
                 columns: new[] { "Id", "Active", "CityId", "CreatedDate", "EstablishmentDate" },
                 values: new object[,]
                 {
-                    { 1, true, 1, new DateTime(2021, 5, 23, 18, 17, 3, 603, DateTimeKind.Local).AddTicks(7309), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 2, true, 2, new DateTime(2021, 5, 23, 18, 17, 3, 603, DateTimeKind.Local).AddTicks(8521), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 3, true, 3, new DateTime(2021, 5, 23, 18, 17, 3, 603, DateTimeKind.Local).AddTicks(8607), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 4, true, 4, new DateTime(2021, 5, 23, 18, 17, 3, 603, DateTimeKind.Local).AddTicks(8622), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 5, true, 5, new DateTime(2021, 5, 23, 18, 17, 3, 603, DateTimeKind.Local).AddTicks(8633), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 6, true, 6, new DateTime(2021, 5, 23, 18, 17, 3, 603, DateTimeKind.Local).AddTicks(8642), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) }
+                    { 1, true, 1, new DateTime(2021, 6, 1, 15, 46, 27, 399, DateTimeKind.Local).AddTicks(4279), new DateTime(2021, 6, 1, 15, 46, 27, 399, DateTimeKind.Local).AddTicks(3326) },
+                    { 2, true, 2, new DateTime(2021, 6, 1, 15, 46, 27, 399, DateTimeKind.Local).AddTicks(5090), new DateTime(2021, 6, 1, 15, 46, 27, 399, DateTimeKind.Local).AddTicks(5046) },
+                    { 3, true, 3, new DateTime(2021, 6, 1, 15, 46, 27, 399, DateTimeKind.Local).AddTicks(5110), new DateTime(2021, 6, 1, 15, 46, 27, 399, DateTimeKind.Local).AddTicks(5105) },
+                    { 4, true, 4, new DateTime(2021, 6, 1, 15, 46, 27, 399, DateTimeKind.Local).AddTicks(5118), new DateTime(2021, 6, 1, 15, 46, 27, 399, DateTimeKind.Local).AddTicks(5114) },
+                    { 5, true, 5, new DateTime(2021, 6, 1, 15, 46, 27, 399, DateTimeKind.Local).AddTicks(5126), new DateTime(2021, 6, 1, 15, 46, 27, 399, DateTimeKind.Local).AddTicks(5122) },
+                    { 6, true, 6, new DateTime(2021, 6, 1, 15, 46, 27, 399, DateTimeKind.Local).AddTicks(5134), new DateTime(2021, 6, 1, 15, 46, 27, 399, DateTimeKind.Local).AddTicks(5130) }
                 });
 
             migrationBuilder.InsertData(
                 table: "Offices",
-                columns: new[] { "Id", "Active", "Address", "Capacity", "CityId", "CreatedDate", "EstablishmentDate", "LocalCommitteeId" },
+                columns: new[] { "Id", "Active", "Address", "Capacity", "CreatedDate", "EstablishmentDate", "LocalCommitteeId" },
                 values: new object[,]
                 {
-                    { 1, true, "Trg Alije Izetbegovica 2", 20, 1, new DateTime(2021, 5, 23, 18, 17, 3, 604, DateTimeKind.Local).AddTicks(6020), new DateTime(2021, 5, 23, 18, 17, 3, 604, DateTimeKind.Local).AddTicks(9157), null },
-                    { 2, true, "Ulica 3", 10, 2, new DateTime(2021, 5, 23, 18, 17, 3, 605, DateTimeKind.Local).AddTicks(348), new DateTime(2021, 5, 23, 18, 17, 3, 605, DateTimeKind.Local).AddTicks(437), null },
-                    { 3, true, "Ulica 4", 20, 3, new DateTime(2021, 5, 23, 18, 17, 3, 605, DateTimeKind.Local).AddTicks(469), new DateTime(2021, 5, 23, 18, 17, 3, 605, DateTimeKind.Local).AddTicks(481), null },
-                    { 4, true, "Ulica 22", 20, 4, new DateTime(2021, 5, 23, 18, 17, 3, 605, DateTimeKind.Local).AddTicks(489), new DateTime(2021, 5, 23, 18, 17, 3, 605, DateTimeKind.Local).AddTicks(497), null }
+                    { 1, true, "Trg Alije Izetbegovica 2", 20, new DateTime(2021, 6, 1, 15, 46, 27, 400, DateTimeKind.Local).AddTicks(159), new DateTime(2021, 6, 1, 15, 46, 27, 400, DateTimeKind.Local).AddTicks(2351), 1 },
+                    { 2, true, "Ulica 3", 10, new DateTime(2021, 6, 1, 15, 46, 27, 400, DateTimeKind.Local).AddTicks(3125), new DateTime(2021, 6, 1, 15, 46, 27, 400, DateTimeKind.Local).AddTicks(3181), 2 },
+                    { 3, true, "Ulica 4", 20, new DateTime(2021, 6, 1, 15, 46, 27, 400, DateTimeKind.Local).AddTicks(3193), new DateTime(2021, 6, 1, 15, 46, 27, 400, DateTimeKind.Local).AddTicks(3199), 3 },
+                    { 4, true, "Ulica 22", 20, new DateTime(2021, 6, 1, 15, 46, 27, 400, DateTimeKind.Local).AddTicks(3204), new DateTime(2021, 6, 1, 15, 46, 27, 400, DateTimeKind.Local).AddTicks(3208), 4 }
                 });
 
             migrationBuilder.CreateIndex(
@@ -390,16 +383,12 @@ namespace AiesecBiH.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_LocalCommittees_CityId",
                 table: "LocalCommittees",
-                column: "CityId");
+                column: "CityId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Member_CityId",
                 table: "Member",
-                column: "CityId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Offices_CityId",
-                table: "Offices",
                 column: "CityId");
 
             migrationBuilder.CreateIndex(

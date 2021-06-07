@@ -17,7 +17,8 @@ namespace AiesecBiH.Model.CustomValidationAttributes
                     return ValidationResult.Success;
                 }
 
-                if (str.Any(x => !char.IsLetter(x)))
+                if (str.Any(x => !char.IsLetter(x) && x!=' '))
+                
                     return new ValidationResult(ErrorMessage);
 
                 return ValidationResult.Success;

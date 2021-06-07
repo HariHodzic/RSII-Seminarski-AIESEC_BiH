@@ -15,11 +15,6 @@ namespace AiesecBiH.Database
 
         [DataType(DataType.Date)]
         public DateTime EstablishmentDate { get; set; }
-
-        [Required]
-        [ForeignKey(nameof(City))]
-        public int CityId { get; set; }
-        public City City { get; set; }
         
         [ForeignKey(nameof(LocalCommittee))]
         public int? LocalCommitteeId { get; set; }

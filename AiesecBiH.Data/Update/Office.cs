@@ -11,7 +11,6 @@ namespace AiesecBiH.Model.Update
         public string Address { get; set; }
         public int Capacity { get; set; }
         public DateTime EstablishmentDate { get; set; }
-        public int CityID { get; set; }
         public int? LocalCommitteeId { get; set; }
         public bool Active { get; set; }
     }

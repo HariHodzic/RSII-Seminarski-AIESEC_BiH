@@ -10,7 +10,6 @@ namespace AiesecBiH.Model.Insert
         public string Address { get; set; }
         public int Capacity { get; set; }
         public DateTime EstablishmentDate { get; set; }
-        public int CityId { get; set; }
         public int? LocalCommitteeId { get; set; }
     }
 }

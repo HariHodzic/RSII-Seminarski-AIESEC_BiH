@@ -82,6 +82,7 @@ namespace AiesecBiH.EF
                 new LocalCommittee
                 {
                     Active = true,
+                    EstablishmentDate = DateTime.Now,
                     CreatedDate = DateTime.Now,
                     Id = 1,
                     CityId = 1
@@ -89,6 +90,7 @@ namespace AiesecBiH.EF
                 new LocalCommittee
                 {
                     Active = true,
+                    EstablishmentDate = DateTime.Now,
                     CreatedDate = DateTime.Now,
                     Id = 2,
                     CityId = 2
@@ -96,6 +98,7 @@ namespace AiesecBiH.EF
                 new LocalCommittee
                 {
                     Active = true,
+                    EstablishmentDate = DateTime.Now,
                     CreatedDate = DateTime.Now,
                     Id = 3,
                     CityId = 3
@@ -103,6 +106,7 @@ namespace AiesecBiH.EF
                 new LocalCommittee
                 {
                     Active = true,
+                    EstablishmentDate = DateTime.Now,
                     CreatedDate = DateTime.Now,
                     Id = 4,
                     CityId = 4
@@ -110,6 +114,7 @@ namespace AiesecBiH.EF
                 new LocalCommittee
                 {
                     Active = true,
+                    EstablishmentDate = DateTime.Now,
                     CreatedDate = DateTime.Now,
                     Id = 5,
                     CityId = 5
@@ -117,6 +122,7 @@ namespace AiesecBiH.EF
                 new LocalCommittee
                 {
                     Active = true,
+                    EstablishmentDate = DateTime.Now,
                     CreatedDate = DateTime.Now,
                     Id = 6,
                     CityId = 6
@@ -133,7 +139,7 @@ namespace AiesecBiH.EF
                     Active = true,
                     CreatedDate = DateTime.Now,
                     Id = 1,
-                    CityId = 1,
+                    LocalCommitteeId = 1,
                     Capacity = 20,
                     Address = "Trg Alije Izetbegovica 2",
                     EstablishmentDate = DateTime.Now,
@@ -143,7 +149,7 @@ namespace AiesecBiH.EF
                     Active = true,
                     CreatedDate = DateTime.Now,
                     Id = 2,
-                    CityId = 2,
+                    LocalCommitteeId = 2,
                     Capacity = 10,
                     Address = "Ulica 3",
                     EstablishmentDate = DateTime.Now,
@@ -153,7 +159,7 @@ namespace AiesecBiH.EF
                     Active = true,
                     CreatedDate = DateTime.Now,
                     Id = 3,
-                    CityId = 3,
+                    LocalCommitteeId = 3,
                     Capacity = 20,
                     Address = "Ulica 4",
                     EstablishmentDate = DateTime.Now,
@@ -163,7 +169,7 @@ namespace AiesecBiH.EF
                     Active = true,
                     CreatedDate = DateTime.Now,
                     Id = 4,
-                    CityId = 4,
+                    LocalCommitteeId = 4,
                     Capacity = 20,
                     Address = "Ulica 22",
                     EstablishmentDate = DateTime.Now,

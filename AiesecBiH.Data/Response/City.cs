@@ -7,8 +7,8 @@ namespace AiesecBiH.Model.Response
 {
     public class City
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Postcode { get; set; }
-        public IEnumerable<Office> Offices { get; set; }
     }
 }

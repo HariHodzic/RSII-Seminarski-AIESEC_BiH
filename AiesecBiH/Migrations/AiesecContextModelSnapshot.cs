@@ -230,7 +230,7 @@ namespace AiesecBiH.Migrations
                             Id = 1,
                             Abbreviation = "PD",
                             Active = true,
-                            CreatedDate = new DateTime(2021, 5, 23, 18, 17, 3, 591, DateTimeKind.Local).AddTicks(3356),
+                            CreatedDate = new DateTime(2021, 6, 1, 15, 46, 27, 390, DateTimeKind.Local).AddTicks(7318),
                             Name = "Partnership Development"
                         },
                         new
@@ -238,7 +238,7 @@ namespace AiesecBiH.Migrations
                             Id = 2,
                             Abbreviation = "MKT",
                             Active = true,
-                            CreatedDate = new DateTime(2021, 5, 23, 18, 17, 3, 599, DateTimeKind.Local).AddTicks(358),
+                            CreatedDate = new DateTime(2021, 6, 1, 15, 46, 27, 394, DateTimeKind.Local).AddTicks(8548),
                             Name = "Marketing"
                         },
                         new
@@ -246,7 +246,7 @@ namespace AiesecBiH.Migrations
                             Id = 3,
                             Abbreviation = "IGV",
                             Active = true,
-                            CreatedDate = new DateTime(2021, 5, 23, 18, 17, 3, 599, DateTimeKind.Local).AddTicks(513),
+                            CreatedDate = new DateTime(2021, 6, 1, 15, 46, 27, 394, DateTimeKind.Local).AddTicks(8658),
                             Name = "Incomming Global Volounteere"
                         },
                         new
@@ -254,7 +254,7 @@ namespace AiesecBiH.Migrations
                             Id = 4,
                             Abbreviation = "OGV",
                             Active = true,
-                            CreatedDate = new DateTime(2021, 5, 23, 18, 17, 3, 599, DateTimeKind.Local).AddTicks(530),
+                            CreatedDate = new DateTime(2021, 6, 1, 15, 46, 27, 394, DateTimeKind.Local).AddTicks(8670),
                             Name = "Outgoing Global Volounteere"
                         },
                         new
@@ -262,7 +262,7 @@ namespace AiesecBiH.Migrations
                             Id = 5,
                             Abbreviation = "P",
                             Active = true,
-                            CreatedDate = new DateTime(2021, 5, 23, 18, 17, 3, 599, DateTimeKind.Local).AddTicks(539),
+                            CreatedDate = new DateTime(2021, 6, 1, 15, 46, 27, 394, DateTimeKind.Local).AddTicks(8678),
                             Name = "Presidency"
                         },
                         new
@@ -270,7 +270,7 @@ namespace AiesecBiH.Migrations
                             Id = 6,
                             Abbreviation = "TM",
                             Active = true,
-                            CreatedDate = new DateTime(2021, 5, 23, 18, 17, 3, 599, DateTimeKind.Local).AddTicks(716),
+                            CreatedDate = new DateTime(2021, 6, 1, 15, 46, 27, 394, DateTimeKind.Local).AddTicks(8684),
                             Name = "Talent Management"
                         });
                 });
@@ -296,7 +296,8 @@ namespace AiesecBiH.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CityId");
+                    b.HasIndex("CityId")
+                        .IsUnique();
 
                     b.ToTable("LocalCommittees");
 
@@ -306,48 +307,48 @@ namespace AiesecBiH.Migrations
                             Id = 1,
                             Active = true,
                             CityId = 1,
-                            CreatedDate = new DateTime(2021, 5, 23, 18, 17, 3, 603, DateTimeKind.Local).AddTicks(7309),
-                            EstablishmentDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            CreatedDate = new DateTime(2021, 6, 1, 15, 46, 27, 399, DateTimeKind.Local).AddTicks(4279),
+                            EstablishmentDate = new DateTime(2021, 6, 1, 15, 46, 27, 399, DateTimeKind.Local).AddTicks(3326)
                         },
                         new
                         {
                             Id = 2,
                             Active = true,
                             CityId = 2,
-                            CreatedDate = new DateTime(2021, 5, 23, 18, 17, 3, 603, DateTimeKind.Local).AddTicks(8521),
-                            EstablishmentDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            CreatedDate = new DateTime(2021, 6, 1, 15, 46, 27, 399, DateTimeKind.Local).AddTicks(5090),
+                            EstablishmentDate = new DateTime(2021, 6, 1, 15, 46, 27, 399, DateTimeKind.Local).AddTicks(5046)
                         },
                         new
                         {
                             Id = 3,
                             Active = true,
                             CityId = 3,
-                            CreatedDate = new DateTime(2021, 5, 23, 18, 17, 3, 603, DateTimeKind.Local).AddTicks(8607),
-                            EstablishmentDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            CreatedDate = new DateTime(2021, 6, 1, 15, 46, 27, 399, DateTimeKind.Local).AddTicks(5110),
+                            EstablishmentDate = new DateTime(2021, 6, 1, 15, 46, 27, 399, DateTimeKind.Local).AddTicks(5105)
                         },
                         new
                         {
                             Id = 4,
                             Active = true,
                             CityId = 4,
-                            CreatedDate = new DateTime(2021, 5, 23, 18, 17, 3, 603, DateTimeKind.Local).AddTicks(8622),
-                            EstablishmentDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            CreatedDate = new DateTime(2021, 6, 1, 15, 46, 27, 399, DateTimeKind.Local).AddTicks(5118),
+                            EstablishmentDate = new DateTime(2021, 6, 1, 15, 46, 27, 399, DateTimeKind.Local).AddTicks(5114)
                         },
                         new
                         {
                             Id = 5,
                             Active = true,
                             CityId = 5,
-                            CreatedDate = new DateTime(2021, 5, 23, 18, 17, 3, 603, DateTimeKind.Local).AddTicks(8633),
-                            EstablishmentDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            CreatedDate = new DateTime(2021, 6, 1, 15, 46, 27, 399, DateTimeKind.Local).AddTicks(5126),
+                            EstablishmentDate = new DateTime(2021, 6, 1, 15, 46, 27, 399, DateTimeKind.Local).AddTicks(5122)
                         },
                         new
                         {
                             Id = 6,
                             Active = true,
                             CityId = 6,
-                            CreatedDate = new DateTime(2021, 5, 23, 18, 17, 3, 603, DateTimeKind.Local).AddTicks(8642),
-                            EstablishmentDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            CreatedDate = new DateTime(2021, 6, 1, 15, 46, 27, 399, DateTimeKind.Local).AddTicks(5134),
+                            EstablishmentDate = new DateTime(2021, 6, 1, 15, 46, 27, 399, DateTimeKind.Local).AddTicks(5130)
                         });
                 });
 
@@ -447,9 +448,6 @@ namespace AiesecBiH.Migrations
                     b.Property<int>("Capacity")
                         .HasColumnType("int");
 
-                    b.Property<int>("CityId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
@@ -460,8 +458,6 @@ namespace AiesecBiH.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CityId");
 
                     b.HasIndex("LocalCommitteeId");
 
@@ -474,9 +470,9 @@ namespace AiesecBiH.Migrations
                             Active = true,
                             Address = "Trg Alije Izetbegovica 2",
                             Capacity = 20,
-                            CityId = 1,
-                            CreatedDate = new DateTime(2021, 5, 23, 18, 17, 3, 604, DateTimeKind.Local).AddTicks(6020),
-                            EstablishmentDate = new DateTime(2021, 5, 23, 18, 17, 3, 604, DateTimeKind.Local).AddTicks(9157)
+                            CreatedDate = new DateTime(2021, 6, 1, 15, 46, 27, 400, DateTimeKind.Local).AddTicks(159),
+                            EstablishmentDate = new DateTime(2021, 6, 1, 15, 46, 27, 400, DateTimeKind.Local).AddTicks(2351),
+                            LocalCommitteeId = 1
                         },
                         new
                         {
@@ -484,9 +480,9 @@ namespace AiesecBiH.Migrations
                             Active = true,
                             Address = "Ulica 3",
                             Capacity = 10,
-                            CityId = 2,
-                            CreatedDate = new DateTime(2021, 5, 23, 18, 17, 3, 605, DateTimeKind.Local).AddTicks(348),
-                            EstablishmentDate = new DateTime(2021, 5, 23, 18, 17, 3, 605, DateTimeKind.Local).AddTicks(437)
+                            CreatedDate = new DateTime(2021, 6, 1, 15, 46, 27, 400, DateTimeKind.Local).AddTicks(3125),
+                            EstablishmentDate = new DateTime(2021, 6, 1, 15, 46, 27, 400, DateTimeKind.Local).AddTicks(3181),
+                            LocalCommitteeId = 2
                         },
                         new
                         {
@@ -494,9 +490,9 @@ namespace AiesecBiH.Migrations
                             Active = true,
                             Address = "Ulica 4",
                             Capacity = 20,
-                            CityId = 3,
-                            CreatedDate = new DateTime(2021, 5, 23, 18, 17, 3, 605, DateTimeKind.Local).AddTicks(469),
-                            EstablishmentDate = new DateTime(2021, 5, 23, 18, 17, 3, 605, DateTimeKind.Local).AddTicks(481)
+                            CreatedDate = new DateTime(2021, 6, 1, 15, 46, 27, 400, DateTimeKind.Local).AddTicks(3193),
+                            EstablishmentDate = new DateTime(2021, 6, 1, 15, 46, 27, 400, DateTimeKind.Local).AddTicks(3199),
+                            LocalCommitteeId = 3
                         },
                         new
                         {
@@ -504,9 +500,9 @@ namespace AiesecBiH.Migrations
                             Active = true,
                             Address = "Ulica 22",
                             Capacity = 20,
-                            CityId = 4,
-                            CreatedDate = new DateTime(2021, 5, 23, 18, 17, 3, 605, DateTimeKind.Local).AddTicks(489),
-                            EstablishmentDate = new DateTime(2021, 5, 23, 18, 17, 3, 605, DateTimeKind.Local).AddTicks(497)
+                            CreatedDate = new DateTime(2021, 6, 1, 15, 46, 27, 400, DateTimeKind.Local).AddTicks(3204),
+                            EstablishmentDate = new DateTime(2021, 6, 1, 15, 46, 27, 400, DateTimeKind.Local).AddTicks(3208),
+                            LocalCommitteeId = 4
                         });
                 });
 
@@ -676,9 +672,8 @@ namespace AiesecBiH.Migrations
             modelBuilder.Entity("AiesecBiH.Database.LocalCommittee", b =>
                 {
                     b.HasOne("AiesecBiH.Database.City", "City")
-                        .WithMany()
-                        .HasForeignKey("CityId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .WithOne()
+                        .HasForeignKey("AiesecBiH.Database.LocalCommittee", "CityId")
                         .IsRequired();
 
                     b.Navigation("City");
@@ -697,17 +692,9 @@ namespace AiesecBiH.Migrations
 
             modelBuilder.Entity("AiesecBiH.Database.Office", b =>
                 {
-                    b.HasOne("AiesecBiH.Database.City", "City")
-                        .WithMany("Offices")
-                        .HasForeignKey("CityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("AiesecBiH.Database.LocalCommittee", "LocalCommittee")
                         .WithMany("Offices")
                         .HasForeignKey("LocalCommitteeId");
-
-                    b.Navigation("City");
 
                     b.Navigation("LocalCommittee");
                 });
@@ -764,11 +751,6 @@ namespace AiesecBiH.Migrations
                     b.Navigation("MemberExecutor");
 
                     b.Navigation("Role");
-                });
-
-            modelBuilder.Entity("AiesecBiH.Database.City", b =>
-                {
-                    b.Navigation("Offices");
                 });
 
             modelBuilder.Entity("AiesecBiH.Database.FileModel", b =>

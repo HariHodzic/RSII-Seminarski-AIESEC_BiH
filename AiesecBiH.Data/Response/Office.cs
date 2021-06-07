@@ -8,11 +8,10 @@ namespace AiesecBiH.Model.Response
 {
     public class Office
     {
+        public int Id { get; set; }
         public string Address { get; set; }
         public int Capacity { get; set; }
         public DateTime EstablishmentDate { get; set; }
-        public int CityId { get; set; }
-        public City City { get; set; }
         public int? LocalCommitteeId { get; set; }
         public LocalCommittee LocalCommittee { get; set; }
         public bool Active { get; set; }

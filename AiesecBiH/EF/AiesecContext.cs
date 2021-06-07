@@ -31,7 +31,11 @@ namespace AiesecBiH.EF
             //modelBuilder.Entity<Task>() <======== Za koristenje Enum-a
             //    .Property(x => x.Priority)
             //    .HasConversion<int>(); 
-
+            //LocalCommittee
+            modelBuilder.Entity<LocalCommittee>()
+                .HasOne<City>(c => c.City)
+                .WithOne()
+                .OnDelete(DeleteBehavior.ClientSetNull);
             //Office
             modelBuilder.Entity<Office>()
                 .HasOne<LocalCommittee>(l => l.LocalCommittee)

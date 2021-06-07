@@ -7,7 +7,7 @@ namespace AiesecBiH.Services.BaseServices
 {
     public interface IReadService<T,TSearch> where T: class where TSearch:BaseSearchModel
     {
-        public Task<IEnumerable<T>> Get(TSearch search);
+        public Task<IEnumerable<T>> Get(TSearch search=null);
         public Task<T> GetById(int id);
     }
 }

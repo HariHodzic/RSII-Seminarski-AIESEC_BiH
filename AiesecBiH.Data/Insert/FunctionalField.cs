@@ -8,8 +8,7 @@ namespace AiesecBiH.Model.Insert
     public class FunctionalField
     {
         [Required]
-        [StringLength(20, MinimumLength = 5)]
-        [DataType(DataType.Text)]
+        [StringLength(30, MinimumLength = 4)]
         [LettersOnly]
         public string Name { get; set; }
 
@@ -19,5 +18,6 @@ namespace AiesecBiH.Model.Insert
         [StringLength(7, MinimumLength = 1)]
         [Required]
         public string Abbreviation { get; set; }
+        
     }
 }

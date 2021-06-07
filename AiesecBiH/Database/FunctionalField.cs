@@ -11,8 +11,7 @@ namespace AiesecBiH.Database
     public class FunctionalField:BaseEntity
     {
         [Required]
-        [StringLength(30, MinimumLength = 5)]
-        [DataType(DataType.Text)]
+        [StringLength(30, MinimumLength = 4)]
         public string Name { get; set; }
 
         [MaxLength(225)]

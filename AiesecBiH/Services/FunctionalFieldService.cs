@@ -34,13 +34,16 @@ namespace AiesecBiH.Services
             var query = _context.FunctionalFields.AsQueryable();
             if (!string.IsNullOrWhiteSpace(search?.Name))
             {
-                query = query.Where(x => x.Name == search.Name);
+                query = query.Where(x => x.Name.StartsWith(search.Name) );
             }
             if (!string.IsNullOrWhiteSpace(search?.Abbreviation))
             {
-                query = query.Where(x => x.Abbreviation == search.Abbreviation);
+                query = query.Where(x => x.Abbreviation.StartsWith(search.Abbreviation));
             }
-
+            if (search?.onlyActive != null && search.onlyActive == true)
+            {
+                query = query.Where(x => x.Active == search.onlyActive);
+            }
             var entities = await query.ToListAsync();
             var result = _mapper.Map<IEnumerable<Model.Response.FunctionalField>>(entities);
             return result;

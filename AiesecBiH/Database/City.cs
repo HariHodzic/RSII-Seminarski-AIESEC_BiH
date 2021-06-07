@@ -14,6 +14,5 @@ namespace AiesecBiH.Database
         [StringLength(50,MinimumLength = 3)]
         public string Name { get; set; }
         public string Postcode { get; set; }
-        public IEnumerable<Office> Offices { get; set; }
     }
 }

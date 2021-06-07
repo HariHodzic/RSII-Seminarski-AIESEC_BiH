@@ -4,10 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using AiesecBiH.Database;
 using AiesecBiH.EF;
+using AiesecBiH.Exceptions;
 using AiesecBiH.IServices;
 using AiesecBiH.Services.BaseServices;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using Office = AiesecBiH.Model.Response.Office;
 
 namespace AiesecBiH.Services
 {
@@ -17,7 +19,7 @@ namespace AiesecBiH.Services
         {
             
         }
-        public override async Task<IEnumerable<Model.Response.Office>> Get(Model.Search.Office search)
+        public override async Task<IEnumerable<Model.Response.Office>> Get(Model.Search.Office? search)
         {
             var query = _context.Offices.AsQueryable();
             if (search.onlyActive == true)
@@ -28,13 +30,23 @@ namespace AiesecBiH.Services
             {
                 query = query.Where(x => x.Address == search.Address);
             }
-            if (!string.IsNullOrWhiteSpace(search?.CityName))
+            if (!string.IsNullOrWhiteSpace(search?.LocalCommitteeId.ToString()))
             {
-                query = query.Where(x => x.City.Name == search.CityName);
+                query = query.Where(x => x.LocalCommitteeId == search.LocalCommitteeId);
             }
             var entities = await query.ToListAsync();
             var result = _mapper.Map<IEnumerable<Model.Response.Office>>(entities);
             return result;
+        }
+
+        public override async Task<Office> GetById(int id)
+        {
+            //Include(x => x.City)
+            var result = await _context.Offices.Include(x => x.LocalCommittee).ThenInclude(x => x.City).FirstOrDefaultAsync(x=>x.Id==id);
+            if (result != null)
+                return _mapper.Map<Model.Response.Office>(result);
+            else
+                throw new NotFoundException("Object with this Id not found!");
         }
     }
 }

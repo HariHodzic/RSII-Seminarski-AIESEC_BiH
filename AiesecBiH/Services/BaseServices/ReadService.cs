@@ -25,7 +25,7 @@ namespace AiesecBiH.Services.BaseServices
             _mapper = mapper;
             _context = context;
         }
-        public virtual async Task<IEnumerable<T>> Get([FromQuery] TSearch search )
+        public virtual async Task<IEnumerable<T>> Get([FromQuery] TSearch search=null )
         {
             var entity = _context.Set<TDb>();
             var list = await entity.ToListAsync();

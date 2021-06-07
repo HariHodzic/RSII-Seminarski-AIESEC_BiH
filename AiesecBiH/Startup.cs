@@ -31,7 +31,9 @@ namespace AiesecBiH
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers(x => x.Filters.Add<ErrorFilters>());
+            services.AddControllers(x => x.Filters.Add<ErrorFilters>()).AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            ); ;
             //services.AddControllers();
             services.AddDbContext<AiesecContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("local")));

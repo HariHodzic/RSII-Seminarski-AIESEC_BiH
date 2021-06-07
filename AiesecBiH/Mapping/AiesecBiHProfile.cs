@@ -31,6 +31,7 @@ namespace AiesecBiH.Mapping
             CreateMap<Model.Insert.Member, Database.Member>();
             //Office
             CreateMap<Model.Insert.Office, Database.Office>();
+            CreateMap<Model.Update.Office, Database.Office>();
             CreateMap<Database.Office, Model.Response.Office>();
             //Report
             CreateMap<Model.Insert.Report, Database.Report>();
