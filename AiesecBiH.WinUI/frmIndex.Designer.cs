@@ -42,6 +42,7 @@ namespace AiesecBiH.WinUI
             this.panelMain = new System.Windows.Forms.Panel();
             this.panelHead = new System.Windows.Forms.Panel();
             this.btnBack = new System.Windows.Forms.Button();
+            this.btnMembers = new System.Windows.Forms.Button();
             this.panelSidebar.SuspendLayout();
             this.panelHead.SuspendLayout();
             this.SuspendLayout();
@@ -49,6 +50,7 @@ namespace AiesecBiH.WinUI
             // panelSidebar
             // 
             this.panelSidebar.BackColor = System.Drawing.SystemColors.Highlight;
+            this.panelSidebar.Controls.Add(this.btnMembers);
             this.panelSidebar.Controls.Add(this.btnLogOut);
             this.panelSidebar.Controls.Add(this.btnDashR);
             this.panelSidebar.Controls.Add(this.btnDashO);
@@ -204,6 +206,22 @@ namespace AiesecBiH.WinUI
             this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
+            // btnMembers
+            // 
+            this.btnMembers.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnMembers.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnMembers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMembers.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
+            this.btnMembers.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnMembers.Location = new System.Drawing.Point(0, 265);
+            this.btnMembers.Margin = new System.Windows.Forms.Padding(4);
+            this.btnMembers.Name = "btnMembers";
+            this.btnMembers.Size = new System.Drawing.Size(200, 40);
+            this.btnMembers.TabIndex = 6;
+            this.btnMembers.Text = "Members";
+            this.btnMembers.UseVisualStyleBackColor = false;
+            this.btnMembers.Click += new System.EventHandler(this.btnMembers_Click);
+            // 
             // frmIndex
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -237,6 +255,7 @@ namespace AiesecBiH.WinUI
         private System.Windows.Forms.Panel panelMain;
         private System.Windows.Forms.Panel panelHead;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Button btnMembers;
     }
 }
 

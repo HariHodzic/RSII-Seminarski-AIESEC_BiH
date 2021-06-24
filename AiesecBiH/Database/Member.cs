@@ -8,41 +8,49 @@ using System.Threading.Tasks;
 
 namespace AiesecBiH.Database
 {
-    public class Member
+    public class Member:BaseEntity
     {
-        public int Id { get; set; }
-
-        [Required(AllowEmptyStrings = false)]
-        [StringLength(maximumLength: 20, MinimumLength = 2)]
+        //[Required(AllowEmptyStrings = false)]
+        //[StringLength(maximumLength: 20, MinimumLength = 2)]
         public string FirstName { get; set; }
 
-        [Required(AllowEmptyStrings = false)]
-        [StringLength(maximumLength: 20, MinimumLength = 2)]
+        //[Required(AllowEmptyStrings = false)]
+        //[StringLength(maximumLength: 20, MinimumLength = 2)]
         public string LastName { get; set; }
 
-        [Required(AllowEmptyStrings = false)]
-        [StringLength(maximumLength: 12, MinimumLength = 9)]
-        public string JMBG { get; set; }
-
-        [Required]
+        //[Required]
         public DateTime BirthDate { get; set; }
         public string Address { get; set; }
 
-        [Required(AllowEmptyStrings = false)]
-        [DefaultValue("M")]
+        //[Required(AllowEmptyStrings = false)]
+        //[DefaultValue("M")]
         public char Gender { get; set; }
 
-        [EmailAddress]
-        [Required(AllowEmptyStrings = false)]
+        //[EmailAddress]
+        //[Required(AllowEmptyStrings = false)]
         public string EmailAddress { get; set; }
 
-        [Required(AllowEmptyStrings = false)]
-        [DataType(DataType.PhoneNumber)]
+        //[Required(AllowEmptyStrings = false)]
+        //[DataType(DataType.PhoneNumber)]
         public string PhoneNumber { get; set; }
 
-        [ForeignKey(nameof(City))]
-        public int CityId { get; set; }
-        public City City { get; set; }
+        //[Required(AllowEmptyStrings = false)]
+        //[StringLength(maximumLength: 20, MinimumLength = 4)]
+        public string Username { get; set; }
+        [ForeignKey(nameof(Role))]
+        [Required]
+        public int RoleId { get; set; }
+        public Role Role { get; set; }
+        public string PasswordHash { get; set; }
+        public string PasswordSalt { get; set; }
+        [ForeignKey(nameof(FunctionalField))]
+        [Required]
+        public int FunctionalFieldId { get; set; }
+        public FunctionalField FunctionalField { get; set; }
+        [ForeignKey(nameof(LocalCommittee))]
+        [Required]
+        public int LocalCommitteeId { get; set; }
+        public LocalCommittee LocalCommittee { get; set; }
         public IEnumerable<Task> CreatedTasks { get; set; }
         public IEnumerable<Task> ExecutedTasks { get; set; }
 

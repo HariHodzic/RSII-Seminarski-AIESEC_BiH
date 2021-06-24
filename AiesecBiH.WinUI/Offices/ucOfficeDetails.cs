@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using AiesecBiH.Model.Update;
+using AiesecBiH.Model.Response;
 using Task = System.Threading.Tasks.Task;
 
 namespace AiesecBiH.WinUI.Offices
@@ -14,27 +14,24 @@ namespace AiesecBiH.WinUI.Offices
     public partial class ucOfficeDetails : UserControl
     {
         private APIService _service = new APIService("Offices");
-        private readonly int? _officeId;
-
-        public ucOfficeDetails()
+        private APIService _LocalCommitteeService = new APIService("LocalCommittees");
+        private readonly Office _office;
+        
+        public ucOfficeDetails(Office office=null)
         {
             InitializeComponent();
-        }
-        public ucOfficeDetails(int id)
-        {
-            InitializeComponent();
-            _officeId = id;
+            _office = office;
         }
         private async Task LoadOfficeDetails()
         {
             //dtpCreatedDate.Visible = true;
-            var result = await _service.GetById<Model.Response.Office>(_officeId);
-            dtpCreatedDate.Value = result.CreatedDate;
-            dtpEstDate.Value = result.EstablishmentDate;
-            cbxActive.Checked = result.Active;
-            nudCapacity.Value = result.Capacity;
-            txtAddress.Text = result.Address;
-            _service.LoadComboBox<Model.Response.LocalCommittee>(new APIService("LocalCommittees"), chkLocalCommittee, "Name", result.LocalCommitteeId);
+            dtpCreatedDate.Value = _office.CreatedDate;
+            dtpCreatedDate.Enabled = false;
+            dtpEstDate.Value = _office.EstablishmentDate;
+            cbxActive.Checked = _office.Active;
+            nudCapacity.Value = _office.Capacity;
+            txtAddress.Text = _office.Address;
+            _service.LoadComboBox<Model.Response.LocalCommittee>(new APIService("LocalCommittees"), chkLocalCommittee, "Name", _office.LocalCommitteeId);
             
         }
         private void LoadOfficeCreate()
@@ -51,7 +48,7 @@ namespace AiesecBiH.WinUI.Offices
 
         private async void ucOfficeDetails_Load(object sender, EventArgs e)
         {
-            if (_officeId != null)
+            if (_office != null)
             {
                 await LoadOfficeDetails();
             }
@@ -66,23 +63,19 @@ namespace AiesecBiH.WinUI.Offices
             DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this record?", "Caption", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                var result = await _service.Delete<Model.Response.Office>(_officeId);
+                var result = await _service.Delete<Model.Response.Office>(_office.Id);
                 MessageBox.Show("Successfully deleted Office!");
                 frmIndex.Instance.btnDashO_Click(null, null);
             }
         }
+        
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
-            if (_officeId != null)
+            if (_office != null)
             {
-                Model.Update.Office request = new Office()
+                Model.Update.Office request = new Model.Update.Office()
                 {
-                    //dtpCreatedDate.Value = result.CreatedDate;
-                    //dtpEstDate.Value = result.EstablishmentDate;
-                    //cbxActive.Checked = result.Active;
-                    //nudCapacity.Value = result.Capacity;
-                    //txtAddress.Text = result.Address;
                     EstablishmentDate = dtpEstDate.Value,
                     Active =cbxActive.Checked,
                     Capacity = Convert.ToInt32(nudCapacity.Value),
@@ -92,7 +85,7 @@ namespace AiesecBiH.WinUI.Offices
                 DialogResult dialogResult = MessageBox.Show("Are you sure you want to update this record?", "Caption", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    var result = await _service.Update<Model.Response.Office>(_officeId, request);
+                    var result = await _service.Update<Model.Response.Office>(_office.Id, request);
                     MessageBox.Show("Successfully updated Office!");
                     frmIndex.Instance.btnDashO_Click(null, null);
                 }
@@ -106,7 +99,7 @@ namespace AiesecBiH.WinUI.Offices
                     Address = txtAddress.Text,
                     LocalCommitteeId = Convert.ToInt32(chkLocalCommittee.SelectedValue)
                 };
-                var result = await _service.Insert<Model.Response.Office>(request);
+                var result = await _service.Insert<Office>(request);
                 MessageBox.Show("Successfully created new Office!");
                 frmIndex.Instance.btnDashO_Click(null, null);
 

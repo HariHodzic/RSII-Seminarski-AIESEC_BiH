@@ -67,7 +67,7 @@ namespace AiesecBiH.WinUI.FunctionalFields
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(287, 159);
+            this.label3.Location = new System.Drawing.Point(276, 159);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(64, 13);
@@ -104,7 +104,7 @@ namespace AiesecBiH.WinUI.FunctionalFields
             // 
             // txtSearchFFAbr
             // 
-            this.txtSearchFFAbr.Location = new System.Drawing.Point(291, 185);
+            this.txtSearchFFAbr.Location = new System.Drawing.Point(279, 182);
             this.txtSearchFFAbr.Margin = new System.Windows.Forms.Padding(4);
             this.txtSearchFFAbr.Name = "txtSearchFFAbr";
             this.txtSearchFFAbr.Size = new System.Drawing.Size(220, 20);

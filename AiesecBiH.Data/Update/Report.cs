@@ -11,6 +11,6 @@ namespace AiesecBiH.Model.Update
         public string Description { get; set; }
         public int Quarter { get; set; }
         public string Mandate { get; set; }
-        public int FileModelId { get; set; }
+        public byte[] File { get; set; }
     }
 }

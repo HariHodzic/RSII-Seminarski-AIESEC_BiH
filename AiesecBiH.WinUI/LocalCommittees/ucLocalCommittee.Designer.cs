@@ -38,6 +38,10 @@ namespace AiesecBiH.WinUI.LocalCommittees
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvLocalCommittees = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EstablishmentDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Active = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.CreatedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLocalCommittees)).BeginInit();
             this.SuspendLayout();
@@ -131,7 +135,11 @@ namespace AiesecBiH.WinUI.LocalCommittees
             this.dgvLocalCommittees.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvLocalCommittees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvLocalCommittees.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Id});
+            this.Id,
+            this.Name,
+            this.EstablishmentDate,
+            this.Active,
+            this.CreatedDate});
             this.dgvLocalCommittees.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvLocalCommittees.Location = new System.Drawing.Point(4, 17);
             this.dgvLocalCommittees.Margin = new System.Windows.Forms.Padding(4);
@@ -149,6 +157,36 @@ namespace AiesecBiH.WinUI.LocalCommittees
             this.Id.ReadOnly = true;
             this.Id.Visible = false;
             // 
+            // Name
+            // 
+            this.Name.DataPropertyName = "Name";
+            this.Name.HeaderText = "Name";
+            this.Name.Name = "Name";
+            this.Name.ReadOnly = true;
+            // 
+            // EstablishmentDate
+            // 
+            this.EstablishmentDate.DataPropertyName = "EstablishmentDate";
+            this.EstablishmentDate.HeaderText = "Establishment Date";
+            this.EstablishmentDate.Name = "EstablishmentDate";
+            this.EstablishmentDate.ReadOnly = true;
+            // 
+            // Active
+            // 
+            this.Active.DataPropertyName = "Active";
+            this.Active.HeaderText = "Active";
+            this.Active.Name = "Active";
+            this.Active.ReadOnly = true;
+            this.Active.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Active.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // CreatedDate
+            // 
+            this.CreatedDate.DataPropertyName = "CreatedDate";
+            this.CreatedDate.HeaderText = "Created Date";
+            this.CreatedDate.Name = "CreatedDate";
+            this.CreatedDate.ReadOnly = true;
+            // 
             // ucLocalCommittee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -161,7 +199,6 @@ namespace AiesecBiH.WinUI.LocalCommittees
             this.Controls.Add(this.btnNewLC);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.groupBox1);
-            this.Name = "ucLocalCommittee";
             this.Size = new System.Drawing.Size(900, 600);
             this.Load += new System.EventHandler(this.ucLocalCommittee_Load);
             this.groupBox1.ResumeLayout(false);
@@ -182,5 +219,9 @@ namespace AiesecBiH.WinUI.LocalCommittees
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgvLocalCommittees;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EstablishmentDate;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Active;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CreatedDate;
     }
 }

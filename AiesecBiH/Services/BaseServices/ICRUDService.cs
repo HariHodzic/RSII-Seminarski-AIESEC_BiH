@@ -12,8 +12,8 @@ namespace AiesecBiH.Services.BaseServices
         where TInsert : class 
         where TUpdate : class
     {
-        T Insert(TInsert request);
-        T Update(int id, TUpdate request);
-        T Delete(int id);
+        Task<T> Insert(TInsert request);
+        Task<T> Update(int id, TUpdate request);
+        Task<T> Delete(int id);
     }
 }

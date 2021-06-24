@@ -27,8 +27,15 @@ namespace AiesecBiH.Mapping
             CreateMap<Model.Update.LocalCommittee, Database.LocalCommittee>();
             CreateMap<Database.LocalCommittee, Model.Response.LocalCommittee>()
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(x => x.City.Name));
+            //Roles
+            CreateMap<Database.Role, Model.Response.Role>();
+
             //Members
             CreateMap<Model.Insert.Member, Database.Member>();
+            CreateMap<Database.Member, Model.Response.MemberLL>()
+                .ForMember(x => x.RoleAbbreviation, opt => opt.MapFrom(x => x.Role.Abbreviation));
+            CreateMap<Database.Member, Model.Response.Member>()
+                .ForMember(x => x.RoleAbbreviation, opt => opt.MapFrom(x => x.Role.Abbreviation));
             //Office
             CreateMap<Model.Insert.Office, Database.Office>();
             CreateMap<Model.Update.Office, Database.Office>();
@@ -36,6 +43,7 @@ namespace AiesecBiH.Mapping
             //Report
             CreateMap<Model.Insert.Report, Database.Report>();
             CreateMap<Database.Report, Model.Response.Report>();
+            CreateMap<Model.Update.Report, Database.Report>();
             //Task
             CreateMap<Model.Insert.Task, Database.Task>();
             CreateMap<Database.Task, Model.Response.Task>();

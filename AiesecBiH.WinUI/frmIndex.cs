@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using AiesecBiH.WinUI.FunctionalFields;
 using AiesecBiH.WinUI.LocalCommittees;
+using AiesecBiH.WinUI.Members;
 using AiesecBiH.WinUI.Offices;
 using AiesecBiH.WinUI.Reports;
 
@@ -67,7 +68,7 @@ namespace AiesecBiH.WinUI
         {
             
             DisposePanel(panelMain);
-            activeUserControl = new ucFunctionalFields(){Dock = DockStyle.Fill};
+            activeUserControl = new ucFunctionalFields(){};
             this.panelMain.Controls.Add(activeUserControl);
         }
         public void btnDashLC_Click(object sender, EventArgs e)
@@ -117,11 +118,13 @@ namespace AiesecBiH.WinUI
             btnDashO.Width = btnMinWidth;
             btnDashR.Width = btnMinWidth;
             btnLogOut.Width = btnMinWidth;
+            btnMembers.Width = btnMinWidth;
             btnSidebarFF.Text = "FF";
             btnSidebarLC.Text = "LC";
             btnDashO.Text = "O";
             btnDashR.Text = "R";
             btnLogOut.Text = "L";
+            btnMembers.Text = "M";
             panelMain.Width += 180;
         }
         private void MaximizeSidebar(int sidebarMaxWidth, int btnMaxWidth)
@@ -134,11 +137,13 @@ namespace AiesecBiH.WinUI
             btnDashO.Width = btnMaxWidth;
             btnDashR.Width = btnMaxWidth;
             btnLogOut.Width = btnMaxWidth;
+            btnMembers.Width = btnMaxWidth;
             btnSidebarFF.Text = "Functional Fields";
             btnSidebarLC.Text = "Local Committees";
             btnDashO.Text = "Offices";
             btnDashR.Text = "Reports";
             btnLogOut.Text = "Log Out";
+            btnMembers.Text = "Members";
             panelMain.Width -= 180;
 
         }
@@ -160,10 +165,17 @@ namespace AiesecBiH.WinUI
             this.panelMain.Controls.Add(activeUserControl);
         }
 
-        private void btnDashR_Click(object sender, EventArgs e)
+        public void btnDashR_Click(object sender, EventArgs e)
         {
             DisposePanel(panelMain);
             activeUserControl = new ucReports() { Dock = DockStyle.Fill };
+            this.panelMain.Controls.Add(activeUserControl);
+        }
+
+        private void btnMembers_Click(object sender, EventArgs e)
+        {
+            DisposePanel(panelMain);
+            activeUserControl = new ucMembers() {};
             this.panelMain.Controls.Add(activeUserControl);
         }
     }

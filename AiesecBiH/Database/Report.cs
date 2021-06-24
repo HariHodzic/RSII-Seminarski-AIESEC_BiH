@@ -13,10 +13,7 @@ namespace AiesecBiH.Database
         public string Description { get; set; }
         public int Quarter { get; set; }
         public string Mandate { get; set; }
-        [Required]
-        [ForeignKey(nameof(FileModel))]
-        public int FileModelId { get; set; }
-
-        public virtual FileModel FileModel { get; set; }
+        public string Extension { get; set; }
+        public byte[] File { get; set; }
     }
 }

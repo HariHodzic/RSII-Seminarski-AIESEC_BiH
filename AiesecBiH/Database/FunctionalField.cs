@@ -21,6 +21,7 @@ namespace AiesecBiH.Database
         [Required]
         public string Abbreviation { get; set; }
         public IEnumerable<Event> Events { get; set; }
+        public IEnumerable<Member> Members { get; set; }
 
     }
 }

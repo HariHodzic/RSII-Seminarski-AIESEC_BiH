@@ -15,28 +15,20 @@ namespace AiesecBiH.WinUI.LocalCommittees
 {
     public partial class ucLocalCommitteeDetails : UserControl
     {
+
         private APIService _service = new APIService("LocalCommittees");
+        APIService officeService = new APIService("Offices");
+        APIService memberService = new APIService("Members");
+
         private readonly int? _localCommitteeId;
 
-        public ucLocalCommitteeDetails()
+        public ucLocalCommitteeDetails(int? id=null)
         {
             InitializeComponent();
-        }
-
-        public ucLocalCommitteeDetails(int id)
-        {
-            InitializeComponent();
+            dgvOffices.AutoGenerateColumns = false;
+            dgvMembers.AutoGenerateColumns = false;
             _localCommitteeId = id;
         }
-
-        //private async void LoadComboBox<T>(APIService service, ComboBox cmb, string displayMember,int id)
-        //{
-        //    var source = await service.Get<List<T>>();
-        //    cmb.DataSource = source;
-        //    cmb.ValueMember = "Id";
-        //    cmb.DisplayMember = displayMember;
-        //    cmb.SelectedValue=id;
-        //}
 
 
         private async Task LoadLocalCommitteeDetails()
@@ -48,9 +40,14 @@ namespace AiesecBiH.WinUI.LocalCommittees
             cbxActive.Checked = result.Active;
             APIService cityService = new APIService("Cities");
             _service.LoadComboBox<Model.Response.City>(new APIService("Cities"), comboBoxCity, "Name",result.CityId);
-            APIService officeService = new APIService("Offices");
             dgvOffices.DataSource = await officeService.Get<List<Model.Response.Office>>(new Model.Search.Office()
                 {LocalCommitteeId = _localCommitteeId});
+            dgvMembers.DataSource = await memberService.Get<List<Model.Response.Member>>(new Model.Search.Member()
+            {
+                LocalCommitteeId = _localCommitteeId
+                //IncludeList = new[] { "Role" }
+
+            });
         }
 
         private void LoadLocalCommitteeCreate()
@@ -112,13 +109,21 @@ namespace AiesecBiH.WinUI.LocalCommittees
 
         private async void btnDelete_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this?", "Caption", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
+            try
             {
-                var result = await _service.Delete<Model.Response.LocalCommittee>(_localCommitteeId);
-                MessageBox.Show("Successfully deleted Local Committee!");
-                frmIndex.Instance.btnDashLC_Click(null, null);
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this?", "Caption", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    var result = await _service.Delete<Model.Response.LocalCommittee>(_localCommitteeId);
+                    MessageBox.Show("Successfully deleted Local Committee!");
+                    frmIndex.Instance.btnDashLC_Click(null, null);
+                }
             }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+            
         }
     }
 }

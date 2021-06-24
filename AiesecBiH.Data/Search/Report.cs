@@ -8,9 +8,8 @@ namespace AiesecBiH.Model.Search
     public class Report:BaseSearchModel
     {
         public string Name { get; set; }
-        public string Description { get; set; }
         public int Quarter { get; set; }
         public string Mandate { get; set; }
-        public int FileModelId { get; set; }
+
     }
 }

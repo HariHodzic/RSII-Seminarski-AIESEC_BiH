@@ -6,9 +6,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using AiesecBiH.Model.Search;
 using AiesecBiH.Services.BaseServices;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AiesecBiH.Controllers
 {
+    //[Authorize]
     public class BaseCRUDController<T,TSearch,TUpdate, TInsert> : BaseReadController<T,TSearch>
         where T: class 
         where TSearch:BaseSearchModel 
@@ -22,21 +24,21 @@ namespace AiesecBiH.Controllers
         }
 
         [HttpPost]
-        public T Insert([FromBody] TInsert request=null)
+        public async Task<T> Insert([FromBody] TInsert request=null)
         {
-            return _crudService.Insert(request);
+            return await _crudService.Insert(request);
         }
 
         [HttpPut("{id}")]
-        public T Update(int id,[FromBody] TUpdate request = null)
+        public async Task<T> Update(int id,[FromBody] TUpdate request = null)
         {
-            return _crudService.Update(id, request);
+            return await _crudService.Update(id, request);
         }
 
         [HttpDelete("{id}")]
-        public T Delete(int id)
+        public async Task<T> Delete(int id)
         {
-            return _crudService.Delete(id);
+            return await _crudService.Delete(id);
         }
     }
 }

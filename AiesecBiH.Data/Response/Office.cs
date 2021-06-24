@@ -13,7 +13,8 @@ namespace AiesecBiH.Model.Response
         public int Capacity { get; set; }
         public DateTime EstablishmentDate { get; set; }
         public int? LocalCommitteeId { get; set; }
-        public LocalCommittee LocalCommittee { get; set; }
+        public virtual LocalCommittee LocalCommittee { get; set; }
+        public string LocalCommitteeName => LocalCommittee?.Name;
         public bool Active { get; set; }
         public DateTime CreatedDate { get; set; }
 

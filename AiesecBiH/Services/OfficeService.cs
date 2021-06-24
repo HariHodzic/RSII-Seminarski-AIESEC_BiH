@@ -26,15 +26,11 @@ namespace AiesecBiH.Services
             {
                 query = query.Where(x => x.Active == true);
             }
-            if (!string.IsNullOrWhiteSpace(search?.Address))
-            {
-                query = query.Where(x => x.Address == search.Address);
-            }
-            if (!string.IsNullOrWhiteSpace(search?.LocalCommitteeId.ToString()))
+            if (!string.IsNullOrWhiteSpace(search?.LocalCommitteeId.ToString()) && search?.LocalCommitteeId!=0)
             {
                 query = query.Where(x => x.LocalCommitteeId == search.LocalCommitteeId);
             }
-            var entities = await query.ToListAsync();
+            var entities = await query.Include(x => x.LocalCommittee).ThenInclude(x => x.City).ToListAsync();
             var result = _mapper.Map<IEnumerable<Model.Response.Office>>(entities);
             return result;
         }

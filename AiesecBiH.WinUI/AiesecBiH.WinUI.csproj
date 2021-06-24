@@ -84,6 +84,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Members\ucMemberDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Members\ucMemberDetails.Designer.cs">
+      <DependentUpon>ucMemberDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Members\ucMembers.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Members\ucMembers.Designer.cs">
+      <DependentUpon>ucMembers.cs</DependentUpon>
+    </Compile>
     <Compile Include="NavigationService.cs" />
     <Compile Include="APIService.cs" />
     <Compile Include="frmIndex.cs">
@@ -136,6 +148,12 @@
     <Compile Include="Reports\ucReports.Designer.cs">
       <DependentUpon>ucReports.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\ucReportsDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Reports\ucReportsDetails.Designer.cs">
+      <DependentUpon>ucReportsDetails.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmIndex.resx">
       <DependentUpon>frmIndex.cs</DependentUpon>
     </EmbeddedResource>
@@ -150,6 +168,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LocalCommittees\ucLocalCommitteeDetails.resx">
       <DependentUpon>ucLocalCommitteeDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Members\ucMemberDetails.resx">
+      <DependentUpon>ucMemberDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Members\ucMembers.resx">
+      <DependentUpon>ucMembers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Offices\ucOfficeDetails.resx">
       <DependentUpon>ucOfficeDetails.cs</DependentUpon>
@@ -168,6 +192,9 @@
     </Compile>
     <EmbeddedResource Include="Reports\ucReports.resx">
       <DependentUpon>ucReports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ucReportsDetails.resx">
+      <DependentUpon>ucReportsDetails.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

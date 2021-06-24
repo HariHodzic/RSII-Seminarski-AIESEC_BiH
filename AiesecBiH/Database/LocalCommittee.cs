@@ -20,5 +20,7 @@ namespace AiesecBiH.Database
 
         public ICollection<Office> Offices { get; set; }
         public IEnumerable<Event> Events { get; set; }
+        public IEnumerable<Member> Members { get; set; }
+
     }
 }

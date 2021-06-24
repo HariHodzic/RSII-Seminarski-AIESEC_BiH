@@ -22,16 +22,16 @@ namespace AiesecBiH.Services.BaseServices
         {
         }
 
-        public virtual T Insert(TInsert request)
+        public virtual async Task<T> Insert(TInsert request)
         {
             var set = _context.Set<TDb>();
             TDb entity = _mapper.Map<TDb>(request);
             set.Add(entity);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return _mapper.Map<T>(entity);
         }
 
-        public virtual T Update(int id, TUpdate request)
+        public virtual async Task<T> Update(int id, TUpdate request)
         {
             var set = _context.Set<TDb>();
             TDb entity = set.Find(id);
@@ -39,16 +39,16 @@ namespace AiesecBiH.Services.BaseServices
                 throw new NotFoundException("Object with this ID doesn't exist");
             entity = _mapper.Map(request,entity);
             set.Update(entity);
-            _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
             return _mapper.Map<T>(entity);
         }
-        public virtual T Delete(int id)
+        public virtual async Task<T> Delete(int id)
         {
             var entity = _context.Set<TDb>().Find(id);
             if (entity == null)
                 throw new NotFoundException();
             _context.Set<TDb>().Remove(entity);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return _mapper.Map<T>(entity);
         }

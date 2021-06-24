@@ -29,7 +29,7 @@ namespace AiesecBiH.WinUI.Reports
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtSearchFFName = new System.Windows.Forms.TextBox();
+            this.txtSearchName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnNewReport = new System.Windows.Forms.Button();
@@ -37,21 +37,19 @@ namespace AiesecBiH.WinUI.Reports
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvReports = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtSearchMandate = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReports)).BeginInit();
             this.SuspendLayout();
             // 
-            // txtSearchFFName
+            // txtSearchName
             // 
-            this.txtSearchFFName.Location = new System.Drawing.Point(35, 169);
-            this.txtSearchFFName.Margin = new System.Windows.Forms.Padding(4);
-            this.txtSearchFFName.Name = "txtSearchFFName";
-            this.txtSearchFFName.Size = new System.Drawing.Size(176, 20);
-            this.txtSearchFFName.TabIndex = 27;
+            this.txtSearchName.Location = new System.Drawing.Point(35, 169);
+            this.txtSearchName.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSearchName.Name = "txtSearchName";
+            this.txtSearchName.Size = new System.Drawing.Size(176, 20);
+            this.txtSearchName.TabIndex = 27;
             // 
             // label4
             // 
@@ -103,6 +101,7 @@ namespace AiesecBiH.WinUI.Reports
             this.btnSearch.TabIndex = 21;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // groupBox1
             // 
@@ -119,7 +118,6 @@ namespace AiesecBiH.WinUI.Reports
             // dgvReports
             // 
             this.dgvReports.AllowUserToAddRows = false;
-            this.dgvReports.AllowUserToDeleteRows = false;
             this.dgvReports.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvReports.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvReports.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -131,6 +129,7 @@ namespace AiesecBiH.WinUI.Reports
             this.dgvReports.ReadOnly = true;
             this.dgvReports.Size = new System.Drawing.Size(837, 295);
             this.dgvReports.TabIndex = 0;
+            this.dgvReports.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvReports_CellMouseDoubleClick);
             // 
             // Id
             // 
@@ -140,51 +139,31 @@ namespace AiesecBiH.WinUI.Reports
             this.Id.ReadOnly = true;
             this.Id.Visible = false;
             // 
+            // txtSearchMandate
+            // 
+            this.txtSearchMandate.Location = new System.Drawing.Point(229, 169);
+            this.txtSearchMandate.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSearchMandate.Name = "txtSearchMandate";
+            this.txtSearchMandate.Size = new System.Drawing.Size(176, 20);
+            this.txtSearchMandate.TabIndex = 29;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(237, 151);
+            this.label1.Location = new System.Drawing.Point(226, 151);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 13);
-            this.label1.TabIndex = 29;
-            this.label1.Text = "Functional Field";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(435, 151);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
-            this.label3.TabIndex = 31;
-            this.label3.Text = "Name";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(240, 167);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(176, 21);
-            this.comboBox1.TabIndex = 33;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(438, 168);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(176, 21);
-            this.comboBox2.TabIndex = 34;
+            this.label1.Size = new System.Drawing.Size(49, 13);
+            this.label1.TabIndex = 28;
+            this.label1.Text = "Mandate";
             // 
             // ucReports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txtSearchMandate);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtSearchFFName);
+            this.Controls.Add(this.txtSearchName);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnNewReport);
@@ -192,6 +171,7 @@ namespace AiesecBiH.WinUI.Reports
             this.Controls.Add(this.groupBox1);
             this.Name = "ucReports";
             this.Size = new System.Drawing.Size(900, 600);
+            this.Load += new System.EventHandler(this.ucReports_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvReports)).EndInit();
             this.ResumeLayout(false);
@@ -201,17 +181,15 @@ namespace AiesecBiH.WinUI.Reports
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtSearchFFName;
+        private System.Windows.Forms.TextBox txtSearchName;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnNewReport;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox txtSearchMandate;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvReports;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
     }
 }

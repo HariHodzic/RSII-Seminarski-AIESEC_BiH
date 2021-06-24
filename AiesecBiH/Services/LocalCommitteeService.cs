@@ -7,6 +7,7 @@ using AiesecBiH.IServices;
 using AiesecBiH.Model.Response;
 using AiesecBiH.Services.BaseServices;
 using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace AiesecBiH.Services
@@ -28,9 +29,6 @@ namespace AiesecBiH.Services
             {
                 query = query.Where(x => x.Active == search.onlyActive);
             }
-            //    Pretraziti lokalne komitete po imenu grada
-            //    Provjeriti f metode dodatne koje se nadogradjuju na ovo
-
             var entities = await query.Include(x=>x.City).ToListAsync();
             var result = _mapper.Map<IEnumerable<Model.Response.LocalCommittee>>(entities);
             return result;
@@ -41,5 +39,24 @@ namespace AiesecBiH.Services
             var result =await _context.LocalCommittees.Include(x => x.City).FirstOrDefaultAsync(x => x.Id == id);
             return _mapper.Map<Model.Response.LocalCommittee>(result);
         }
+
+        public override async Task<LocalCommittee> Delete(int id)
+        {
+            var result =await _context.LocalCommittees.Include(x => x.City).Include(y=>y.Offices).FirstOrDefaultAsync(x => x.Id == id);
+            _context.Remove(result);
+            await _context.SaveChangesAsync();
+            await CleanUpOffices();
+            return _mapper.Map<Model.Response.LocalCommittee>(result);
+        }
+
+        public async System.Threading.Tasks.Task CleanUpOffices()
+        {
+            var offices = await _context.Offices.Where(x => x.LocalCommitteeId == null).ToListAsync();
+            if (offices != null)
+            {
+                _context.Offices.RemoveRange(offices);
+                await _context.SaveChangesAsync();
+            }
+        } 
     }
 }

@@ -12,14 +12,13 @@ namespace AiesecBiH.Model.Search
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string JMBG { get; set; }
-        public DateTime BirthDate { get; set; }
-        public string Address { get; set; }
         public char Gender { get; set; }
-        public string EmailAddress { get; set; }
         public string PhoneNumber { get; set; }
         public int CityId { get; set; }
-        public string CityName { get; set; } 
+        public string CityName { get; set; }
+        public int? FunctionalFieldId { get; set; }
+        public int? LocalCommitteeId { get; set; }
+        public string[] IncludeList { get; set; }
 
     }
 }

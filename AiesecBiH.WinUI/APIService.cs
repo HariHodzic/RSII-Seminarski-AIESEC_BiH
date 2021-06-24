@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using AiesecBiH.Model.Extensions;
+using AiesecBiH.Model.Response;
 using Flurl.Http;
 using Flurl.Util;
 
@@ -55,6 +58,12 @@ namespace AiesecBiH.WinUI
             var url = $"{Properties.Settings.Default.APIUrl}/{_route}/{id}";
 
             return await url.DeleteAsync().ReceiveJson<T>();
+        }
+
+        public async Task<FileModel> Upload(MultipartFormDataContent request)
+        {
+            var url = $"{Properties.Settings.Default.APIUrl}/{_route}";
+            return await url.PostMultipartAsync(mp=>mp.Add(request)).ReceiveJson<FileModel>();
         }
         public async void LoadComboBox<T>(APIService service, ComboBox cmb, string displayMember, int? id=null)
         {

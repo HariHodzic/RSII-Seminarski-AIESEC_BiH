@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AiesecBiH.Model.Response;
 
 namespace AiesecBiH.WinUI.FunctionalFields
 {
@@ -17,6 +18,7 @@ namespace AiesecBiH.WinUI.FunctionalFields
         public ucFunctionalFields()
         {
             InitializeComponent();
+            btnSearch_Click(null, null);
         }
 
         private void btnNewFunctField_Click(object sender, EventArgs e)
@@ -27,20 +29,29 @@ namespace AiesecBiH.WinUI.FunctionalFields
 
         private async void btnSearch_Click(object sender, EventArgs e)
         {
-            var search = new Model.Search.FunctionalField()
+            try
             {
-                Name = txtSearchFFName.Text,
-                Abbreviation = txtSearchFFAbr.Text,
-                onlyActive = chkActiveOnly.Checked
-            };
-            dgvFunctionalFields.DataSource = await _service.Get<List<Model.Response.FunctionalField>>(search);
+                var search = new Model.Search.FunctionalField()
+                {
+                    Name = txtSearchFFName.Text,
+                    Abbreviation = txtSearchFFAbr.Text,
+                    onlyActive = chkActiveOnly.Checked
+                };
+                dgvFunctionalFields.DataSource = await _service.Get<List<Model.Response.FunctionalField>>(search);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
         }
 
         private void dgvFunctionalFields_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            var id = dgvFunctionalFields.CurrentRow.Cells[Name = "Id"].Value.ToString();
-            UserControl ucDetails = new ucFunctionalFieldsDetails(int.Parse(id));
+            //var id = dgvFunctionalFields.CurrentRow.Cells[Name = "Id"].Value.ToString();
+            //UserControl ucDetails = new ucFunctionalFieldsDetails(int.Parse(id));
+            var item = dgvFunctionalFields.CurrentRow.DataBoundItem;
+            UserControl ucDetails = new ucFunctionalFieldsDetails(item as FunctionalField);
             _navigationService.ShowDetailsUC(ucDetails);
             
         }

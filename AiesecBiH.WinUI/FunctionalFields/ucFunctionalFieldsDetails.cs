@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using AiesecBiH.Model.Update;
+using AiesecBiH.Model.Response;
 using Task = System.Threading.Tasks.Task;
 
 namespace AiesecBiH.WinUI.FunctionalFields
@@ -14,23 +14,18 @@ namespace AiesecBiH.WinUI.FunctionalFields
     public partial class ucFunctionalFieldsDetails : UserControl
     {
         private APIService _service = new APIService("FunctionalFields");
-        private readonly int? _functionalFieldId;
-        public ucFunctionalFieldsDetails()
+        private readonly FunctionalField _functionalField;
+        public ucFunctionalFieldsDetails(FunctionalField functionalField=null)
         {
             InitializeComponent();
-        }
-        public ucFunctionalFieldsDetails(int id)
-        {
-            InitializeComponent();
-            _functionalFieldId = id;
+            _functionalField =functionalField;
         }
         private async Task LoadFunctionalFieldDetail()
         {
-            var result = await _service.GetById<Model.Response.FunctionalField>(_functionalFieldId);
-            txtName.Text = result.Name;
-            txtAbbreviation.Text = result.Abbreviation;
-            txtDescription.Text = result.Description;
-            chkActive.Checked = result.Active;
+            txtName.Text = _functionalField.Name;
+            txtAbbreviation.Text = _functionalField.Abbreviation;
+            txtDescription.Text = _functionalField.Description;
+            chkActive.Checked = _functionalField.Active;
             btnSave.Text = "Update";
         }
         private void LoadFunctionalFieldCreate()
@@ -41,7 +36,7 @@ namespace AiesecBiH.WinUI.FunctionalFields
         }
         private async void ucFunctionalFieldsDetails_Load(object sender, EventArgs e)
         {
-            if (_functionalFieldId != null)
+            if (_functionalField != null)
             {
                 await LoadFunctionalFieldDetail();
             }
@@ -54,16 +49,16 @@ namespace AiesecBiH.WinUI.FunctionalFields
         private async void btnSave_Click(object sender, EventArgs e)
         {
             //UPDATE
-            if (_functionalFieldId != null)
+            if (_functionalField != null)
             {
-                Model.Update.FunctionalField request = new FunctionalField()
+                Model.Update.FunctionalField request = new Model.Update.FunctionalField()
                 {
                     Abbreviation = txtAbbreviation.Text,
                     Description = txtDescription.Text,
                     Name = txtName.Text,
                     Active = chkActive.Checked
                 };
-                var result = await _service.Update<Model.Response.FunctionalField>(_functionalFieldId,request);
+                var result = await _service.Update<FunctionalField>(_functionalField.Id, request);
                 frmIndex.Instance.btnDashFF_Click(null,null);
                 MessageBox.Show("Successfully updated Functional Field!");
             }
@@ -72,15 +67,16 @@ namespace AiesecBiH.WinUI.FunctionalFields
             {
                 try
                 {
-
                     Model.Insert.FunctionalField request = new Model.Insert.FunctionalField()
                     {
                         Abbreviation = txtAbbreviation.Text,
                         Description = txtDescription.Text,
                         Name = txtName.Text
                     };
-                    var result = await _service.Insert<Model.Response.FunctionalField>(request);
+                    var result = await _service.Insert<FunctionalField>(request);
                     frmIndex.Instance.btnDashFF_Click(null, null);
+                    MessageBox.Show("Successfully created new Functional Field!");
+
                 }
                 catch (Exception exception)
                 {
@@ -95,7 +91,7 @@ namespace AiesecBiH.WinUI.FunctionalFields
             DialogResult dialogResult=MessageBox.Show("Are you sure you want to delete this?","Caption",MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                var result = await _service.Delete<Model.Response.FunctionalField>(_functionalFieldId);
+                var result = await _service.Delete<FunctionalField>(_functionalField.Id);
                 frmIndex.Instance.btnDashFF_Click(null, null);
                 MessageBox.Show("Successfully deleted Functional Field!");
             }

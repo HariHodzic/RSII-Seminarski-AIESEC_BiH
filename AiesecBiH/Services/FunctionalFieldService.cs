@@ -21,7 +21,7 @@ namespace AiesecBiH.Services
             
         }
 
-        public override Model.Response.FunctionalField Insert(Model.Insert.FunctionalField request)
+        public override async Task<Model.Response.FunctionalField> Insert(Model.Insert.FunctionalField request)
         {
             var entity = _mapper.Map<Database.FunctionalField>(request);
             _context.AddAsync(entity);
@@ -29,7 +29,7 @@ namespace AiesecBiH.Services
             return _mapper.Map<FunctionalField>(entity);
         }
 
-        public override async Task<IEnumerable<FunctionalField>> Get(Model.Search.FunctionalField search)
+        public override async Task<IEnumerable<FunctionalField>> Get(Model.Search.FunctionalField search=null)
         {
             var query = _context.FunctionalFields.AsQueryable();
             if (!string.IsNullOrWhiteSpace(search?.Name))

@@ -38,12 +38,19 @@ namespace AiesecBiH.WinUI.LocalCommittees
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvOffices = new System.Windows.Forms.DataGridView();
+            this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Capacity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EstablishmentDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Members = new System.Windows.Forms.GroupBox();
             this.dgvMembers = new System.Windows.Forms.DataGridView();
             this.comboBoxCity = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.dtpCreatedDate = new System.Windows.Forms.DateTimePicker();
             this.dtpEstDate = new System.Windows.Forms.DateTimePicker();
+            this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FunctionalField = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Role = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOffices)).BeginInit();
             this.Members.SuspendLayout();
@@ -136,13 +143,41 @@ namespace AiesecBiH.WinUI.LocalCommittees
             // 
             // dgvOffices
             // 
+            this.dgvOffices.AllowUserToAddRows = false;
+            this.dgvOffices.AllowUserToDeleteRows = false;
             this.dgvOffices.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgvOffices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvOffices.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Address,
+            this.Capacity,
+            this.EstablishmentDate});
             this.dgvOffices.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvOffices.Location = new System.Drawing.Point(3, 16);
             this.dgvOffices.Name = "dgvOffices";
+            this.dgvOffices.ReadOnly = true;
             this.dgvOffices.Size = new System.Drawing.Size(344, 181);
             this.dgvOffices.TabIndex = 0;
+            // 
+            // Address
+            // 
+            this.Address.DataPropertyName = "Address";
+            this.Address.HeaderText = "Address";
+            this.Address.Name = "Address";
+            this.Address.ReadOnly = true;
+            // 
+            // Capacity
+            // 
+            this.Capacity.DataPropertyName = "Capacity";
+            this.Capacity.HeaderText = "Capacity";
+            this.Capacity.Name = "Capacity";
+            this.Capacity.ReadOnly = true;
+            // 
+            // EstablishmentDate
+            // 
+            this.EstablishmentDate.DataPropertyName = "EstablishmentDate";
+            this.EstablishmentDate.HeaderText = "Establishment Date";
+            this.EstablishmentDate.Name = "EstablishmentDate";
+            this.EstablishmentDate.ReadOnly = true;
             // 
             // Members
             // 
@@ -158,6 +193,11 @@ namespace AiesecBiH.WinUI.LocalCommittees
             // 
             this.dgvMembers.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgvMembers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMembers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.FirstName,
+            this.LastName,
+            this.FunctionalField,
+            this.Role});
             this.dgvMembers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvMembers.Location = new System.Drawing.Point(3, 16);
             this.dgvMembers.Name = "dgvMembers";
@@ -196,6 +236,34 @@ namespace AiesecBiH.WinUI.LocalCommittees
             this.dtpEstDate.Name = "dtpEstDate";
             this.dtpEstDate.Size = new System.Drawing.Size(374, 20);
             this.dtpEstDate.TabIndex = 27;
+            // 
+            // FirstName
+            // 
+            this.FirstName.DataPropertyName = "FirstName";
+            this.FirstName.HeaderText = "First Name";
+            this.FirstName.Name = "FirstName";
+            this.FirstName.ReadOnly = true;
+            // 
+            // LastName
+            // 
+            this.LastName.DataPropertyName = "LastName";
+            this.LastName.HeaderText = "Last Name";
+            this.LastName.Name = "LastName";
+            this.LastName.ReadOnly = true;
+            // 
+            // FunctionalField
+            // 
+            this.FunctionalField.DataPropertyName = "FunctionalFieldName";
+            this.FunctionalField.HeaderText = "Functional Field";
+            this.FunctionalField.Name = "FunctionalField";
+            this.FunctionalField.ReadOnly = true;
+            // 
+            // Role
+            // 
+            this.Role.DataPropertyName = "RoleAbbreviation";
+            this.Role.HeaderText = "Role";
+            this.Role.Name = "Role";
+            this.Role.ReadOnly = true;
             // 
             // ucLocalCommitteeDetails
             // 
@@ -244,5 +312,12 @@ namespace AiesecBiH.WinUI.LocalCommittees
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker dtpCreatedDate;
         private System.Windows.Forms.DateTimePicker dtpEstDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Address;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Capacity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EstablishmentDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FirstName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LastName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FunctionalField;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Role;
     }
 }

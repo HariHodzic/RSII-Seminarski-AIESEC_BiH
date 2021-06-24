@@ -13,8 +13,7 @@ namespace AiesecBiH.Database
         public string Address { get; set; }
         public int Capacity { get; set; }
 
-        [DataType(DataType.Date)]
-        public DateTime EstablishmentDate { get; set; }
+        [DataType(DataType.Date)] public DateTime EstablishmentDate { get; set; } = DateTime.Now;
         
         [ForeignKey(nameof(LocalCommittee))]
         public int? LocalCommitteeId { get; set; }

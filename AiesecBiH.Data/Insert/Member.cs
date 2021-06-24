@@ -16,28 +16,26 @@ namespace AiesecBiH.Model.Insert
         [Required(AllowEmptyStrings = false)]
         [StringLength(maximumLength: 20, MinimumLength = 2)]
         public string LastName { get; set; }
-        [Required(AllowEmptyStrings = false)]
-        [StringLength(maximumLength: 12, MinimumLength = 9)]
-        public string JMBG { get; set; }
-
-        [Required]
+        [DataType(DataType.Date)]
         public DateTime BirthDate { get; set; }
-
-        [Required(AllowEmptyStrings = false)]
-        [StringLength(maximumLength: 30, MinimumLength = 3)]
+        [StringLength(maximumLength: 40, MinimumLength = 5)]
         public string Address { get; set; }
 
-        [Required(AllowEmptyStrings = false)]
+        [Required]
         [DefaultValue("M")]
         public char Gender { get; set; }
 
         [EmailAddress]
         [Required(AllowEmptyStrings = false)]
         public string EmailAddress { get; set; }
-
-        [Required(AllowEmptyStrings = false)]
+        
         [DataType(DataType.PhoneNumber)]
         public string PhoneNumber { get; set; }
-        public int CityId { get; set; }
+        [Required]
+        public int RoleId { get; set; }
+        [Required]
+        public int FunctionalFieldId { get; set; }
+        [Required]
+        public int LocalCommitteeId { get; set; }
     }
 }

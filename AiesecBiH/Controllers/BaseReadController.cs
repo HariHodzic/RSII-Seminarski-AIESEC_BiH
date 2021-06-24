@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using AiesecBiH.Model.Search;
 using AiesecBiH.Services.BaseServices;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AiesecBiH.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    //[Authorize]
     public class BaseReadController<T,TSearch> : ControllerBase 
         where T:class 
         where  TSearch:BaseSearchModel
@@ -20,9 +22,9 @@ namespace AiesecBiH.Controllers
         }
 
         [HttpGet]
-        public virtual Task<IEnumerable<T>> Get([FromQuery] TSearch search)
+        public virtual async Task<IEnumerable<T>> Get([FromQuery] TSearch search)
         {
-            return _service.Get(search);
+            return await _service.Get(search);
         }
 
         [HttpGet("{id}")]

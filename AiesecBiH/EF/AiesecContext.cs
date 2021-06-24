@@ -18,7 +18,6 @@ namespace AiesecBiH.EF
         public DbSet<FunctionalField> FunctionalFields { get; set; }
         public DbSet<LocalCommittee> LocalCommittees { get; set; }
         public DbSet<Member> Member { get; set; }
-        public DbSet<MemberAccount> MemberAccount { get; set; }
         public DbSet<Office> Offices { get; set; }
         public DbSet<Report> Reports { get; set; }
         public DbSet<Role> Roles { get; set; }
@@ -35,12 +34,12 @@ namespace AiesecBiH.EF
             modelBuilder.Entity<LocalCommittee>()
                 .HasOne<City>(c => c.City)
                 .WithOne()
-                .OnDelete(DeleteBehavior.ClientSetNull);
+                .OnDelete(DeleteBehavior.NoAction);
             //Office
             modelBuilder.Entity<Office>()
                 .HasOne<LocalCommittee>(l => l.LocalCommittee)
                 .WithMany(l => l.Offices)
-                .OnDelete(DeleteBehavior.ClientSetNull);
+                .OnDelete(DeleteBehavior.NoAction);
 
             //Event
             modelBuilder.Entity<Event>()
@@ -61,11 +60,22 @@ namespace AiesecBiH.EF
                 .HasOne<Member>(l => l.MemberExecutor)
                 .WithMany(x => x.ExecutedTasks)
                 .OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<Member>()
+                .HasOne(l => l.FunctionalField)
+                .WithMany(x => x.Members)
+                .OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<Member>()
+                .HasOne(l => l.LocalCommittee)
+                .WithMany(x => x.Members)
+                .OnDelete(DeleteBehavior.NoAction);
+
+
             modelBuilder.FunctionalFieldsSeed();
             modelBuilder.CitySeed();
             modelBuilder.LocalCommitteeSeed();
             modelBuilder.OfficeSeed();
             modelBuilder.RoleSeed();
+            modelBuilder.MembersSeed();
         }
     }
 }

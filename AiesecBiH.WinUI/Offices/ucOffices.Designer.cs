@@ -36,8 +36,13 @@ namespace AiesecBiH.WinUI.Offices
             this.btnSearch = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvOffices = new System.Windows.Forms.DataGridView();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmbLocalCommittee = new System.Windows.Forms.ComboBox();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LocalCommittee = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Adress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Capacity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EstablishmentDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Active = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOffices)).BeginInit();
             this.SuspendLayout();
@@ -123,7 +128,12 @@ namespace AiesecBiH.WinUI.Offices
             this.dgvOffices.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvOffices.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvOffices.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Id});
+            this.Id,
+            this.LocalCommittee,
+            this.Adress,
+            this.Capacity,
+            this.EstablishmentDate,
+            this.Active});
             this.dgvOffices.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvOffices.Location = new System.Drawing.Point(4, 17);
             this.dgvOffices.Margin = new System.Windows.Forms.Padding(4);
@@ -132,14 +142,6 @@ namespace AiesecBiH.WinUI.Offices
             this.dgvOffices.Size = new System.Drawing.Size(849, 294);
             this.dgvOffices.TabIndex = 0;
             this.dgvOffices.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvOffices_CellMouseDoubleClick);
-            // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
             // 
             // cmbLocalCommittee
             // 
@@ -151,6 +153,52 @@ namespace AiesecBiH.WinUI.Offices
             this.cmbLocalCommittee.Size = new System.Drawing.Size(262, 21);
             this.cmbLocalCommittee.TabIndex = 26;
             this.cmbLocalCommittee.ValueMember = "null";
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Id.Visible = false;
+            // 
+            // LocalCommittee
+            // 
+            this.LocalCommittee.DataPropertyName = "LocalCommitteeName";
+            this.LocalCommittee.HeaderText = "Local Committee";
+            this.LocalCommittee.Name = "LocalCommittee";
+            this.LocalCommittee.ReadOnly = true;
+            // 
+            // Adress
+            // 
+            this.Adress.DataPropertyName = "Address";
+            this.Adress.HeaderText = "Address";
+            this.Adress.Name = "Adress";
+            this.Adress.ReadOnly = true;
+            // 
+            // Capacity
+            // 
+            this.Capacity.DataPropertyName = "Capacity";
+            this.Capacity.HeaderText = "Capacity";
+            this.Capacity.Name = "Capacity";
+            this.Capacity.ReadOnly = true;
+            // 
+            // EstablishmentDate
+            // 
+            this.EstablishmentDate.DataPropertyName = "EstablishmentDate";
+            this.EstablishmentDate.HeaderText = "Establishment Date";
+            this.EstablishmentDate.Name = "EstablishmentDate";
+            this.EstablishmentDate.ReadOnly = true;
+            // 
+            // Active
+            // 
+            this.Active.DataPropertyName = "Active";
+            this.Active.HeaderText = "Active";
+            this.Active.Name = "Active";
+            this.Active.ReadOnly = true;
+            this.Active.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Active.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // ucOffices
             // 
@@ -183,7 +231,12 @@ namespace AiesecBiH.WinUI.Offices
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgvOffices;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.ComboBox cmbLocalCommittee;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LocalCommittee;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Adress;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Capacity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EstablishmentDate;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Active;
     }
 }

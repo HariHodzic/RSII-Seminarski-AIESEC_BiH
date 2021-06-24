@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AiesecBiH.Model.Response;
 using AiesecBiH.WinUI.FunctionalFields;
 
 namespace AiesecBiH.WinUI.LocalCommittees
@@ -19,6 +20,7 @@ namespace AiesecBiH.WinUI.LocalCommittees
         public ucLocalCommittee()
         {
             InitializeComponent();
+            dgvLocalCommittees.AutoGenerateColumns = false;
         }
 
         private async void btnSearch_Click(object sender, EventArgs e)
@@ -33,8 +35,9 @@ namespace AiesecBiH.WinUI.LocalCommittees
 
         private void dgvLocalCommittees_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            var id = dgvLocalCommittees.CurrentRow.Cells[Name = "Id"].Value.ToString();
-            UserControl ucDetails = new ucLocalCommitteeDetails(int.Parse(id)){Dock = DockStyle.Fill};
+            //var id = dgvLocalCommittees.CurrentRow.Cells[Name = "Id"].Value.ToString();
+            LocalCommittee item = (LocalCommittee)dgvLocalCommittees.CurrentRow.DataBoundItem;
+            UserControl ucDetails = new ucLocalCommitteeDetails(item.Id){Dock = DockStyle.Fill};
             _navigationService.ShowDetailsUC(ucDetails);
         }
 

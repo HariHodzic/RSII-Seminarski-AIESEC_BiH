@@ -7,12 +7,15 @@ namespace AiesecBiH.Model.Response
 {
     public class Report
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public int Quarter { get; set; }
         public string Mandate { get; set; }
-        public int FileModelId { get; set; }
-        public virtual FileModel FileModel { get; set; }
+        [System.ComponentModel.Browsable(false)]
+        public byte[] File { get; set; }
+        [System.ComponentModel.Browsable(false)]
+        public string Extension { get; set; }
         public DateTime CreatedDate { get; set; }
 
     }
