@@ -34,9 +34,6 @@ namespace AiesecBiH.WinUI.Members
             {
                 dtpCreatedDate.Visible = false;
                 lblCreatedDate.Visible = false;
-                _localCommitteeService.LoadComboBox<LocalCommittee>(_localCommitteeService,cmbLocalCommittee,"Name");
-                _funcFieldService.LoadComboBox<FunctionalField>(_funcFieldService,cmbFunctionalField,"Name");
-                _roleService.LoadComboBox<Role>(_roleService,cmbRole,"Name");
             }
         }
 
@@ -46,11 +43,11 @@ namespace AiesecBiH.WinUI.Members
             txtLastName.Text = _member.LastName;
             txtEmail.Text = _member.EmailAddress;
             txtAddress.Text = _member.Address;
-            cmbFunctionalField.Text = _member.FunctionalFieldName;
-            cmbLocalCommittee.Text = _member.LocalCommitteeName;
             cbxActive.Checked = _member.Active;
-            cmbGender.Text = _member.Gender.ToString();
-            cmbRole.Text = _member.Role.Name;
+            cmbGender.SelectedValue = _member.Gender;
+            _localCommitteeService.LoadComboBox<LocalCommittee>(_localCommitteeService, cmbLocalCommittee, "Name",_member.LocalCommitteeId);
+            _funcFieldService.LoadComboBox<FunctionalField>(_funcFieldService, cmbFunctionalField, "Name",_member.FunctionalFieldId);
+            _roleService.LoadComboBox<Role>(_roleService, cmbRole, "Name",_member.RoleId);
             txtPhoneNumber.Text = _member.PhoneNumber;
             if (_member.BirthDate.Year < 1750)
             {
@@ -64,7 +61,7 @@ namespace AiesecBiH.WinUI.Members
             btnSave.Text = "Create";
             
         }
-        private Model.Update.Member LoadUpdateModel()
+        private Model.Update.Member CreateUpdateModel()
         {
             var model = new Model.Update.Member()
             {
@@ -83,7 +80,7 @@ namespace AiesecBiH.WinUI.Members
             };
             return model;
         }
-        private Model.Insert.Member LoadInsertModel()
+        private Model.Insert.Member CreateInsertModel()
         {
             Console.WriteLine(cmbFunctionalField.SelectedValue.ToString() + cmbLocalCommittee.SelectedValue.ToString() + cmbRole.SelectedValue.ToString());
             var model = new Model.Insert.Member()
@@ -106,31 +103,16 @@ namespace AiesecBiH.WinUI.Members
         {
             if (_member != null)
             {
-                Model.Update.Member model = LoadUpdateModel();
+                Model.Update.Member model = CreateUpdateModel();
                 await _memberService.Update<Member>(model.Id, model);
             }
             else
             {
-                var model = LoadInsertModel();
+                var model = CreateInsertModel();
                 await _memberService.Insert<Member>(model);
             }
         }
 
-        private void cmbRole_DropDown(object sender, EventArgs e)
-        {
-            _roleService.LoadComboBox<Role>(_roleService, cmbRole, "Name");
-
-        }
-
-        private void cmbFunctionalField_DropDown(object sender, EventArgs e)
-        {
-            _funcFieldService.LoadComboBox<FunctionalField>(_funcFieldService, cmbFunctionalField, "Name");
-        }
-
-        private void cmbLocalCommittee_DropDown(object sender, EventArgs e)
-        {
-            _localCommitteeService.LoadComboBox<LocalCommittee>(_localCommitteeService, cmbLocalCommittee, "Name");
-        }
     }
 }
      

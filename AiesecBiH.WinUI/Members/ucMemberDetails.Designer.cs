@@ -66,7 +66,6 @@ namespace AiesecBiH.WinUI.Members
             this.cmbLocalCommittee.Name = "cmbLocalCommittee";
             this.cmbLocalCommittee.Size = new System.Drawing.Size(191, 21);
             this.cmbLocalCommittee.TabIndex = 51;
-            this.cmbLocalCommittee.DropDown += new System.EventHandler(this.cmbLocalCommittee_DropDown);
             // 
             // dtpCreatedDate
             // 
@@ -225,7 +224,6 @@ namespace AiesecBiH.WinUI.Members
             this.cmbFunctionalField.Name = "cmbFunctionalField";
             this.cmbFunctionalField.Size = new System.Drawing.Size(191, 21);
             this.cmbFunctionalField.TabIndex = 59;
-            this.cmbFunctionalField.DropDown += new System.EventHandler(this.cmbFunctionalField_DropDown);
             // 
             // label3
             // 
@@ -296,7 +294,6 @@ namespace AiesecBiH.WinUI.Members
             this.cmbRole.Name = "cmbRole";
             this.cmbRole.Size = new System.Drawing.Size(191, 21);
             this.cmbRole.TabIndex = 70;
-            this.cmbRole.DropDown += new System.EventHandler(this.cmbRole_DropDown);
             // 
             // txtPhoneNumber
             // 

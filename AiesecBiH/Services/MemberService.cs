@@ -98,7 +98,7 @@ namespace AiesecBiH.Services
         {
             var entity = await _context.Member.FindAsync(id);
             _mapper.Map(request, entity);
-
+            _context.Update(entity);
             await _context.SaveChangesAsync();
             return _mapper.Map<Model.Response.Member>(entity);
         }

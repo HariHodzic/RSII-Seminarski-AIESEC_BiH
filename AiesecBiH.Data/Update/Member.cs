@@ -17,9 +17,9 @@ namespace AiesecBiH.Model.Update
         [Required(AllowEmptyStrings = false)]
         [StringLength(maximumLength: 20, MinimumLength = 2)]
         public string LastName { get; set; }
-        [Required(AllowEmptyStrings = false)]
-        [StringLength(maximumLength: 40, MinimumLength = 5)]
-        public string Username { get; set; }
+        //[Required(AllowEmptyStrings = false)]
+        //[StringLength(maximumLength: 40, MinimumLength = 5)]
+        //public string Username { get; set; }
         [Required]
         public DateTime BirthDate { get; set; }
         [StringLength(maximumLength: 40, MinimumLength = 5)]

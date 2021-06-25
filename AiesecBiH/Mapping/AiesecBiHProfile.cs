@@ -32,6 +32,7 @@ namespace AiesecBiH.Mapping
 
             //Members
             CreateMap<Model.Insert.Member, Database.Member>();
+            CreateMap<Model.Update.Member, Database.Member>();
             CreateMap<Database.Member, Model.Response.MemberLL>()
                 .ForMember(x => x.RoleAbbreviation, opt => opt.MapFrom(x => x.Role.Abbreviation));
             CreateMap<Database.Member, Model.Response.Member>()
