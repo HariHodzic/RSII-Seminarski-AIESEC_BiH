@@ -36,13 +36,13 @@ namespace AiesecBiH.WinUI.Offices
             this.btnSearch = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvOffices = new System.Windows.Forms.DataGridView();
-            this.cmbLocalCommittee = new System.Windows.Forms.ComboBox();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LocalCommittee = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Adress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Capacity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EstablishmentDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Active = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.cmbLocalCommittee = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOffices)).BeginInit();
             this.SuspendLayout();
@@ -50,9 +50,10 @@ namespace AiesecBiH.WinUI.Offices
             // cbxActiveOnly
             // 
             this.cbxActiveOnly.AutoSize = true;
-            this.cbxActiveOnly.Location = new System.Drawing.Point(600, 175);
+            this.cbxActiveOnly.Location = new System.Drawing.Point(800, 215);
+            this.cbxActiveOnly.Margin = new System.Windows.Forms.Padding(4);
             this.cbxActiveOnly.Name = "cbxActiveOnly";
-            this.cbxActiveOnly.Size = new System.Drawing.Size(80, 17);
+            this.cbxActiveOnly.Size = new System.Drawing.Size(101, 21);
             this.cbxActiveOnly.TabIndex = 25;
             this.cbxActiveOnly.Text = "Active Only";
             this.cbxActiveOnly.UseVisualStyleBackColor = true;
@@ -62,20 +63,20 @@ namespace AiesecBiH.WinUI.Offices
             this.lblTitleUC.AutoSize = true;
             this.lblTitleUC.Font = new System.Drawing.Font("Segoe UI Semibold", 17F, System.Drawing.FontStyle.Bold);
             this.lblTitleUC.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.lblTitleUC.Location = new System.Drawing.Point(21, 78);
-            this.lblTitleUC.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTitleUC.Location = new System.Drawing.Point(28, 96);
+            this.lblTitleUC.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblTitleUC.Name = "lblTitleUC";
-            this.lblTitleUC.Size = new System.Drawing.Size(86, 31);
+            this.lblTitleUC.Size = new System.Drawing.Size(109, 40);
             this.lblTitleUC.TabIndex = 23;
             this.lblTitleUC.Text = "Offices";
             // 
             // labelName
             // 
             this.labelName.AutoSize = true;
-            this.labelName.Location = new System.Drawing.Point(24, 149);
-            this.labelName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelName.Location = new System.Drawing.Point(32, 183);
+            this.labelName.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(85, 13);
+            this.labelName.Size = new System.Drawing.Size(112, 17);
             this.labelName.TabIndex = 22;
             this.labelName.Text = "Local Committee";
             // 
@@ -88,10 +89,10 @@ namespace AiesecBiH.WinUI.Offices
             this.btnNewOffice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNewOffice.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
             this.btnNewOffice.ForeColor = System.Drawing.SystemColors.MenuBar;
-            this.btnNewOffice.Location = new System.Drawing.Point(722, 78);
-            this.btnNewOffice.Margin = new System.Windows.Forms.Padding(4);
+            this.btnNewOffice.Location = new System.Drawing.Point(963, 96);
+            this.btnNewOffice.Margin = new System.Windows.Forms.Padding(5);
             this.btnNewOffice.Name = "btnNewOffice";
-            this.btnNewOffice.Size = new System.Drawing.Size(150, 40);
+            this.btnNewOffice.Size = new System.Drawing.Size(200, 49);
             this.btnNewOffice.TabIndex = 21;
             this.btnNewOffice.Text = "New";
             this.btnNewOffice.UseVisualStyleBackColor = false;
@@ -99,24 +100,26 @@ namespace AiesecBiH.WinUI.Offices
             // 
             // btnSearch
             // 
+            this.btnSearch.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
-            this.btnSearch.Location = new System.Drawing.Point(722, 149);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSearch.Location = new System.Drawing.Point(963, 183);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(5);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(150, 40);
+            this.btnSearch.Size = new System.Drawing.Size(200, 49);
             this.btnSearch.TabIndex = 20;
             this.btnSearch.Text = "Search";
-            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dgvOffices);
-            this.groupBox1.Location = new System.Drawing.Point(23, 208);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Location = new System.Drawing.Point(31, 256);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(5);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(857, 315);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(5);
+            this.groupBox1.Size = new System.Drawing.Size(1143, 388);
             this.groupBox1.TabIndex = 19;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Offices";
@@ -135,29 +138,20 @@ namespace AiesecBiH.WinUI.Offices
             this.EstablishmentDate,
             this.Active});
             this.dgvOffices.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvOffices.Location = new System.Drawing.Point(4, 17);
-            this.dgvOffices.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvOffices.Location = new System.Drawing.Point(5, 20);
+            this.dgvOffices.Margin = new System.Windows.Forms.Padding(5);
             this.dgvOffices.Name = "dgvOffices";
             this.dgvOffices.ReadOnly = true;
-            this.dgvOffices.Size = new System.Drawing.Size(849, 294);
+            this.dgvOffices.RowHeadersWidth = 51;
+            this.dgvOffices.Size = new System.Drawing.Size(1133, 363);
             this.dgvOffices.TabIndex = 0;
             this.dgvOffices.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvOffices_CellMouseDoubleClick);
-            // 
-            // cmbLocalCommittee
-            // 
-            this.cmbLocalCommittee.DisplayMember = "All";
-            this.cmbLocalCommittee.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbLocalCommittee.FormattingEnabled = true;
-            this.cmbLocalCommittee.Location = new System.Drawing.Point(23, 168);
-            this.cmbLocalCommittee.Name = "cmbLocalCommittee";
-            this.cmbLocalCommittee.Size = new System.Drawing.Size(262, 21);
-            this.cmbLocalCommittee.TabIndex = 26;
-            this.cmbLocalCommittee.ValueMember = "null";
             // 
             // Id
             // 
             this.Id.DataPropertyName = "Id";
             this.Id.HeaderText = "Id";
+            this.Id.MinimumWidth = 6;
             this.Id.Name = "Id";
             this.Id.ReadOnly = true;
             this.Id.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -167,6 +161,7 @@ namespace AiesecBiH.WinUI.Offices
             // 
             this.LocalCommittee.DataPropertyName = "LocalCommitteeName";
             this.LocalCommittee.HeaderText = "Local Committee";
+            this.LocalCommittee.MinimumWidth = 6;
             this.LocalCommittee.Name = "LocalCommittee";
             this.LocalCommittee.ReadOnly = true;
             // 
@@ -174,6 +169,7 @@ namespace AiesecBiH.WinUI.Offices
             // 
             this.Adress.DataPropertyName = "Address";
             this.Adress.HeaderText = "Address";
+            this.Adress.MinimumWidth = 6;
             this.Adress.Name = "Adress";
             this.Adress.ReadOnly = true;
             // 
@@ -181,6 +177,7 @@ namespace AiesecBiH.WinUI.Offices
             // 
             this.Capacity.DataPropertyName = "Capacity";
             this.Capacity.HeaderText = "Capacity";
+            this.Capacity.MinimumWidth = 6;
             this.Capacity.Name = "Capacity";
             this.Capacity.ReadOnly = true;
             // 
@@ -188,6 +185,7 @@ namespace AiesecBiH.WinUI.Offices
             // 
             this.EstablishmentDate.DataPropertyName = "EstablishmentDate";
             this.EstablishmentDate.HeaderText = "Establishment Date";
+            this.EstablishmentDate.MinimumWidth = 6;
             this.EstablishmentDate.Name = "EstablishmentDate";
             this.EstablishmentDate.ReadOnly = true;
             // 
@@ -195,14 +193,29 @@ namespace AiesecBiH.WinUI.Offices
             // 
             this.Active.DataPropertyName = "Active";
             this.Active.HeaderText = "Active";
+            this.Active.MinimumWidth = 6;
             this.Active.Name = "Active";
             this.Active.ReadOnly = true;
             this.Active.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Active.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
+            // cmbLocalCommittee
+            // 
+            this.cmbLocalCommittee.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.cmbLocalCommittee.DisplayMember = "All";
+            this.cmbLocalCommittee.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbLocalCommittee.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.cmbLocalCommittee.FormattingEnabled = true;
+            this.cmbLocalCommittee.Location = new System.Drawing.Point(31, 207);
+            this.cmbLocalCommittee.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbLocalCommittee.Name = "cmbLocalCommittee";
+            this.cmbLocalCommittee.Size = new System.Drawing.Size(348, 24);
+            this.cmbLocalCommittee.TabIndex = 26;
+            this.cmbLocalCommittee.ValueMember = "null";
+            // 
             // ucOffices
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Controls.Add(this.cmbLocalCommittee);
@@ -212,8 +225,9 @@ namespace AiesecBiH.WinUI.Offices
             this.Controls.Add(this.btnNewOffice);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.groupBox1);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ucOffices";
-            this.Size = new System.Drawing.Size(900, 600);
+            this.Size = new System.Drawing.Size(1200, 738);
             this.Load += new System.EventHandler(this.ucOffices_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvOffices)).EndInit();

@@ -17,7 +17,7 @@ namespace AiesecBiH.EF
         public DbSet<FileModel> FileModels { get; set; }
         public DbSet<FunctionalField> FunctionalFields { get; set; }
         public DbSet<LocalCommittee> LocalCommittees { get; set; }
-        public DbSet<Member> Member { get; set; }
+        public DbSet<Member> Members { get; set; }
         public DbSet<Office> Offices { get; set; }
         public DbSet<Report> Reports { get; set; }
         public DbSet<Role> Roles { get; set; }
@@ -40,6 +40,15 @@ namespace AiesecBiH.EF
                 .HasOne<LocalCommittee>(l => l.LocalCommittee)
                 .WithMany(l => l.Offices)
                 .OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<Member>()
+                .HasOne<FunctionalField>(x => x.FunctionalField)
+                .WithMany(x =>x.Members)
+                .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<FunctionalField>()
+              .HasMany<Member>(x => x.Members)
+              .WithOne(x => x.FunctionalField)
+              .OnDelete(DeleteBehavior.Cascade);
+
 
             //Event
             modelBuilder.Entity<Event>()
@@ -77,5 +86,6 @@ namespace AiesecBiH.EF
             modelBuilder.RoleSeed();
             modelBuilder.MembersSeed();
         }
+
     }
 }

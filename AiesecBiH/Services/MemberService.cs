@@ -26,8 +26,12 @@ namespace AiesecBiH.Services
         }
         public async Task<IEnumerable<Model.Response.MemberLL>> Get(Model.Search.Member search=null)
         {
-            var query = _context.Member.Include(x=>x.LocalCommittee).ThenInclude(x=>x.City).Include(x=>x.FunctionalField).AsQueryable();
+            var query = _context.Members.Include(x=>x.LocalCommittee).ThenInclude(x=>x.City).Include(x=>x.FunctionalField).AsQueryable();
 
+            if (!string.IsNullOrWhiteSpace(search?.Username))
+            {
+                query = query.Where(x => x.Username==search.Username);
+            }
             if (!string.IsNullOrWhiteSpace(search?.FirstName))
             {
                 query = query.Where(x =>x.FirstName.ToLower().StartsWith(search.FirstName.ToLower()));
@@ -64,7 +68,7 @@ namespace AiesecBiH.Services
         }
         public async Task<Model.Response.MemberLL> GetById(int id)
         {
-            var entity = await _context.Member.FindAsync(id);
+            var entity = await _context.Members.FindAsync(id);
 
             return _mapper.Map<Model.Response.MemberLL>(entity);
         }
@@ -75,7 +79,7 @@ namespace AiesecBiH.Services
             var username = request.FirstName + request.LastName;
             entity.Username = username;
             int i = 0;
-            while (await _context.Member.FirstOrDefaultAsync(x => x.Username == entity.Username) != null)
+            while (await _context.Members.FirstOrDefaultAsync(x => x.Username == entity.Username) != null)
             {
                 entity.Username = username + (i++).ToString();
             }
@@ -96,7 +100,7 @@ namespace AiesecBiH.Services
 
         public async Task<Model.Response.Member> Update(int id, Model.Update.Member request)
         {
-            var entity = await _context.Member.FindAsync(id);
+            var entity = await _context.Members.FindAsync(id);
             _mapper.Map(request, entity);
             _context.Update(entity);
             await _context.SaveChangesAsync();
@@ -104,7 +108,7 @@ namespace AiesecBiH.Services
         }
         public async Task<Model.Response.MemberLL> Login(string username, string password)
         {
-            var entity = await _context.Member.Include(x=>x.FunctionalField).Include("Role").Include(x=>x.LocalCommittee).ThenInclude(x=>x.City).FirstOrDefaultAsync(x => x.Username == username);
+            var entity = await _context.Members.Include(x=>x.FunctionalField).Include("Role").Include(x=>x.LocalCommittee).ThenInclude(x=>x.City).FirstOrDefaultAsync(x => x.Username == username);
 
             if (entity == null)
             {
@@ -119,6 +123,19 @@ namespace AiesecBiH.Services
             }
 
             return _mapper.Map<Model.Response.MemberLL>(entity);
+        }
+        public async Task<Model.Response.Member> Remove(int id)
+        {
+            var entity=await _context.Members.FindAsync(id);
+            if (entity == null)
+                throw new NotFoundException("Memeber not found");
+            else
+            {
+                _context.Members.Remove(entity);
+                await _context.SaveChangesAsync();
+            }
+            return _mapper.Map<Model.Response.Member>(entity);
+
         }
 
     }

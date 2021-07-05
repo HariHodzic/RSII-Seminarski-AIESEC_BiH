@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace AiesecBiH.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class BaseCRUDController<T,TSearch,TUpdate, TInsert> : BaseReadController<T,TSearch>
         where T: class 
         where TSearch:BaseSearchModel 

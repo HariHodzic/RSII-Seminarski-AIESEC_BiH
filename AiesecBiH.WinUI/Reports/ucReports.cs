@@ -26,7 +26,7 @@ namespace AiesecBiH.WinUI.Reports
             InitializeComponent();
         }
 
-        private async void btnNewReport_Click(object sender, EventArgs e)
+        private void btnNewReport_Click(object sender, EventArgs e)
         {
             UserControl ucDetails = new ucReportsDetails();
             _navigationService.ShowDetailsUC(ucDetails);
@@ -62,6 +62,25 @@ namespace AiesecBiH.WinUI.Reports
             //File.WriteAllBytes(saveFileDialog1.FileName, result.File);
             var path = Path.GetFullPath(saveFileDialog1.FileName);
             File.WriteAllBytes(path+result.Extension, result.File);
+        }
+
+        private async void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (dgvReports.CurrentRow == null)
+            {
+                MessageBox.Show("Please select the report you want to delete.");
+            }
+            else
+            {
+                var id = dgvReports.CurrentRow.Cells[Name = "Id"].Value.ToString();
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this report?", "Caption", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    await _service.Delete<Model.Response.Report>(id);
+                    MessageBox.Show("Succesfully deleted this Member:");
+                    frmIndex.Instance.btnDashR_Click(null, null);
+                }
+            }
         }
     }
 }

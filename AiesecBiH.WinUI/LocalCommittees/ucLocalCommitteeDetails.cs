@@ -39,7 +39,7 @@ namespace AiesecBiH.WinUI.LocalCommittees
             dtpEstDate.Text = result.EstablishmentDate.ToString();
             cbxActive.Checked = result.Active;
             APIService cityService = new APIService("Cities");
-            _service.LoadComboBox<Model.Response.City>(new APIService("Cities"), comboBoxCity, "Name",result.CityId);
+            await cityService.LoadComboBox<Model.Response.City>(comboBoxCity, "Name",result.CityId);
             dgvOffices.DataSource = await officeService.Get<List<Model.Response.Office>>(new Model.Search.Office()
                 {LocalCommitteeId = _localCommitteeId});
             dgvMembers.DataSource = await memberService.Get<List<Model.Response.Member>>(new Model.Search.Member()
@@ -50,9 +50,10 @@ namespace AiesecBiH.WinUI.LocalCommittees
             });
         }
 
-        private void LoadLocalCommitteeCreate()
+        private async void LoadLocalCommitteeCreate()
         {
-            _service.LoadComboBox<Model.Response.City>(new APIService("Cities"), comboBoxCity, "Name");
+            APIService cityService = new APIService("Cities");
+            await cityService.LoadComboBox<Model.Response.City>( comboBoxCity, "Name");
             cbxActive.Visible = false;
             lblCreatedDate.Visible = false;
             cbxActive.Checked = true;
@@ -102,8 +103,8 @@ namespace AiesecBiH.WinUI.LocalCommittees
                 };
                 var result = await _service.Insert<Model.Response.LocalCommittee>(request);
                 frmIndex.Instance.btnDashLC_Click(null, null);
+                if(result!=null)
                 MessageBox.Show("Successfully created new Local Committee!");
-
             }
         }
 
@@ -115,8 +116,8 @@ namespace AiesecBiH.WinUI.LocalCommittees
                 if (dialogResult == DialogResult.Yes)
                 {
                     var result = await _service.Delete<Model.Response.LocalCommittee>(_localCommitteeId);
-                    MessageBox.Show("Successfully deleted Local Committee!");
                     frmIndex.Instance.btnDashLC_Click(null, null);
+                    MessageBox.Show("Successfully deleted Local Committee!");
                 }
             }
             catch (Exception exception)

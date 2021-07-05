@@ -19,23 +19,22 @@ namespace AiesecBiH.Model.Insert
         [DataType(DataType.Date)]
         public DateTime BirthDate { get; set; }
         [StringLength(maximumLength: 40, MinimumLength = 5)]
-        public string Address { get; set; }
-
-        [Required]
+        public string Address { get; set; } = null;
         [DefaultValue("M")]
         public char Gender { get; set; }
 
         [EmailAddress]
         [Required(AllowEmptyStrings = false)]
         public string EmailAddress { get; set; }
-        
+
         [DataType(DataType.PhoneNumber)]
-        public string PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; } = null;
         [Required]
         public int RoleId { get; set; }
         [Required]
         public int FunctionalFieldId { get; set; }
         [Required]
         public int LocalCommitteeId { get; set; }
+        public bool Active { get; set; }
     }
 }

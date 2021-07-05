@@ -44,7 +44,7 @@ namespace AiesecBiH.WinUI.Reports
         private void ucReportsDetails_Load(object sender, EventArgs e)
         {
             if (_reportId != null)
-                LoadOReportDetails();
+               LoadOReportDetails();
             else
                 LoadReportCreate();
         }
@@ -71,12 +71,16 @@ namespace AiesecBiH.WinUI.Reports
                 Name = txtName.Text,
                 Description = txtDescription.Text,
                 Mandate = txtMandate.Text,
-                File =_file,
-                Quarter = Convert.ToInt32(nudQuarter.Value)
+                File = _file,
+                Quarter = Convert.ToInt32(nudQuarter.Value),
+                Extension = _extension
             };
-            await _service.Insert<Model.Response.Report>(model);
-            MessageBox.Show("Successfully uploaded new report!");
-            frmIndex.Instance.btnDashR_Click(null,null);
+            var result=await _service.Insert<Model.Response.Report>(model);
+            if (result != null)
+            {
+                MessageBox.Show("Successfully uploaded new report!");
+                frmIndex.Instance.btnDashR_Click(null,null);
+            }
         }
     }
 }

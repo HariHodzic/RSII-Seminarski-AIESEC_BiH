@@ -57,19 +57,20 @@ namespace AiesecBiH.WinUI.Members
             // chkActiveOnly
             // 
             this.chkActiveOnly.AutoSize = true;
-            this.chkActiveOnly.Location = new System.Drawing.Point(561, 176);
+            this.chkActiveOnly.Location = new System.Drawing.Point(748, 217);
+            this.chkActiveOnly.Margin = new System.Windows.Forms.Padding(4);
             this.chkActiveOnly.Name = "chkActiveOnly";
-            this.chkActiveOnly.Size = new System.Drawing.Size(80, 17);
+            this.chkActiveOnly.Size = new System.Drawing.Size(101, 21);
             this.chkActiveOnly.TabIndex = 28;
             this.chkActiveOnly.Text = "Active Only";
             this.chkActiveOnly.UseVisualStyleBackColor = true;
             // 
             // txtFirstName
             // 
-            this.txtFirstName.Location = new System.Drawing.Point(31, 175);
-            this.txtFirstName.Margin = new System.Windows.Forms.Padding(4);
+            this.txtFirstName.Location = new System.Drawing.Point(41, 215);
+            this.txtFirstName.Margin = new System.Windows.Forms.Padding(5);
             this.txtFirstName.Name = "txtFirstName";
-            this.txtFirstName.Size = new System.Drawing.Size(106, 20);
+            this.txtFirstName.Size = new System.Drawing.Size(140, 22);
             this.txtFirstName.TabIndex = 27;
             // 
             // label4
@@ -77,20 +78,20 @@ namespace AiesecBiH.WinUI.Members
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 17F, System.Drawing.FontStyle.Bold);
             this.label4.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label4.Location = new System.Drawing.Point(25, 78);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(33, 96);
+            this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(112, 31);
+            this.label4.Size = new System.Drawing.Size(141, 40);
             this.label4.TabIndex = 26;
             this.label4.Text = "Members";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(28, 151);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(37, 186);
+            this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 13);
+            this.label2.Size = new System.Drawing.Size(76, 17);
             this.label2.TabIndex = 24;
             this.label2.Text = "First Name";
             // 
@@ -103,10 +104,10 @@ namespace AiesecBiH.WinUI.Members
             this.btnNewMember.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNewMember.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
             this.btnNewMember.ForeColor = System.Drawing.SystemColors.MenuBar;
-            this.btnNewMember.Location = new System.Drawing.Point(726, 78);
-            this.btnNewMember.Margin = new System.Windows.Forms.Padding(4);
+            this.btnNewMember.Location = new System.Drawing.Point(968, 96);
+            this.btnNewMember.Margin = new System.Windows.Forms.Padding(5);
             this.btnNewMember.Name = "btnNewMember";
-            this.btnNewMember.Size = new System.Drawing.Size(150, 40);
+            this.btnNewMember.Size = new System.Drawing.Size(200, 49);
             this.btnNewMember.TabIndex = 23;
             this.btnNewMember.Text = "New";
             this.btnNewMember.UseVisualStyleBackColor = false;
@@ -114,24 +115,26 @@ namespace AiesecBiH.WinUI.Members
             // 
             // btnSearch
             // 
+            this.btnSearch.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
-            this.btnSearch.Location = new System.Drawing.Point(726, 151);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSearch.Location = new System.Drawing.Point(968, 186);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(5);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(150, 40);
+            this.btnSearch.Size = new System.Drawing.Size(200, 49);
             this.btnSearch.TabIndex = 21;
             this.btnSearch.Text = "Search";
-            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dgvMembers);
-            this.groupBox1.Location = new System.Drawing.Point(31, 207);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Location = new System.Drawing.Point(41, 255);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(5);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(845, 316);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(5);
+            this.groupBox1.Size = new System.Drawing.Size(1127, 389);
             this.groupBox1.TabIndex = 20;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Members";
@@ -151,11 +154,12 @@ namespace AiesecBiH.WinUI.Members
             this.FunctionalField,
             this.Active});
             this.dgvMembers.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvMembers.Location = new System.Drawing.Point(4, 17);
-            this.dgvMembers.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvMembers.Location = new System.Drawing.Point(5, 20);
+            this.dgvMembers.Margin = new System.Windows.Forms.Padding(5);
             this.dgvMembers.Name = "dgvMembers";
             this.dgvMembers.ReadOnly = true;
-            this.dgvMembers.Size = new System.Drawing.Size(837, 295);
+            this.dgvMembers.RowHeadersWidth = 51;
+            this.dgvMembers.Size = new System.Drawing.Size(1117, 364);
             this.dgvMembers.TabIndex = 0;
             this.dgvMembers.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvMembers_CellMouseDoubleClick);
             // 
@@ -163,6 +167,7 @@ namespace AiesecBiH.WinUI.Members
             // 
             this.Id.DataPropertyName = "Id";
             this.Id.HeaderText = "Id";
+            this.Id.MinimumWidth = 6;
             this.Id.Name = "Id";
             this.Id.ReadOnly = true;
             this.Id.Visible = false;
@@ -171,6 +176,7 @@ namespace AiesecBiH.WinUI.Members
             // 
             this.FirstName.DataPropertyName = "FirstName";
             this.FirstName.HeaderText = "First Name";
+            this.FirstName.MinimumWidth = 6;
             this.FirstName.Name = "FirstName";
             this.FirstName.ReadOnly = true;
             // 
@@ -178,6 +184,7 @@ namespace AiesecBiH.WinUI.Members
             // 
             this.LastName.DataPropertyName = "LastName";
             this.LastName.HeaderText = "Last Name";
+            this.LastName.MinimumWidth = 6;
             this.LastName.Name = "LastName";
             this.LastName.ReadOnly = true;
             // 
@@ -185,6 +192,7 @@ namespace AiesecBiH.WinUI.Members
             // 
             this.PhoneNumber.DataPropertyName = "PhoneNumber";
             this.PhoneNumber.HeaderText = "Phone Number";
+            this.PhoneNumber.MinimumWidth = 6;
             this.PhoneNumber.Name = "PhoneNumber";
             this.PhoneNumber.ReadOnly = true;
             // 
@@ -192,6 +200,7 @@ namespace AiesecBiH.WinUI.Members
             // 
             this.LocalCommittee.DataPropertyName = "LocalCommitteeName";
             this.LocalCommittee.HeaderText = "Local Committee";
+            this.LocalCommittee.MinimumWidth = 6;
             this.LocalCommittee.Name = "LocalCommittee";
             this.LocalCommittee.ReadOnly = true;
             // 
@@ -199,6 +208,7 @@ namespace AiesecBiH.WinUI.Members
             // 
             this.FunctionalField.DataPropertyName = "FunctionalFieldName";
             this.FunctionalField.HeaderText = "Functional Field";
+            this.FunctionalField.MinimumWidth = 6;
             this.FunctionalField.Name = "FunctionalField";
             this.FunctionalField.ReadOnly = true;
             // 
@@ -206,66 +216,69 @@ namespace AiesecBiH.WinUI.Members
             // 
             this.Active.DataPropertyName = "Active";
             this.Active.HeaderText = "Active";
+            this.Active.MinimumWidth = 6;
             this.Active.Name = "Active";
             this.Active.ReadOnly = true;
             // 
             // cmbFunctionalField
             // 
             this.cmbFunctionalField.FormattingEnabled = true;
-            this.cmbFunctionalField.Location = new System.Drawing.Point(282, 174);
+            this.cmbFunctionalField.Location = new System.Drawing.Point(376, 214);
+            this.cmbFunctionalField.Margin = new System.Windows.Forms.Padding(4);
             this.cmbFunctionalField.Name = "cmbFunctionalField";
-            this.cmbFunctionalField.Size = new System.Drawing.Size(121, 21);
+            this.cmbFunctionalField.Size = new System.Drawing.Size(160, 24);
             this.cmbFunctionalField.TabIndex = 29;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(279, 151);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(372, 186);
+            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 13);
+            this.label1.Size = new System.Drawing.Size(107, 17);
             this.label1.TabIndex = 30;
             this.label1.Text = "Functional Field";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(415, 151);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(553, 186);
+            this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(85, 13);
+            this.label3.Size = new System.Drawing.Size(112, 17);
             this.label3.TabIndex = 32;
             this.label3.Text = "Local Committee";
             // 
             // cmbLocalCommittee
             // 
             this.cmbLocalCommittee.FormattingEnabled = true;
-            this.cmbLocalCommittee.Location = new System.Drawing.Point(409, 174);
+            this.cmbLocalCommittee.Location = new System.Drawing.Point(545, 214);
+            this.cmbLocalCommittee.Margin = new System.Windows.Forms.Padding(4);
             this.cmbLocalCommittee.Name = "cmbLocalCommittee";
-            this.cmbLocalCommittee.Size = new System.Drawing.Size(121, 21);
+            this.cmbLocalCommittee.Size = new System.Drawing.Size(160, 24);
             this.cmbLocalCommittee.TabIndex = 31;
             // 
             // txtlastName
             // 
-            this.txtlastName.Location = new System.Drawing.Point(145, 175);
-            this.txtlastName.Margin = new System.Windows.Forms.Padding(4);
+            this.txtlastName.Location = new System.Drawing.Point(193, 215);
+            this.txtlastName.Margin = new System.Windows.Forms.Padding(5);
             this.txtlastName.Name = "txtlastName";
-            this.txtlastName.Size = new System.Drawing.Size(117, 20);
+            this.txtlastName.Size = new System.Drawing.Size(155, 22);
             this.txtlastName.TabIndex = 34;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(142, 151);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(189, 186);
+            this.label5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(58, 13);
+            this.label5.Size = new System.Drawing.Size(76, 17);
             this.label5.TabIndex = 33;
             this.label5.Text = "Last Name";
             // 
             // ucMembers
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Controls.Add(this.txtlastName);
@@ -281,8 +294,9 @@ namespace AiesecBiH.WinUI.Members
             this.Controls.Add(this.btnNewMember);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.groupBox1);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ucMembers";
-            this.Size = new System.Drawing.Size(900, 600);
+            this.Size = new System.Drawing.Size(1200, 738);
             this.Load += new System.EventHandler(this.ucMembers_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMembers)).EndInit();

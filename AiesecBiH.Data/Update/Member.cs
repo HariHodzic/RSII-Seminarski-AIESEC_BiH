@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AiesecBiH.Model.CustomValidationAttributes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -12,14 +13,16 @@ namespace AiesecBiH.Model.Update
     {
         public int Id { get; set; }
         [Required(AllowEmptyStrings = false)]
+        [LettersOnly]
         [StringLength(maximumLength: 20, MinimumLength = 2)]
         public string FirstName { get; set; }
         [Required(AllowEmptyStrings = false)]
+        [LettersOnly]
         [StringLength(maximumLength: 20, MinimumLength = 2)]
         public string LastName { get; set; }
-        //[Required(AllowEmptyStrings = false)]
-        //[StringLength(maximumLength: 40, MinimumLength = 5)]
-        //public string Username { get; set; }
+        [Required(AllowEmptyStrings = false)]
+        [StringLength(maximumLength: 40, MinimumLength = 5)]
+        public string Username { get; set; }
         [Required]
         public DateTime BirthDate { get; set; }
         [StringLength(maximumLength: 40, MinimumLength = 5)]
@@ -36,6 +39,7 @@ namespace AiesecBiH.Model.Update
         public int FunctionalFieldId { get; set; }
         [Required]
         public int RoleId { get; set; }
+        public bool Active { get; set; }
 
     }
 }

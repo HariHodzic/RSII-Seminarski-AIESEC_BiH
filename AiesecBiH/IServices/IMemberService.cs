@@ -16,5 +16,6 @@ namespace AiesecBiH.IServices
         Task<Model.Response.Member> Update(int id, Model.Update.Member member);
 
         Task<Model.Response.MemberLL> Login(string username, string password);
+        Task<Model.Response.Member> Remove(int id);
     }
 }

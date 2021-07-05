@@ -8,9 +8,9 @@ using AutoMapper.Configuration;
 
 namespace AiesecBiH.Controllers
 {
-    public class EventController : BaseCRUDController<Model.Response.Event,Model.Search.Event,Model.Update.Event,Model.Insert.Event>
+    public class EventsController : BaseCRUDController<Model.Response.Event,Model.Search.Event,Model.Update.Event,Model.Insert.Event>
     {
-        public EventController(IEventService service):base(service)
+        public EventsController(IEventService service):base(service)
         {
 
         }

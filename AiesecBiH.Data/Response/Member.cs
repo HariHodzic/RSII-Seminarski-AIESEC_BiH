@@ -22,7 +22,6 @@ namespace AiesecBiH.Model.Response
         public string PhoneNumber { get; set; }
         public int FunctionalFieldId { get; set; }
         public int LocalCommitteeId { get; set; }
-
         public Role Role { get; set; }
         public int RoleId { get; set; }
         public string RoleAbbreviation { get; set; }

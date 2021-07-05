@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AiesecBiH.EF;
+using AiesecBiH.Exceptions;
 using AiesecBiH.IServices;
 using AiesecBiH.Model.Response;
 using AiesecBiH.Services.BaseServices;
@@ -18,7 +19,7 @@ namespace AiesecBiH.Services
         {
             
         }
-        public override async Task<IEnumerable<LocalCommittee>> Get(Model.Search.LocalCommittee? search)
+        public override async  Task<IEnumerable<LocalCommittee>> Get(Model.Search.LocalCommittee? search)
         {
             var query = _context.LocalCommittees.AsQueryable();
             if (!string.IsNullOrWhiteSpace(search?.CityName))
@@ -43,10 +44,17 @@ namespace AiesecBiH.Services
         public override async Task<LocalCommittee> Delete(int id)
         {
             var result =await _context.LocalCommittees.Include(x => x.City).Include(y=>y.Offices).FirstOrDefaultAsync(x => x.Id == id);
+            if (result == null)
+            {
+                throw new NotFoundException();
+            }
+            
             _context.Remove(result);
+            await CleanUpMembers(id);
             await _context.SaveChangesAsync();
             await CleanUpOffices();
             return _mapper.Map<Model.Response.LocalCommittee>(result);
+            
         }
 
         public async System.Threading.Tasks.Task CleanUpOffices()
@@ -57,6 +65,17 @@ namespace AiesecBiH.Services
                 _context.Offices.RemoveRange(offices);
                 await _context.SaveChangesAsync();
             }
-        } 
+        }
+        public async System.Threading.Tasks.Task CleanUpMembers(int id)
+        {
+            var members = await _context.Members.Where(x => x.LocalCommitteeId == id).ToListAsync();
+            foreach (Database.Member item in members)
+            {
+                item.LocalCommitteeId = null;
+                item.Active = false;
+            }
+            _context.Members.UpdateRange(members);
+            await _context.SaveChangesAsync();
+        }
     }
 }

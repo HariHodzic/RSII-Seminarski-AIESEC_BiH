@@ -17,6 +17,8 @@ namespace AiesecBiH.WinUI
     public class APIService
     {
         public string _route = null;
+        public static string Username { get; set; }
+        public static string Password { get; set; }
 
         public APIService(string route)
         {
@@ -32,42 +34,56 @@ namespace AiesecBiH.WinUI
                 url += await search.ToQueryString();
             }
 
-            var result = await url.GetJsonAsync<T>();
+            var result = await url.WithBasicAuth(Username, Password).GetJsonAsync<T>();
             return result;
         }
         public async Task<T> GetById<T>(object id)
         {
             var url = $"{Properties.Settings.Default.APIUrl}/{_route}/{id}";
 
-            return await url.GetJsonAsync<T>();
+            return await url.WithBasicAuth(Username,Password).GetJsonAsync<T>();
         }
         public async Task<T> Insert<T>(object request)
         {
             var url = $"{Properties.Settings.Default.APIUrl}/{_route}";
+            try
+            {
+                return await url.WithBasicAuth(Username, Password).PostJsonAsync(request).ReceiveJson<T>();
+            }
+            catch (FlurlHttpException ex)
+            {
+                //var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
+                //var stringBuilder = new StringBuilder();
+                //foreach (var error in errors)
+                //{
+                //    stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
+                //}
 
-            return await url.PostJsonAsync(request).ReceiveJson<T>();
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return default(T);
+            }
         }
         public async Task<T> Update<T>(object id,object request)
         {
             var url = $"{Properties.Settings.Default.APIUrl}/{_route}/{id}";
 
-            return await url.PutJsonAsync(request).ReceiveJson<T>();
+            return await url.WithBasicAuth(Username, Password).PutJsonAsync(request).ReceiveJson<T>();
         }
         public async Task<T> Delete<T>(object id)
         {
             var url = $"{Properties.Settings.Default.APIUrl}/{_route}/{id}";
 
-            return await url.DeleteAsync().ReceiveJson<T>();
+            return await url.WithBasicAuth(Username, Password).DeleteAsync().ReceiveJson<T>();
         }
 
         public async Task<FileModel> Upload(MultipartFormDataContent request)
         {
             var url = $"{Properties.Settings.Default.APIUrl}/{_route}";
-            return await url.PostMultipartAsync(mp=>mp.Add(request)).ReceiveJson<FileModel>();
+            return await url.WithBasicAuth(Username, Password).PostMultipartAsync(mp=>mp.Add(request)).ReceiveJson<FileModel>();
         }
-        public async void LoadComboBox<T>(APIService service, ComboBox cmb, string displayMember, int? id=null)
+        public async System.Threading.Tasks.Task LoadComboBox<T>(ComboBox cmb, string displayMember, int? id=null)
         {
-            var source = await service.Get<List<T>>();
+            var source = await this.Get<List<T>>();
             cmb.DataSource = source;
             cmb.ValueMember = "Id";
             cmb.DisplayMember = displayMember;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AiesecBiH.Controllers
 {
-    public class TaskController : Controller
+    public class TasksController : Controller
     {
         public IActionResult Index()
         {

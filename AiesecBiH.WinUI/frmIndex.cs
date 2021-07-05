@@ -18,6 +18,7 @@ namespace AiesecBiH.WinUI
     public partial class frmIndex : Form
     {
         private int childFormNumber = 0;
+        //private string _member;
         private static frmIndex _obj;
         private UserControl activeUserControl = null;
         public static frmIndex Instance
@@ -40,11 +41,18 @@ namespace AiesecBiH.WinUI
             get { return btnBack; }
             set { btnBack = value; }
         }
+        //public frmIndex(string member )
+        //{
+        //    _member = member;
+        //    InitializeComponent();
+        //    btnMembers_Click(null,null);
+        //    lblHeaderUsername.Text = _member;
+        //}
         public frmIndex()
         {
             InitializeComponent();
+            btnMembers_Click(null, null);
         }
-
         private void ShowNewForm(object sender, EventArgs e)
         {
             Form childForm = new Form();
@@ -110,7 +118,7 @@ namespace AiesecBiH.WinUI
 
         private void MinimizeSidebar(int sidebarMinWidth, int btnMinWidth)
         {
-            btnSidebar.Text = "=>";
+            btnSidebar.Text = ">";
             labelTitle.Visible = false;
             panelSidebar.Width = sidebarMinWidth;
             btnSidebarFF.Width = btnMinWidth;
@@ -129,7 +137,7 @@ namespace AiesecBiH.WinUI
         }
         private void MaximizeSidebar(int sidebarMaxWidth, int btnMaxWidth)
         {
-            btnSidebar.Text = "<=";
+            btnSidebar.Text = "<";
             labelTitle.Visible = true;
             panelSidebar.Width = sidebarMaxWidth;
             btnSidebarFF.Width = btnMaxWidth;
@@ -172,11 +180,16 @@ namespace AiesecBiH.WinUI
             this.panelMain.Controls.Add(activeUserControl);
         }
 
-        private void btnMembers_Click(object sender, EventArgs e)
+        public void btnMembers_Click(object sender, EventArgs e)
         {
             DisposePanel(panelMain);
             activeUserControl = new ucMembers() {};
             this.panelMain.Controls.Add(activeUserControl);
+        }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
         }
     }
 }

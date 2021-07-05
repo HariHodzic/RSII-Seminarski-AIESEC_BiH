@@ -7,7 +7,7 @@ using AiesecBiH.IServices;
 
 namespace AiesecBiH.Controllers
 {
-    public class ReportsController : BaseCRUDController<Model.Response.Report, Model.Search.Report, Model.Update.Report, Model.Insert.Report>
+    public class ReportsController : BaseCRUDController<Model.Response.Report, Model.Search.Report, object, Model.Insert.Report>
     {
         public ReportsController(IReportService service):base(service)
         {

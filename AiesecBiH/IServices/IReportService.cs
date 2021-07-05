@@ -6,7 +6,7 @@ using AiesecBiH.Services.BaseServices;
 
 namespace AiesecBiH.IServices
 {
-    public interface IReportService : ICRUDService<Model.Response.Report, Model.Search.Report, Model.Update.Report, Model.Insert.Report>
+    public interface IReportService : ICRUDService<Model.Response.Report, Model.Search.Report, object, Model.Insert.Report>
     {
 
     }

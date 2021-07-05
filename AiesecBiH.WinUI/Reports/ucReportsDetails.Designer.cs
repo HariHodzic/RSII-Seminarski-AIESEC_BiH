@@ -49,55 +49,68 @@ namespace AiesecBiH.WinUI.Reports
             // 
             // nudQuarter
             // 
-            this.nudQuarter.Location = new System.Drawing.Point(200, 195);
+            this.nudQuarter.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.nudQuarter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.nudQuarter.Location = new System.Drawing.Point(267, 240);
+            this.nudQuarter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.nudQuarter.Name = "nudQuarter";
-            this.nudQuarter.Size = new System.Drawing.Size(516, 20);
+            this.nudQuarter.Size = new System.Drawing.Size(688, 22);
             this.nudQuarter.TabIndex = 52;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(196, 175);
+            this.label3.Location = new System.Drawing.Point(261, 215);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(55, 17);
+            this.label3.Size = new System.Drawing.Size(69, 23);
             this.label3.TabIndex = 46;
             this.label3.Text = "Quarter";
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(199, 406);
+            this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnDelete.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
+            this.btnDelete.Location = new System.Drawing.Point(265, 513);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(90, 33);
+            this.btnDelete.Size = new System.Drawing.Size(120, 41);
             this.btnDelete.TabIndex = 44;
             this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.UseVisualStyleBackColor = false;
             // 
             // labelTitle
             // 
             this.labelTitle.AutoSize = true;
             this.labelTitle.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
             this.labelTitle.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.labelTitle.Location = new System.Drawing.Point(191, 79);
+            this.labelTitle.Location = new System.Drawing.Point(255, 97);
+            this.labelTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(106, 37);
+            this.labelTitle.Size = new System.Drawing.Size(129, 46);
             this.labelTitle.TabIndex = 42;
             this.labelTitle.Text = "Report";
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(200, 147);
+            this.txtName.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.txtName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtName.Location = new System.Drawing.Point(267, 181);
+            this.txtName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(516, 20);
+            this.txtName.Size = new System.Drawing.Size(687, 22);
             this.txtName.TabIndex = 41;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(197, 127);
+            this.label2.Location = new System.Drawing.Point(263, 156);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 17);
+            this.label2.Size = new System.Drawing.Size(56, 23);
             this.label2.TabIndex = 40;
             this.label2.Text = "Name";
             // 
@@ -105,86 +118,105 @@ namespace AiesecBiH.WinUI.Reports
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(197, 219);
+            this.label1.Location = new System.Drawing.Point(263, 270);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 17);
+            this.label1.Size = new System.Drawing.Size(79, 23);
             this.label1.TabIndex = 55;
             this.label1.Text = "Mandate";
             // 
             // txtMandate
             // 
-            this.txtMandate.Location = new System.Drawing.Point(200, 239);
+            this.txtMandate.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.txtMandate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtMandate.Location = new System.Drawing.Point(267, 294);
+            this.txtMandate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtMandate.Name = "txtMandate";
-            this.txtMandate.Size = new System.Drawing.Size(516, 20);
+            this.txtMandate.Size = new System.Drawing.Size(687, 22);
             this.txtMandate.TabIndex = 54;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(197, 267);
+            this.label4.Location = new System.Drawing.Point(263, 329);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(76, 17);
+            this.label4.Size = new System.Drawing.Size(96, 23);
             this.label4.TabIndex = 53;
             this.label4.Text = "Description";
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(198, 287);
+            this.txtDescription.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.txtDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDescription.Location = new System.Drawing.Point(264, 353);
+            this.txtDescription.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(516, 20);
+            this.txtDescription.Size = new System.Drawing.Size(687, 22);
             this.txtDescription.TabIndex = 56;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(626, 406);
+            this.btnSave.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSave.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
+            this.btnSave.Location = new System.Drawing.Point(835, 513);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(90, 33);
+            this.btnSave.Size = new System.Drawing.Size(120, 41);
             this.btnSave.TabIndex = 43;
             this.btnSave.Text = "Update";
-            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // dtpCreatedDate
             // 
-            this.dtpCreatedDate.Location = new System.Drawing.Point(198, 331);
+            this.dtpCreatedDate.Location = new System.Drawing.Point(264, 407);
+            this.dtpCreatedDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtpCreatedDate.Name = "dtpCreatedDate";
-            this.dtpCreatedDate.Size = new System.Drawing.Size(516, 20);
+            this.dtpCreatedDate.Size = new System.Drawing.Size(687, 22);
             this.dtpCreatedDate.TabIndex = 58;
             // 
             // lblCreatedDate
             // 
             this.lblCreatedDate.AutoSize = true;
             this.lblCreatedDate.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCreatedDate.Location = new System.Drawing.Point(198, 311);
+            this.lblCreatedDate.Location = new System.Drawing.Point(264, 383);
+            this.lblCreatedDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCreatedDate.Name = "lblCreatedDate";
-            this.lblCreatedDate.Size = new System.Drawing.Size(87, 17);
+            this.lblCreatedDate.Size = new System.Drawing.Size(111, 23);
             this.lblCreatedDate.TabIndex = 57;
             this.lblCreatedDate.Text = "Created Date";
             // 
             // btnUpload
             // 
-            this.btnUpload.Location = new System.Drawing.Point(626, 357);
+            this.btnUpload.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnUpload.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnUpload.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
+            this.btnUpload.Location = new System.Drawing.Point(835, 448);
+            this.btnUpload.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnUpload.Name = "btnUpload";
-            this.btnUpload.Size = new System.Drawing.Size(90, 33);
+            this.btnUpload.Size = new System.Drawing.Size(120, 41);
             this.btnUpload.TabIndex = 59;
             this.btnUpload.Text = "Choose file";
-            this.btnUpload.UseVisualStyleBackColor = true;
+            this.btnUpload.UseVisualStyleBackColor = false;
             this.btnUpload.Click += new System.EventHandler(this.btnUpload_Click);
             // 
             // lblFileName
             // 
             this.lblFileName.AutoSize = true;
             this.lblFileName.Font = new System.Drawing.Font("Segoe UI Light", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFileName.Location = new System.Drawing.Point(231, 364);
+            this.lblFileName.Location = new System.Drawing.Point(308, 448);
+            this.lblFileName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFileName.Name = "lblFileName";
-            this.lblFileName.Size = new System.Drawing.Size(54, 17);
+            this.lblFileName.Size = new System.Drawing.Size(67, 23);
             this.lblFileName.TabIndex = 60;
             this.lblFileName.Text = "No File";
             // 
             // ucReportsDetails
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.Controls.Add(this.lblFileName);
@@ -202,8 +234,9 @@ namespace AiesecBiH.WinUI.Reports
             this.Controls.Add(this.labelTitle);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.label2);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ucReportsDetails";
-            this.Size = new System.Drawing.Size(900, 600);
+            this.Size = new System.Drawing.Size(1200, 738);
             this.Load += new System.EventHandler(this.ucReportsDetails_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nudQuarter)).EndInit();
             this.ResumeLayout(false);

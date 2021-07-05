@@ -20,7 +20,7 @@ namespace AiesecBiH.WinUI.FunctionalFields
             InitializeComponent();
             _functionalField =functionalField;
         }
-        private async Task LoadFunctionalFieldDetail()
+        private void LoadFunctionalFieldDetail()
         {
             txtName.Text = _functionalField.Name;
             txtAbbreviation.Text = _functionalField.Abbreviation;
@@ -34,18 +34,18 @@ namespace AiesecBiH.WinUI.FunctionalFields
             chkActive.Visible = false;
             btnDelete.Visible = false;
         }
-        private async void ucFunctionalFieldsDetails_Load(object sender, EventArgs e)
+        private void ucFunctionalFieldsDetails_Load(object sender, EventArgs e)
         {
             if (_functionalField != null)
             {
-                await LoadFunctionalFieldDetail();
+                LoadFunctionalFieldDetail();
             }
             else
             {
                 LoadFunctionalFieldCreate();
             }
         }
-
+            
         private async void btnSave_Click(object sender, EventArgs e)
         {
             //UPDATE
@@ -88,12 +88,19 @@ namespace AiesecBiH.WinUI.FunctionalFields
 
         private async void btnDelete_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult=MessageBox.Show("Are you sure you want to delete this?","Caption",MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
+            try
             {
-                var result = await _service.Delete<FunctionalField>(_functionalField.Id);
-                frmIndex.Instance.btnDashFF_Click(null, null);
-                MessageBox.Show("Successfully deleted Functional Field!");
+                DialogResult dialogResult=MessageBox.Show("Are you sure you want to delete this?","Caption",MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    var result = await _service.Delete<FunctionalField>(_functionalField.Id);
+                    frmIndex.Instance.btnDashFF_Click(null, null);
+                    MessageBox.Show("Successfully deleted Functional Field!");
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message + " " + ex.InnerException );
             }
         }
     }

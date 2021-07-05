@@ -44,7 +44,6 @@ namespace AiesecBiH.Mapping
             //Report
             CreateMap<Model.Insert.Report, Database.Report>();
             CreateMap<Database.Report, Model.Response.Report>();
-            CreateMap<Model.Update.Report, Database.Report>();
             //Task
             CreateMap<Model.Insert.Task, Database.Task>();
             CreateMap<Database.Task, Model.Response.Task>();

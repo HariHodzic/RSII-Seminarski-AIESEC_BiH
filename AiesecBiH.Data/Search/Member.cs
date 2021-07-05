@@ -10,6 +10,7 @@ namespace AiesecBiH.Model.Search
 {
     public class Member:BaseSearchModel
     {
+        public string Username { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public char Gender { get; set; }

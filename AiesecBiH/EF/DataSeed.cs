@@ -17,8 +17,8 @@ namespace AiesecBiH.EF
             modelBuilder.Entity<FunctionalField>().HasData(
                 new FunctionalField
                 {
-                    Name = "Partnership Development",
-                    Abbreviation = "PD",
+                    Name = "Presidency",
+                    Abbreviation = "P",
                     Active = true,
                     CreatedDate = DateTime.Now,
                     Id = 1
@@ -48,8 +48,8 @@ namespace AiesecBiH.EF
                 },
                 new FunctionalField
                 {
-                    Name = "Presidency",
-                    Abbreviation = "P",
+                    Name = "Partnership Development",
+                    Abbreviation = "PD",
                     Active = true,
                     CreatedDate = DateTime.Now,
                     Id = 5
@@ -192,17 +192,15 @@ namespace AiesecBiH.EF
                 new Member
                 {
                     Id = 1,
-                    FirstName = "Haris",
-                    LastName = "Hodzic",
-                    Username = "harishodzic",
-                    Address = "Safeta Zajke 298",
-                    EmailAddress = "hari.hodzic98@gmail.com",
+                    FirstName = "Admin",
+                    LastName = "Admin",
+                    Username = "admin",
+                    EmailAddress = "aiesec@aiesec.com",
                     RoleId = 1,
                     PasswordSalt = salts[0],
                     PasswordHash = securityService.GenerateHash(salts[0], "test"),
-                    LocalCommitteeId = 1,
                     FunctionalFieldId = 1,
-                    PhoneNumber = "062123344",
+                    PhoneNumber = "03355123",
                     Gender = 'M'
                 },
                 new Member

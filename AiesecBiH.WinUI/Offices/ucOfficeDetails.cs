@@ -24,19 +24,18 @@ namespace AiesecBiH.WinUI.Offices
         }
         private async Task LoadOfficeDetails()
         {
-            //dtpCreatedDate.Visible = true;
             dtpCreatedDate.Value = _office.CreatedDate;
             dtpCreatedDate.Enabled = false;
             dtpEstDate.Value = _office.EstablishmentDate;
             cbxActive.Checked = _office.Active;
             nudCapacity.Value = _office.Capacity;
             txtAddress.Text = _office.Address;
-            _service.LoadComboBox<Model.Response.LocalCommittee>(new APIService("LocalCommittees"), chkLocalCommittee, "Name", _office.LocalCommitteeId);
+            await _LocalCommitteeService.LoadComboBox<Model.Response.LocalCommittee>( chkLocalCommittee, "Name", _office.LocalCommitteeId);
             
         }
-        private void LoadOfficeCreate()
+        private async void LoadOfficeCreate()
         {
-            _service.LoadComboBox<Model.Response.LocalCommittee>(new APIService("LocalCommittees"), chkLocalCommittee, "Name");
+            await _LocalCommitteeService.LoadComboBox<Model.Response.LocalCommittee>( chkLocalCommittee, "Name");
             cbxActive.Visible = false;
             lblCreatedDate.Visible = false;
             cbxActive.Checked = true;

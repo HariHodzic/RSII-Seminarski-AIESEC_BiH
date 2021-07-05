@@ -24,8 +24,8 @@ namespace AiesecBiH.Services
         public override async Task<Model.Response.FunctionalField> Insert(Model.Insert.FunctionalField request)
         {
             var entity = _mapper.Map<Database.FunctionalField>(request);
-            _context.AddAsync(entity);
-            _context.SaveChangesAsync();
+            await _context.AddAsync(entity);
+            await _context.SaveChangesAsync();
             return _mapper.Map<FunctionalField>(entity);
         }
 
@@ -47,6 +47,35 @@ namespace AiesecBiH.Services
             var entities = await query.ToListAsync();
             var result = _mapper.Map<IEnumerable<Model.Response.FunctionalField>>(entities);
             return result;
+        }
+        public override async Task<FunctionalField> Delete(int id)
+        {
+            
+            if (id == 1)
+            {
+                throw new Exceptions.UserException("Not possible to delete this functional field!");
+            }
+            var result = await _context.FunctionalFields.FirstOrDefaultAsync(x => x.Id == id);
+            if (result == null)
+            {
+                throw new NotFoundException();
+            }
+            await CleanUpMembers(id);
+            _context.Remove(result);
+            await _context.SaveChangesAsync();
+            return _mapper.Map<Model.Response.FunctionalField>(result);
+            
+        }
+        public async System.Threading.Tasks.Task CleanUpMembers(int id)
+        {
+            var members = await _context.Members.Where(x => x.FunctionalFieldId == id).ToListAsync();
+            foreach (Database.Member item in members)
+            {
+                item.FunctionalFieldId = null;
+                item.Active = false;
+            }
+            _context.Members.UpdateRange(members);
+            await _context.SaveChangesAsync();
         }
     }
 }

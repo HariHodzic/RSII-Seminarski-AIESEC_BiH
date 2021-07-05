@@ -48,8 +48,8 @@ namespace AiesecBiH.Authentication
             {
                 new Claim(ClaimTypes.NameIdentifier, member.Username),
                 new Claim(ClaimTypes.Name, member.FirstName),
-                new Claim(ClaimTypes.Locality, member.LocalCommittee.Name),
-                new Claim("FunctionalField",member.FunctionalField.Name)
+                //new Claim(ClaimTypes.Locality, member.LocalCommittee.Name),
+                //new Claim("FunctionalField",member.FunctionalField.Name)
             };
             var identity = new ClaimsIdentity(claims, Scheme.Name);
             var principal = new ClaimsPrincipal(identity);

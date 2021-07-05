@@ -45,9 +45,9 @@ namespace AiesecBiH.WinUI.Members
             }
         }
 
-        private void ucMembers_Load(object sender, EventArgs e)
+        private async void ucMembers_Load(object sender, EventArgs e)
         {
-
+            dgvMembers.DataSource = await _memberService.Get<List<Model.Response.MemberLL>>();
         }
 
         private async void LoadFFields()
