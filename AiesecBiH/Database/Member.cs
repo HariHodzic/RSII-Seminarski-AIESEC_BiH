@@ -28,7 +28,7 @@ namespace AiesecBiH.Database
         public int? FunctionalFieldId { get; set; }
         public virtual FunctionalField FunctionalField { get; set; }
         [ForeignKey(nameof(LocalCommittee))]
-        public int? LocalCommitteeId { get; set; }
+        public int LocalCommitteeId { get; set; }
         public virtual LocalCommittee LocalCommittee { get; set; }
         public IEnumerable<Task> CreatedTasks { get; set; }
         public IEnumerable<Task> ExecutedTasks { get; set; }

@@ -13,7 +13,7 @@ namespace AiesecBiH.Services.BaseServices
 {
     public class CRUDService<T,TDb, TSearch, TUpdate, TInsert> : ReadService<T,TDb,TSearch>, ICRUDService<T,TSearch,TUpdate,TInsert> 
         where T : class 
-        where TSearch : BaseSearchModel 
+        where TSearch : class 
         where TInsert : class 
         where TUpdate : class 
         where TDb : class
@@ -24,11 +24,20 @@ namespace AiesecBiH.Services.BaseServices
 
         public virtual async Task<T> Insert(TInsert request)
         {
-            var set = _context.Set<TDb>();
-            TDb entity = _mapper.Map<TDb>(request);
-            set.Add(entity);
-            await _context.SaveChangesAsync();
-            return _mapper.Map<T>(entity);
+            try
+            {
+                var set = _context.Set<TDb>();
+                TDb entity = _mapper.Map<TDb>(request);
+                set.Add(entity);
+                await _context.SaveChangesAsync();
+                return _mapper.Map<T>(entity);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex.InnerException;
+            }
+            
         }
 
         public virtual async Task<T> Update(int id, TUpdate request)

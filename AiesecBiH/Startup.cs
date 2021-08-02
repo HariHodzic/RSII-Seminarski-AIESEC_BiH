@@ -52,6 +52,8 @@ namespace AiesecBiH
             services.AddScoped<IEventService, EventService>();
             services.AddScoped<IReportService, ReportService>();
             services.AddScoped<ISecurityService, SecurityService>();
+            services.AddScoped<ITaskService, TaskService>();
+            services.AddScoped<INoticeService, NoticeService>();
             services.AddScoped<IMemberService, MemberService>();
             services.AddScoped<IReadService<Role,Model.Search.Role>, ReadService<Role,Database.Role, Model.Search.Role>>();
             services.AddAuthentication("BasicAuthentication")
@@ -88,8 +90,8 @@ namespace AiesecBiH
             app.UseSwaggerUI(x =>
                 x.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1"));
 
-            app.UseHttpsRedirection();
-            
+            //app.UseHttpsRedirection();
+
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();

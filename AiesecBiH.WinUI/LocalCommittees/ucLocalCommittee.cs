@@ -27,7 +27,7 @@ namespace AiesecBiH.WinUI.LocalCommittees
         {
             var search = new Model.Search.LocalCommittee()
             {
-                CityName = txtSearchCityName.Text,
+                Name = txtSearchCityName.Text,
                 onlyActive = cbxActiveOnly.Checked
             };
             dgvLocalCommittees.DataSource = await _service.Get<List<Model.Response.LocalCommittee>>(search);

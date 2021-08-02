@@ -41,10 +41,10 @@ namespace AiesecBiH.WinUI.Reports
             btnSave.Visible = true;
             btnSave.Text = "Create";
         }
-        private void ucReportsDetails_Load(object sender, EventArgs e)
+        private async void ucReportsDetails_Load(object sender, EventArgs e)
         {
             if (_reportId != null)
-               LoadOReportDetails();
+               await LoadOReportDetails();
             else
                 LoadReportCreate();
         }

@@ -19,67 +19,6 @@ namespace AiesecBiH.Migrations
                 .HasAnnotation("ProductVersion", "5.0.5")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("AiesecBiH.Database.City", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("LocalCommitteeId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("Postcode")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Cities");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Sarajevo",
-                            Postcode = "71000"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Mostar",
-                            Postcode = "88000"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Zenica",
-                            Postcode = "72000"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "Banja Luka",
-                            Postcode = "78000"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Name = "Sarajevo",
-                            Postcode = "71000"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Name = "Tuzla",
-                            Postcode = "77000"
-                        });
-                });
-
             modelBuilder.Entity("AiesecBiH.Database.Event", b =>
                 {
                     b.Property<int>("Id")
@@ -238,7 +177,7 @@ namespace AiesecBiH.Migrations
                             Id = 1,
                             Abbreviation = "P",
                             Active = true,
-                            CreatedDate = new DateTime(2021, 7, 4, 19, 28, 58, 319, DateTimeKind.Local).AddTicks(6678),
+                            CreatedDate = new DateTime(2021, 7, 22, 14, 41, 58, 168, DateTimeKind.Local).AddTicks(6806),
                             Name = "Presidency"
                         },
                         new
@@ -246,7 +185,7 @@ namespace AiesecBiH.Migrations
                             Id = 2,
                             Abbreviation = "MKT",
                             Active = true,
-                            CreatedDate = new DateTime(2021, 7, 4, 19, 28, 58, 319, DateTimeKind.Local).AddTicks(7520),
+                            CreatedDate = new DateTime(2021, 7, 22, 14, 41, 58, 168, DateTimeKind.Local).AddTicks(7745),
                             Name = "Marketing"
                         },
                         new
@@ -254,7 +193,7 @@ namespace AiesecBiH.Migrations
                             Id = 3,
                             Abbreviation = "IGV",
                             Active = true,
-                            CreatedDate = new DateTime(2021, 7, 4, 19, 28, 58, 319, DateTimeKind.Local).AddTicks(7545),
+                            CreatedDate = new DateTime(2021, 7, 22, 14, 41, 58, 168, DateTimeKind.Local).AddTicks(7775),
                             Name = "Incomming Global Volounteere"
                         },
                         new
@@ -262,7 +201,7 @@ namespace AiesecBiH.Migrations
                             Id = 4,
                             Abbreviation = "OGV",
                             Active = true,
-                            CreatedDate = new DateTime(2021, 7, 4, 19, 28, 58, 319, DateTimeKind.Local).AddTicks(7553),
+                            CreatedDate = new DateTime(2021, 7, 22, 14, 41, 58, 168, DateTimeKind.Local).AddTicks(7784),
                             Name = "Outgoing Global Volounteere"
                         },
                         new
@@ -270,16 +209,8 @@ namespace AiesecBiH.Migrations
                             Id = 5,
                             Abbreviation = "PD",
                             Active = true,
-                            CreatedDate = new DateTime(2021, 7, 4, 19, 28, 58, 319, DateTimeKind.Local).AddTicks(7561),
+                            CreatedDate = new DateTime(2021, 7, 22, 14, 41, 58, 168, DateTimeKind.Local).AddTicks(7793),
                             Name = "Partnership Development"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Abbreviation = "TM",
-                            Active = true,
-                            CreatedDate = new DateTime(2021, 7, 4, 19, 28, 58, 319, DateTimeKind.Local).AddTicks(7569),
-                            Name = "Talent Management"
                         });
                 });
 
@@ -293,19 +224,17 @@ namespace AiesecBiH.Migrations
                     b.Property<bool>("Active")
                         .HasColumnType("bit");
 
-                    b.Property<int>("CityId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("EstablishmentDate")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("Id");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasIndex("CityId")
-                        .IsUnique();
+                    b.HasKey("Id");
 
                     b.ToTable("LocalCommittees");
 
@@ -314,49 +243,41 @@ namespace AiesecBiH.Migrations
                         {
                             Id = 1,
                             Active = true,
-                            CityId = 1,
-                            CreatedDate = new DateTime(2021, 7, 4, 19, 28, 58, 322, DateTimeKind.Local).AddTicks(12),
-                            EstablishmentDate = new DateTime(2021, 7, 4, 19, 28, 58, 321, DateTimeKind.Local).AddTicks(9550)
+                            CreatedDate = new DateTime(2021, 7, 22, 14, 41, 58, 171, DateTimeKind.Local).AddTicks(7411),
+                            EstablishmentDate = new DateTime(2021, 7, 22, 14, 41, 58, 171, DateTimeKind.Local).AddTicks(6451),
+                            Name = "<Undefined>"
                         },
                         new
                         {
                             Id = 2,
                             Active = true,
-                            CityId = 2,
-                            CreatedDate = new DateTime(2021, 7, 4, 19, 28, 58, 322, DateTimeKind.Local).AddTicks(428),
-                            EstablishmentDate = new DateTime(2021, 7, 4, 19, 28, 58, 322, DateTimeKind.Local).AddTicks(402)
+                            CreatedDate = new DateTime(2021, 7, 22, 14, 41, 58, 171, DateTimeKind.Local).AddTicks(7544),
+                            EstablishmentDate = new DateTime(2021, 7, 22, 14, 41, 58, 171, DateTimeKind.Local).AddTicks(7520),
+                            Name = "Sarajevo"
                         },
                         new
                         {
                             Id = 3,
                             Active = true,
-                            CityId = 3,
-                            CreatedDate = new DateTime(2021, 7, 4, 19, 28, 58, 322, DateTimeKind.Local).AddTicks(448),
-                            EstablishmentDate = new DateTime(2021, 7, 4, 19, 28, 58, 322, DateTimeKind.Local).AddTicks(444)
+                            CreatedDate = new DateTime(2021, 7, 22, 14, 41, 58, 171, DateTimeKind.Local).AddTicks(7569),
+                            EstablishmentDate = new DateTime(2021, 7, 22, 14, 41, 58, 171, DateTimeKind.Local).AddTicks(7561),
+                            Name = "Mostar"
                         },
                         new
                         {
                             Id = 4,
                             Active = true,
-                            CityId = 4,
-                            CreatedDate = new DateTime(2021, 7, 4, 19, 28, 58, 322, DateTimeKind.Local).AddTicks(460),
-                            EstablishmentDate = new DateTime(2021, 7, 4, 19, 28, 58, 322, DateTimeKind.Local).AddTicks(456)
+                            CreatedDate = new DateTime(2021, 7, 22, 14, 41, 58, 171, DateTimeKind.Local).AddTicks(7594),
+                            EstablishmentDate = new DateTime(2021, 7, 22, 14, 41, 58, 171, DateTimeKind.Local).AddTicks(7586),
+                            Name = "Zenica"
                         },
                         new
                         {
                             Id = 5,
                             Active = true,
-                            CityId = 5,
-                            CreatedDate = new DateTime(2021, 7, 4, 19, 28, 58, 322, DateTimeKind.Local).AddTicks(471),
-                            EstablishmentDate = new DateTime(2021, 7, 4, 19, 28, 58, 322, DateTimeKind.Local).AddTicks(468)
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Active = true,
-                            CityId = 6,
-                            CreatedDate = new DateTime(2021, 7, 4, 19, 28, 58, 322, DateTimeKind.Local).AddTicks(483),
-                            EstablishmentDate = new DateTime(2021, 7, 4, 19, 28, 58, 322, DateTimeKind.Local).AddTicks(479)
+                            CreatedDate = new DateTime(2021, 7, 22, 14, 41, 58, 171, DateTimeKind.Local).AddTicks(7618),
+                            EstablishmentDate = new DateTime(2021, 7, 22, 14, 41, 58, 171, DateTimeKind.Local).AddTicks(7610),
+                            Name = "Banja Luka"
                         });
                 });
 
@@ -395,7 +316,7 @@ namespace AiesecBiH.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("LocalCommitteeId")
+                    b.Property<int>("LocalCommitteeId")
                         .HasColumnType("int");
 
                     b.Property<string>("PasswordHash")
@@ -429,14 +350,15 @@ namespace AiesecBiH.Migrations
                             Id = 1,
                             Active = true,
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CreatedDate = new DateTime(2021, 7, 4, 19, 28, 58, 335, DateTimeKind.Local).AddTicks(4219),
+                            CreatedDate = new DateTime(2021, 7, 22, 14, 41, 58, 179, DateTimeKind.Local).AddTicks(7640),
                             EmailAddress = "aiesec@aiesec.com",
                             FirstName = "Admin",
                             FunctionalFieldId = 1,
                             Gender = "M",
                             LastName = "Admin",
-                            PasswordHash = "jvwBhCXoKuQHXTBP60JtFw4KujstWKSgt+iN8G9QDZNmOpK0fgt0Lr7KF44ZeRKiQDDrAeIs7G4amPoLN5LGkA==",
-                            PasswordSalt = "E/pTpOaYeFO8p7SzWvVdlA==",
+                            LocalCommitteeId = 1,
+                            PasswordHash = "PXbwgsNhPfVsDXUb57xb87N8kjCq8mQEg+gi2PQVwxvs2/aiEjq/RlZsZ55qnE26+rKasxM6nlFol7zwF64//A==",
+                            PasswordSalt = "bwtl5ZsjVTHZqg8v6/e69A==",
                             PhoneNumber = "03355123",
                             RoleId = 1,
                             Username = "admin"
@@ -445,17 +367,36 @@ namespace AiesecBiH.Migrations
                         {
                             Id = 2,
                             Active = true,
-                            Address = "Safeta Zajke 298",
+                            Address = "Dobrinjska 12",
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CreatedDate = new DateTime(2021, 7, 4, 19, 28, 58, 345, DateTimeKind.Local).AddTicks(7025),
-                            EmailAddress = "sulejman.tutnjevic98@gmail.com",
-                            FirstName = "Sulejman",
+                            CreatedDate = new DateTime(2021, 7, 22, 14, 41, 58, 187, DateTimeKind.Local).AddTicks(7873),
+                            EmailAddress = "ajdin.kahrimanovic8@aiesec.com",
+                            FirstName = "Ajdin",
                             FunctionalFieldId = 1,
                             Gender = "M",
+                            LastName = "Kahrimanovic",
+                            LocalCommitteeId = 2,
+                            PasswordHash = "Y8GrxVWP7tpna7E48Grl5/Sh149ph5g+Y7EjskSIQPU7WjlConV8c7S1eUMOFkR3j9QKM8zgkvznY+2PzxWXZw==",
+                            PasswordSalt = "pohLXxYB+B6GmzeViVs4XQ==",
+                            PhoneNumber = "062123344",
+                            RoleId = 2,
+                            Username = "ajdinkahrimanovic"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Active = true,
+                            Address = "Safeta Zajke 298",
+                            BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2021, 7, 22, 14, 41, 58, 187, DateTimeKind.Local).AddTicks(9821),
+                            EmailAddress = "sulejman.tutnjevic98@gmail.com",
+                            FirstName = "Sulejman",
+                            FunctionalFieldId = 2,
+                            Gender = "M",
                             LastName = "Tutnjevic",
-                            LocalCommitteeId = 1,
-                            PasswordHash = "8Bd742uYmjmCeUuIAV1DXAio4E6dSHHaljVHwhcRmk7k/Xb/PcACpctpZUf6j+h1xxzb7RWZyQcmHIGQiwwzXA==",
-                            PasswordSalt = "s/PwKiNaPI6gzjt7qA7YLQ==",
+                            LocalCommitteeId = 2,
+                            PasswordHash = "y/uwppCK3TMBUWm5ZRKMFt6LvCzoDCvQX2VDe4CPuex2cwpUEDCQVmbobZxMchyqv12oIgeoHKYrDE+SqMdt/A==",
+                            PasswordSalt = "HvRX4kgbSTMIkpYxrJ4kqA==",
                             PhoneNumber = "062123344",
                             RoleId = 2,
                             Username = "sulejmantutnjevic"
@@ -466,15 +407,15 @@ namespace AiesecBiH.Migrations
                             Active = true,
                             Address = "Zahira Panjete 298",
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CreatedDate = new DateTime(2021, 7, 4, 19, 28, 58, 346, DateTimeKind.Local).AddTicks(1226),
+                            CreatedDate = new DateTime(2021, 7, 22, 14, 41, 58, 188, DateTimeKind.Local).AddTicks(62),
                             EmailAddress = "tarik.bucan98@gmail.com",
                             FirstName = "Tarik",
-                            FunctionalFieldId = 1,
+                            FunctionalFieldId = 3,
                             Gender = "M",
                             LastName = "Bucan",
                             LocalCommitteeId = 2,
-                            PasswordHash = "ieaQ6bxONyVgoBy79F5D/QuWhu108R4rlZDjhDTploTxiksHlhn4jWWet9tctHFbOieRY9JnM+7m3/qm2MNtpg==",
-                            PasswordSalt = "nv/aJp/k23tOZLVbBorWtA==",
+                            PasswordHash = "c2jgm3RM/fH5yh1mmqCoGvsRyIfEW0KOZ+Y9tL++NQlHCB5o4ostTRPk62ED5AWqFD6PfX1b+sK9HkROUSQjgQ==",
+                            PasswordSalt = "emMNMMWc2ujfnbyOhZrvug==",
                             PhoneNumber = "062123344",
                             RoleId = 2,
                             Username = "tarikbucan"
@@ -485,37 +426,18 @@ namespace AiesecBiH.Migrations
                             Active = true,
                             Address = "Grbavica 12",
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CreatedDate = new DateTime(2021, 7, 4, 19, 28, 58, 346, DateTimeKind.Local).AddTicks(1583),
+                            CreatedDate = new DateTime(2021, 7, 22, 14, 41, 58, 188, DateTimeKind.Local).AddTicks(184),
                             EmailAddress = "selma.idic@aiesec.com",
                             FirstName = "Selma",
-                            FunctionalFieldId = 1,
+                            FunctionalFieldId = 4,
                             Gender = "M",
                             LastName = "Idic",
-                            LocalCommitteeId = 2,
-                            PasswordHash = "kl+0s8L988DsMaSamhPCKx4h9SQlNevV0NJj5gZovI0n68crwrUTcNd29qLCeI3zKxTOCVtGKM7YGa+8HumFMw==",
-                            PasswordSalt = "TIQnnMy8jbc60Gcp0osGmg==",
+                            LocalCommitteeId = 1,
+                            PasswordHash = "ioLQRxZK7gW7roHuiyiOqTCzQmFBZOCdShi26zjPaZqqsM4Z8xNmVhDGQqvsHkgMpqxd+HeLT06RLbq+HO73Kw==",
+                            PasswordSalt = "6XxGg+8NcRdfrH0MNfod3Q==",
                             PhoneNumber = "062123344",
                             RoleId = 2,
                             Username = "selmaidic"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Active = true,
-                            Address = "Dobrinjska 12",
-                            BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CreatedDate = new DateTime(2021, 7, 4, 19, 28, 58, 346, DateTimeKind.Local).AddTicks(1706),
-                            EmailAddress = "ajdin.kahrimanovic8@aiesec.com",
-                            FirstName = "Ajdin",
-                            FunctionalFieldId = 1,
-                            Gender = "M",
-                            LastName = "Kahrimanovic",
-                            LocalCommitteeId = 2,
-                            PasswordHash = "rwmsNsm0KbMLpX3TEjaIa83ydRcetXRbwt1gjfsOJM2IL0q0xXynfnmUaS9un13x6z2gDrcBW/2gkS3insuyaw==",
-                            PasswordSalt = "IlrTfS3mWupnp5Tg4jsYMg==",
-                            PhoneNumber = "062123344",
-                            RoleId = 3,
-                            Username = "ajdinkahrimanovic"
                         },
                         new
                         {
@@ -523,15 +445,15 @@ namespace AiesecBiH.Migrations
                             Active = true,
                             Address = "Doglodi 12",
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CreatedDate = new DateTime(2021, 7, 4, 19, 28, 58, 346, DateTimeKind.Local).AddTicks(1809),
+                            CreatedDate = new DateTime(2021, 7, 22, 14, 41, 58, 188, DateTimeKind.Local).AddTicks(266),
                             EmailAddress = "emir.zukic@gmail.com",
                             FirstName = "Emir",
-                            FunctionalFieldId = 1,
+                            FunctionalFieldId = 5,
                             Gender = "M",
                             LastName = "Zukic",
-                            LocalCommitteeId = 2,
-                            PasswordHash = "rJ7a+/zJJE2m9AdR4ah4crdZrSMa1do9ES7Sv7meRqghQc4V9B0wcSD+q3QxiN+rMu+c1a316EIlR9YRLEHnIQ==",
-                            PasswordSalt = "TpNLAVpjxKFv3LIIJWHqgw==",
+                            LocalCommitteeId = 3,
+                            PasswordHash = "h+stRd5L0TpJ8RcRjyAyZDhZsfOLGpqFMW5gfwrfiNg/Q7o/4jwQ0EBUIH8HQY9fxc14zyUz91kIDiFVSnckgw==",
+                            PasswordSalt = "f0ezYUTG0+bLJBD08cl+ww==",
                             PhoneNumber = "062123344",
                             RoleId = 2,
                             Username = "emirzukic"
@@ -542,17 +464,17 @@ namespace AiesecBiH.Migrations
                             Active = true,
                             Address = "Grbavica 4",
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CreatedDate = new DateTime(2021, 7, 4, 19, 28, 58, 346, DateTimeKind.Local).AddTicks(1906),
+                            CreatedDate = new DateTime(2021, 7, 22, 14, 41, 58, 188, DateTimeKind.Local).AddTicks(344),
                             EmailAddress = "doraglinac@gmail.com",
                             FirstName = "Dora",
                             FunctionalFieldId = 1,
                             Gender = "F",
                             LastName = "Glinac",
-                            LocalCommitteeId = 1,
-                            PasswordHash = "9E+nAqANb2X2a3VN2Bf5J92BAN3jAKRCssLXCdL6aMtJOnpSYRmb0avT5RG5mXH3tE4hy5j7SVMA03+6u8d5nQ==",
-                            PasswordSalt = "KlYXk8I+4aMOsYAfDFDlaQ==",
+                            LocalCommitteeId = 2,
+                            PasswordHash = "n78cjHrRJqCJmB/OmPdfii62y6E89VrXP9s/8diReJdfSHWsyiCfVbL8i9/sm8POW/VB4a4aAxz0XirG/bjXiQ==",
+                            PasswordSalt = "2Pah+3KVAsTbm/MrvXbxgw==",
                             PhoneNumber = "062123344",
-                            RoleId = 2,
+                            RoleId = 3,
                             Username = "doraglinac"
                         },
                         new
@@ -561,15 +483,15 @@ namespace AiesecBiH.Migrations
                             Active = true,
                             Address = "Borik 4",
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CreatedDate = new DateTime(2021, 7, 4, 19, 28, 58, 346, DateTimeKind.Local).AddTicks(2304),
+                            CreatedDate = new DateTime(2021, 7, 22, 14, 41, 58, 188, DateTimeKind.Local).AddTicks(419),
                             EmailAddress = "nikola.bujak@gmail.com",
                             FirstName = "Nikola",
                             FunctionalFieldId = 2,
                             Gender = "M",
                             LastName = "Bujak",
-                            LocalCommitteeId = 1,
-                            PasswordHash = "ATbjBbX37dnG84o0S9f9PMony3Av/dGsKV1YzWgxm6B5qag/JoIWCmjhuLaND2ZTZFvdSK2zofeniEtQk8c6Dw==",
-                            PasswordSalt = "UxUXaqU90poV2XRZ1+Ai0A==",
+                            LocalCommitteeId = 2,
+                            PasswordHash = "z5QUERRy9Kjh0sgH96Y3Jys/UDVH74T/4rVgLA6Al6QiqowU0gUJ0lPgBZ8t0bOODQth78GDOPcKJ1a1+ISNog==",
+                            PasswordSalt = "xpwvY8wh7DEcy1FhmNleqg==",
                             PhoneNumber = "062123344",
                             RoleId = 2,
                             Username = "nikolabujak"
@@ -580,15 +502,15 @@ namespace AiesecBiH.Migrations
                             Active = true,
                             Address = "Gospodska 4",
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CreatedDate = new DateTime(2021, 7, 4, 19, 28, 58, 346, DateTimeKind.Local).AddTicks(2485),
+                            CreatedDate = new DateTime(2021, 7, 22, 14, 41, 58, 188, DateTimeKind.Local).AddTicks(492),
                             EmailAddress = "nevzudindosic@gmail.com",
                             FirstName = "Nevzudin",
                             FunctionalFieldId = 2,
                             Gender = "M",
                             LastName = "Dosic",
-                            LocalCommitteeId = 1,
-                            PasswordHash = "1CYXNs/u9qGEQOoOKC7e377hSLCKlzjMFbeztgKKdK4CMdARNVpn6PPujdY9es+Mqzu8GqG9Im3XzUxhht3QVg==",
-                            PasswordSalt = "mDfW4DFLJnkh7FZXRX4Veg==",
+                            LocalCommitteeId = 2,
+                            PasswordHash = "HtnXKeGoCq/2dmksQjXhp/pVtXfUrm50ZtoY7YsmKUtC7rLDf0qLKagr2tJ2KsMvRAiCzaptKztL7VrTRy4V/A==",
+                            PasswordSalt = "PbVwdlkActhd+tTmWK6upQ==",
                             PhoneNumber = "062123344",
                             RoleId = 2,
                             Username = "nevzudindosic"
@@ -599,18 +521,132 @@ namespace AiesecBiH.Migrations
                             Active = true,
                             Address = "Mostar 4",
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CreatedDate = new DateTime(2021, 7, 4, 19, 28, 58, 346, DateTimeKind.Local).AddTicks(2573),
+                            CreatedDate = new DateTime(2021, 7, 22, 14, 41, 58, 188, DateTimeKind.Local).AddTicks(566),
                             EmailAddress = "klarazovko@gmail.com",
                             FirstName = "Klara",
                             FunctionalFieldId = 2,
                             Gender = "F",
                             LastName = "Zovko",
                             LocalCommitteeId = 1,
-                            PasswordHash = "4pz9KYwXccqaWNBnVsDYr28GquecAheWLryxFgYPicuEmFFplMuP8Aw/C5dcSbZltH5NxFe96qH3iMXSFVLfyw==",
-                            PasswordSalt = "8T3zkne7q/Igr2tSSFa8sg==",
+                            PasswordHash = "6DNaWTnXA75dGiDov7fcUMTFtNxC70t7IIpLNNpHHMjsm7VY6ro11olZ3q8cKmfMwSxx3533PvIZtvUXMbA6gg==",
+                            PasswordSalt = "MP9PncJbJChLklz5LCU71A==",
                             PhoneNumber = "062123344",
                             RoleId = 3,
                             Username = "klarazovko"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Active = true,
+                            Address = "Centar 4",
+                            BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2021, 7, 22, 14, 41, 58, 188, DateTimeKind.Local).AddTicks(673),
+                            EmailAddress = "hanakulenovic@gmail.com",
+                            FirstName = "Hana",
+                            FunctionalFieldId = 1,
+                            Gender = "F",
+                            LastName = "Kulenovic",
+                            LocalCommitteeId = 4,
+                            PasswordHash = "6DNaWTnXA75dGiDov7fcUMTFtNxC70t7IIpLNNpHHMjsm7VY6ro11olZ3q8cKmfMwSxx3533PvIZtvUXMbA6gg==",
+                            PasswordSalt = "MP9PncJbJChLklz5LCU71A==",
+                            PhoneNumber = "062123344",
+                            RoleId = 4,
+                            Username = "hanakulenovic"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Active = true,
+                            Address = "Test 4",
+                            BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedDate = new DateTime(2021, 7, 22, 14, 41, 58, 188, DateTimeKind.Local).AddTicks(765),
+                            EmailAddress = "harisbrulic@gmail.com",
+                            FirstName = "Haris",
+                            FunctionalFieldId = 2,
+                            Gender = "M",
+                            LastName = "Brulic",
+                            LocalCommitteeId = 3,
+                            PasswordHash = "6DNaWTnXA75dGiDov7fcUMTFtNxC70t7IIpLNNpHHMjsm7VY6ro11olZ3q8cKmfMwSxx3533PvIZtvUXMbA6gg==",
+                            PasswordSalt = "MP9PncJbJChLklz5LCU71A==",
+                            PhoneNumber = "062123344",
+                            RoleId = 4,
+                            Username = "harisbrulic"
+                        });
+                });
+
+            modelBuilder.Entity("AiesecBiH.Database.Notice", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Body")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("MemberId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MemberId");
+
+                    b.ToTable("Notices");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Body = "Otvaraju se prijave za poziciju MCP iduceg mandata.",
+                            CreatedDate = new DateTime(2019, 10, 12, 12, 11, 0, 0, DateTimeKind.Unspecified),
+                            MemberId = 2,
+                            Title = "Prijava za poziciju"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Body = "Suspendisse convallis non orci sed viverra. Sed ac sapien vitae sapien cursus tincidunt quis id nibh. Quisque dictum et dolor in lobortis. Nulla turpis ligula, vehicula vel elit commodo, euismod fermentum lacus. Donec ligula turpis, maximus at velit a, fringilla lobortis ligula.",
+                            CreatedDate = new DateTime(2019, 11, 12, 12, 11, 0, 0, DateTimeKind.Unspecified),
+                            MemberId = 3,
+                            Title = "Fusce aliquam mi vehicula"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Body = "Nunc in egestas dui. Fusce efficitur enim nunc, sit amet mattis dolor efficitur ac. Proin pulvinar urna non elit vestibulum,",
+                            CreatedDate = new DateTime(2020, 8, 8, 12, 11, 0, 0, DateTimeKind.Unspecified),
+                            MemberId = 4,
+                            Title = "Nunc imperdiet urna ac orci"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Body = "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.",
+                            CreatedDate = new DateTime(2020, 10, 10, 12, 11, 0, 0, DateTimeKind.Unspecified),
+                            MemberId = 5,
+                            Title = "Fusce erat est fermentum"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Body = "Maecenas in tellus metus. Integer commodo turpis a massa tincidunt vulputate. Integer lacus ligula, tristique nec mi a, ultrices egestas lectus. Etiam rutrum et turpis nec auctor.",
+                            CreatedDate = new DateTime(2021, 4, 12, 12, 11, 0, 0, DateTimeKind.Unspecified),
+                            MemberId = 6,
+                            Title = "Nunc quis quam pulvinar"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Body = "Nam augue augue, luctus vitae nisl at, finibus dictum orci. Nunc in egestas dui. Fusce efficitur enim nunc, sit amet mattis dolor efficitur ac. Proin pulvinar urna non elit vestibulum.",
+                            CreatedDate = new DateTime(2021, 5, 22, 12, 11, 0, 0, DateTimeKind.Unspecified),
+                            MemberId = 7,
+                            Title = "Aliquam vehicula enim"
                         });
                 });
 
@@ -653,8 +689,8 @@ namespace AiesecBiH.Migrations
                             Active = true,
                             Address = "Trg Alije Izetbegovica 2",
                             Capacity = 20,
-                            CreatedDate = new DateTime(2021, 7, 4, 19, 28, 58, 322, DateTimeKind.Local).AddTicks(5396),
-                            EstablishmentDate = new DateTime(2021, 7, 4, 19, 28, 58, 322, DateTimeKind.Local).AddTicks(6585),
+                            CreatedDate = new DateTime(2021, 7, 22, 14, 41, 58, 172, DateTimeKind.Local).AddTicks(5231),
+                            EstablishmentDate = new DateTime(2021, 7, 22, 14, 41, 58, 172, DateTimeKind.Local).AddTicks(6928),
                             LocalCommitteeId = 1
                         },
                         new
@@ -663,8 +699,8 @@ namespace AiesecBiH.Migrations
                             Active = true,
                             Address = "Ulica 3",
                             Capacity = 10,
-                            CreatedDate = new DateTime(2021, 7, 4, 19, 28, 58, 322, DateTimeKind.Local).AddTicks(7009),
-                            EstablishmentDate = new DateTime(2021, 7, 4, 19, 28, 58, 322, DateTimeKind.Local).AddTicks(7044),
+                            CreatedDate = new DateTime(2021, 7, 22, 14, 41, 58, 172, DateTimeKind.Local).AddTicks(7580),
+                            EstablishmentDate = new DateTime(2021, 7, 22, 14, 41, 58, 172, DateTimeKind.Local).AddTicks(7656),
                             LocalCommitteeId = 2
                         },
                         new
@@ -673,8 +709,8 @@ namespace AiesecBiH.Migrations
                             Active = true,
                             Address = "Ulica 4",
                             Capacity = 20,
-                            CreatedDate = new DateTime(2021, 7, 4, 19, 28, 58, 322, DateTimeKind.Local).AddTicks(7065),
-                            EstablishmentDate = new DateTime(2021, 7, 4, 19, 28, 58, 322, DateTimeKind.Local).AddTicks(7070),
+                            CreatedDate = new DateTime(2021, 7, 22, 14, 41, 58, 172, DateTimeKind.Local).AddTicks(7696),
+                            EstablishmentDate = new DateTime(2021, 7, 22, 14, 41, 58, 172, DateTimeKind.Local).AddTicks(7705),
                             LocalCommitteeId = 3
                         },
                         new
@@ -683,8 +719,8 @@ namespace AiesecBiH.Migrations
                             Active = true,
                             Address = "Ulica 22",
                             Capacity = 20,
-                            CreatedDate = new DateTime(2021, 7, 4, 19, 28, 58, 322, DateTimeKind.Local).AddTicks(7081),
-                            EstablishmentDate = new DateTime(2021, 7, 4, 19, 28, 58, 322, DateTimeKind.Local).AddTicks(7086),
+                            CreatedDate = new DateTime(2021, 7, 22, 14, 41, 58, 172, DateTimeKind.Local).AddTicks(7727),
+                            EstablishmentDate = new DateTime(2021, 7, 22, 14, 41, 58, 172, DateTimeKind.Local).AddTicks(7736),
                             LocalCommitteeId = 4
                         });
                 });
@@ -752,8 +788,8 @@ namespace AiesecBiH.Migrations
                         new
                         {
                             Id = 2,
-                            Abbreviation = "TM",
-                            Name = "TeamMember"
+                            Abbreviation = "P",
+                            Name = "President"
                         },
                         new
                         {
@@ -764,8 +800,8 @@ namespace AiesecBiH.Migrations
                         new
                         {
                             Id = 4,
-                            Abbreviation = "P",
-                            Name = "President"
+                            Abbreviation = "TM",
+                            Name = "TeamMember"
                         });
                 });
 
@@ -804,7 +840,6 @@ namespace AiesecBiH.Migrations
                         .HasColumnType("int");
 
                     b.Property<int?>("MemberExecutorId")
-                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -826,6 +861,128 @@ namespace AiesecBiH.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("Tasks");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Active = true,
+                            CreatedDate = new DateTime(2019, 10, 12, 12, 11, 0, 0, DateTimeKind.Unspecified),
+                            DateOfExecution = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Deadline = new DateTime(2019, 11, 12, 12, 11, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.",
+                            Executed = false,
+                            FunctionalFieldId = 1,
+                            LocalCommitteeId = 1,
+                            MemberCreatorId = 2,
+                            Name = "Sastanak sa partnerima",
+                            RoleId = 3
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Active = true,
+                            CreatedDate = new DateTime(2020, 10, 12, 12, 11, 0, 0, DateTimeKind.Unspecified),
+                            DateOfExecution = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Deadline = new DateTime(2019, 11, 12, 12, 11, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.",
+                            Executed = false,
+                            FunctionalFieldId = 1,
+                            LocalCommitteeId = 1,
+                            MemberCreatorId = 2,
+                            Name = "Kontaktirati Dom armije",
+                            RoleId = 3
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Active = true,
+                            CreatedDate = new DateTime(2020, 10, 13, 12, 11, 0, 0, DateTimeKind.Unspecified),
+                            DateOfExecution = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Deadline = new DateTime(2019, 11, 12, 12, 11, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.",
+                            Executed = false,
+                            FunctionalFieldId = 1,
+                            LocalCommitteeId = 1,
+                            MemberCreatorId = 2,
+                            Name = "Odrzati intervju sa novim clanovima",
+                            RoleId = 3
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Active = true,
+                            CreatedDate = new DateTime(2020, 10, 14, 12, 11, 0, 0, DateTimeKind.Unspecified),
+                            DateOfExecution = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Deadline = new DateTime(2019, 11, 12, 12, 11, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.",
+                            Executed = false,
+                            FunctionalFieldId = 3,
+                            LocalCommitteeId = 3,
+                            MemberCreatorId = 3,
+                            Name = "Edukacija novih clanova",
+                            RoleId = 3
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Active = true,
+                            CreatedDate = new DateTime(2021, 5, 14, 12, 11, 0, 0, DateTimeKind.Unspecified),
+                            DateOfExecution = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Deadline = new DateTime(2019, 11, 12, 12, 11, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.",
+                            Executed = false,
+                            FunctionalFieldId = 3,
+                            LocalCommitteeId = 1,
+                            MemberCreatorId = 3,
+                            Name = "Priprema za YSF",
+                            RoleId = 3
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Active = true,
+                            CreatedDate = new DateTime(2021, 5, 13, 12, 11, 0, 0, DateTimeKind.Unspecified),
+                            DateOfExecution = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Deadline = new DateTime(2019, 11, 12, 12, 11, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.",
+                            Executed = false,
+                            FunctionalFieldId = 3,
+                            LocalCommitteeId = 1,
+                            MemberCreatorId = 3,
+                            Name = "SWAT analiza za ITA",
+                            RoleId = 3
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Active = true,
+                            CreatedDate = new DateTime(2021, 12, 9, 12, 11, 0, 0, DateTimeKind.Unspecified),
+                            DateOfExecution = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Deadline = new DateTime(2019, 11, 12, 12, 11, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.",
+                            Executed = false,
+                            FunctionalFieldId = 2,
+                            LocalCommitteeId = 1,
+                            MemberCreatorId = 5,
+                            Name = "Kontaktirati govornike za YSF",
+                            RoleId = 3
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Active = true,
+                            CreatedDate = new DateTime(2021, 12, 10, 12, 11, 0, 0, DateTimeKind.Unspecified),
+                            DateOfExecution = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Deadline = new DateTime(2019, 11, 12, 12, 11, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.",
+                            Executed = false,
+                            FunctionalFieldId = 2,
+                            LocalCommitteeId = 1,
+                            MemberCreatorId = 5,
+                            Name = "Odabrati clanove za nesto",
+                            RoleId = 3
+                        });
                 });
 
             modelBuilder.Entity("AiesecBiH.Database.Event", b =>
@@ -873,17 +1030,6 @@ namespace AiesecBiH.Migrations
                     b.Navigation("Report");
                 });
 
-            modelBuilder.Entity("AiesecBiH.Database.LocalCommittee", b =>
-                {
-                    b.HasOne("AiesecBiH.Database.City", "City")
-                        .WithOne()
-                        .HasForeignKey("AiesecBiH.Database.LocalCommittee", "CityId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.Navigation("City");
-                });
-
             modelBuilder.Entity("AiesecBiH.Database.Member", b =>
                 {
                     b.HasOne("AiesecBiH.Database.FunctionalField", "FunctionalField")
@@ -894,7 +1040,8 @@ namespace AiesecBiH.Migrations
                     b.HasOne("AiesecBiH.Database.LocalCommittee", "LocalCommittee")
                         .WithMany("Members")
                         .HasForeignKey("LocalCommitteeId")
-                        .OnDelete(DeleteBehavior.NoAction);
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
 
                     b.HasOne("AiesecBiH.Database.Role", "Role")
                         .WithMany()
@@ -907,6 +1054,17 @@ namespace AiesecBiH.Migrations
                     b.Navigation("LocalCommittee");
 
                     b.Navigation("Role");
+                });
+
+            modelBuilder.Entity("AiesecBiH.Database.Notice", b =>
+                {
+                    b.HasOne("AiesecBiH.Database.Member", "Member")
+                        .WithMany()
+                        .HasForeignKey("MemberId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Member");
                 });
 
             modelBuilder.Entity("AiesecBiH.Database.Office", b =>
@@ -941,9 +1099,7 @@ namespace AiesecBiH.Migrations
 
                     b.HasOne("AiesecBiH.Database.Member", "MemberExecutor")
                         .WithMany("ExecutedTasks")
-                        .HasForeignKey("MemberExecutorId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .HasForeignKey("MemberExecutorId");
 
                     b.HasOne("AiesecBiH.Database.Role", "Role")
                         .WithMany()

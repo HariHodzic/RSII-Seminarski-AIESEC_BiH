@@ -19,31 +19,32 @@ namespace AiesecBiH.Services
         {
             
         }
-        public override async  Task<IEnumerable<LocalCommittee>> Get(Model.Search.LocalCommittee? search)
+        public override async  Task<IEnumerable<LocalCommittee>> Get(Model.Search.LocalCommittee search=null)
         {
             var query = _context.LocalCommittees.AsQueryable();
-            if (!string.IsNullOrWhiteSpace(search?.CityName))
+            if (!string.IsNullOrWhiteSpace(search?.Name))
             {
-                query = query.Where(x => x.City.Name.StartsWith(search.CityName));
+                query = query.Where(x => x.Name.StartsWith(search.Name));
             }
             if (search?.onlyActive!=null && search.onlyActive==true)
             {
                 query = query.Where(x => x.Active == search.onlyActive);
             }
-            var entities = await query.Include(x=>x.City).ToListAsync();
+            query = query.Where(x => x.Id != 1);
+            var entities = await query.ToListAsync();
             var result = _mapper.Map<IEnumerable<Model.Response.LocalCommittee>>(entities);
             return result;
         }
 
         public override async Task<LocalCommittee> GetById(int id)
         {
-            var result =await _context.LocalCommittees.Include(x => x.City).FirstOrDefaultAsync(x => x.Id == id);
+            var result =await _context.LocalCommittees.FirstOrDefaultAsync(x => x.Id == id);
             return _mapper.Map<Model.Response.LocalCommittee>(result);
         }
 
         public override async Task<LocalCommittee> Delete(int id)
         {
-            var result =await _context.LocalCommittees.Include(x => x.City).Include(y=>y.Offices).FirstOrDefaultAsync(x => x.Id == id);
+            var result =await _context.LocalCommittees.Include(y=>y.Offices).FirstOrDefaultAsync(x => x.Id == id);
             if (result == null)
             {
                 throw new NotFoundException();
@@ -71,7 +72,7 @@ namespace AiesecBiH.Services
             var members = await _context.Members.Where(x => x.LocalCommitteeId == id).ToListAsync();
             foreach (Database.Member item in members)
             {
-                item.LocalCommitteeId = null;
+                item.LocalCommitteeId = 1;
                 item.Active = false;
             }
             _context.Members.UpdateRange(members);

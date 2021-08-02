@@ -6,7 +6,7 @@ using AiesecBiH.Services.BaseServices;
 
 namespace AiesecBiH.IServices
 {
-    interface ITaskService:ICRUDService<Model.Response.Task, Model.Search.Task, Model.Update.Task, Model.Insert.Task>
+    public interface ITaskService:ICRUDService<Model.Response.TaskDetails, Model.Search.Task, Model.Update.Task, Model.Insert.Task>
     {
     }
 }

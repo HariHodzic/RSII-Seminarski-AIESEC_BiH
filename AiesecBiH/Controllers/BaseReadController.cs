@@ -12,7 +12,7 @@ namespace AiesecBiH.Controllers
     //[Authorize]
     public class BaseReadController<T,TSearch> : ControllerBase 
         where T:class 
-        where  TSearch:BaseSearchModel
+        where  TSearch:class
     {
         protected readonly IReadService<T, TSearch> _service;
 

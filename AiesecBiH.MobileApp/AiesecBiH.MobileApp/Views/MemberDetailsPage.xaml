@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:AiesecBiH.MobileApp.ViewModels"
+             x:Class="AiesecBiH.MobileApp.Views.MemberDetailsPage">
+    <ContentPage.BindingContext>
+        <vm:MemberDetailsViewModel></vm:MemberDetailsViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Center" HorizontalOptions="CenterAndExpand">
+            <Label Text="Member Details" FontSize="30" Margin="5,0,0,20"></Label>
+            <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0">
+                    <Label Text="Name:"></Label>
+                </StackLayout>
+                <StackLayout  HorizontalOptions="Center" Grid.Row="0" Grid.Column="1" Orientation="Horizontal" >
+                    <Label Text="{Binding Member.FirstName}" Style="{DynamicResource ListItemTextStyle}"
+                                           FontSize="16"></Label>
+                    <Label Text="{Binding Member.LastName}" Style="{DynamicResource ListItemTEntryyle}"
+                                           FontSize="16"></Label>
+                </StackLayout>
+                <StackLayout Grid.Row="1" Grid.Column="0">
+                    <Label Text="Username:"></Label>
+                </StackLayout>
+                <StackLayout Grid.Row="1" Grid.Column="1">
+                    <Label Text="{Binding Member.Username}" Style="{DynamicResource ListItemTextStyle}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                                           FontSize="16"></Label>
+                </StackLayout>
+                <StackLayout  HorizontalOptions="FillAndExpand" Grid.Row="2" Grid.Column="0">
+                    <Label Text="Local Committee: "></Label>
+                </StackLayout>
+                <StackLayout HorizontalOptions="FillAndExpand"  Grid.Row="2" Grid.Column="1">
+                    <Label Text="{Binding Member.LocalCommitteeName}" Style="{DynamicResource ListItemTextStyle}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                                           FontSize="16"></Label>
+                </StackLayout>
+                <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="3" Grid.Column="0">
+                    <Label Text="Functional Field: "></Label>
+                </StackLayout>
+                <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="3" Grid.Column="1">
+                    <Label Text="{Binding Member.FunctionalFieldName}" Style="{DynamicResource ListItemTextStyle}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                                           FontSize="16"></Label>
+                </StackLayout>
+                <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="4" Grid.Column="0">
+                    <Label Text="Role: "></Label>
+                </StackLayout>
+                <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="4" Grid.Column="1">
+                    <Label Text="{Binding Member.Role.Name}" Style="{DynamicResource ListItemTextStyle}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                                           FontSize="16"></Label>
+                </StackLayout>
+                <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="5" Grid.Column="0">
+                    <Label Text="Phone Number: "></Label>
+                </StackLayout>
+                <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="5" Grid.Column="1">
+                    <Label Text="{Binding Member.PhoneNumber}" Style="{DynamicResource ListItemTextStyle}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                                           FontSize="16"></Label>
+                </StackLayout>
+                <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="6" Grid.Column="0">
+                    <Label Text="Email: "></Label>
+                </StackLayout>
+                <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="6" Grid.Column="1">
+                    <Label Text="{Binding Member.EmailAddress}" Style="{DynamicResource ListItemTextStyle}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                                           FontSize="16"></Label>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>

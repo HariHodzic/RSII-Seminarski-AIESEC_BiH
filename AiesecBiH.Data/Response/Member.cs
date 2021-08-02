@@ -26,8 +26,8 @@ namespace AiesecBiH.Model.Response
         public int RoleId { get; set; }
         public string RoleAbbreviation { get; set; }
         public DateTime CreatedDate { get; set; }
-        public IEnumerable<Task> CreatedTasks { get; set; }
-        public IEnumerable<Task> ExecutedTasks { get; set; }
+        public IEnumerable<TaskDetails> CreatedTasks { get; set; }
+        public IEnumerable<TaskDetails> ExecutedTasks { get; set; }
 
     }
 }

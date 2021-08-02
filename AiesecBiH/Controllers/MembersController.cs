@@ -50,5 +50,11 @@ namespace AiesecBiH.Controllers
         {
             return await _service.Remove(id);
         }
+        [HttpGet("MyProfile")]
+        [Authorize]
+        public async Task<Model.Response.MemberLL> MyProfile()
+        {
+            return await _service.MyProfile();
+        }
     }
 }

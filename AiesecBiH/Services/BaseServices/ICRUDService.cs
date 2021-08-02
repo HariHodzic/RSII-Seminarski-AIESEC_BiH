@@ -8,7 +8,7 @@ namespace AiesecBiH.Services.BaseServices
 {
     public interface ICRUDService<T,TSearch,TUpdate,TInsert>:IReadService<T, TSearch>
         where T : class 
-        where TSearch : BaseSearchModel
+        where TSearch : class
         where TInsert : class 
         where TUpdate : class
     {

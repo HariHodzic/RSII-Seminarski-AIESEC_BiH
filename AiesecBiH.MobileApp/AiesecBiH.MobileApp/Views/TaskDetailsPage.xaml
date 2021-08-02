@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:AiesecBiH.MobileApp.ViewModels"
+             x:Class="AiesecBiH.MobileApp.Views.TaskDetailsPage">
+    <ContentPage.BindingContext>
+        <vm:TaskDetailsViewModel></vm:TaskDetailsViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <ScrollView>
+                <StackLayout Grid.Row="0" Grid.Column="0">
+                    <Label Text="{Binding Task.Name}" Style="{DynamicResource ListItemTextStyle}" ></Label>
+                    <Label Text="{Binding Task.Description}" FontSize="13"></Label>
+                    <StackLayout Orientation="Horizontal" Margin="0,15">
+                        <Label Text="Deadline: "></Label>
+                        <Label Text="{Binding Task.Deadline}" Style="{DynamicResource ListItemTextStyle}" ></Label>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+            <StackLayout Grid.Row="1" Grid.Column="0">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Fucnctional Field: "></Label>
+                    <Label Text="{Binding Task.FunctionalField.Name}" Style="{DynamicResource ListItemTextStyle}" ></Label>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Local Committee: "></Label>
+                    <Label Text="{Binding Task.LocalCommittee.Name}" Style="{DynamicResource ListItemTextStyle}" ></Label>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Target Position: "></Label>
+                    <Label Text="{Binding Task.RoleName}" Style="{DynamicResource ListItemTextStyle}" ></Label>
+                </StackLayout>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

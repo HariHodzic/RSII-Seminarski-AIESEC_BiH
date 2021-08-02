@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:AiesecBiH.MobileApp.ViewModels"
+             x:Class="AiesecBiH.MobileApp.Views.UserProfileUpdatePage">
+    <ContentPage.BindingContext>
+        <vm:UserProfileViewModel></vm:UserProfileViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="10">
+                    <Label Text="Update profile" FontSize="30" Margin="5,0,0,20" HorizontalOptions="Center"></Label>
+                <StackLayout Orientation="Vertical">
+                    <Label Text="First Name"/>
+                    <Entry Text="{Binding MemberUpdateRequest.FirstName}"/>
+                </StackLayout>
+                <StackLayout Orientation="Vertical">
+                    <Label Text="Last Name"/>
+                    <Entry Text="{Binding MemberUpdateRequest.LastName}"/>
+                </StackLayout>
+                <StackLayout Orientation="Vertical">
+                    <Label Text="Username"/>
+                    <Entry Text="{Binding MemberUpdateRequest.Username}"/>
+                </StackLayout>
+                <StackLayout Orientation="Vertical">
+                    <Label Text="Address"/>
+                    <Entry Text="{Binding MemberUpdateRequest.Address}"/>
+                </StackLayout>
+                <StackLayout Orientation="Vertical">
+                    <Label Text="Phone Number"/>
+                    <Entry Text="{Binding MemberUpdateRequest.PhoneNumber}"/>
+                </StackLayout>
+                <StackLayout Orientation="Vertical">
+                    <Label Text="Address"/>
+                    <Entry Text="{Binding MemberUpdateRequest.BirthDate}"/>
+                </StackLayout>
+
+                <Button x:Name="btnSnimi" Text="Snimi profil" Command="{Binding UpdateMyProfile}"/>
+
+            </StackLayout>
+        </ScrollView>
+
+    </ContentPage.Content>
+</ContentPage>

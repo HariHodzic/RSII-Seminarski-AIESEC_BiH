@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using AiesecBiH.Model.Response;
+using AiesecBiH.WinUI.Helpers;
 using Task = System.Threading.Tasks.Task;
 
 namespace AiesecBiH.WinUI.Offices
@@ -82,7 +83,7 @@ namespace AiesecBiH.WinUI.Offices
                     LocalCommitteeId = Convert.ToInt32(chkLocalCommittee.SelectedValue)
                 };
                 DialogResult dialogResult = MessageBox.Show("Are you sure you want to update this record?", "Caption", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
+                if (dialogResult == DialogResult.Yes && Validation.BaseValidation(request))
                 {
                     var result = await _service.Update<Model.Response.Office>(_office.Id, request);
                     MessageBox.Show("Successfully updated Office!");
@@ -98,9 +99,15 @@ namespace AiesecBiH.WinUI.Offices
                     Address = txtAddress.Text,
                     LocalCommitteeId = Convert.ToInt32(chkLocalCommittee.SelectedValue)
                 };
-                var result = await _service.Insert<Office>(request);
-                MessageBox.Show("Successfully created new Office!");
-                frmIndex.Instance.btnDashO_Click(null, null);
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to create new record?", "Caption", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes && Validation.BaseValidation(request))
+                {
+                    var result = await _service.Insert<Office>(request);
+                    if (result != null) {
+                        MessageBox.Show("Successfully created new Office!");
+                        frmIndex.Instance.btnDashO_Click(null, null);
+                    }
+                }
 
             }
         }

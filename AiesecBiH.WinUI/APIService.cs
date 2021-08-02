@@ -26,7 +26,7 @@ namespace AiesecBiH.WinUI
         }
 
         public async Task<T> Get<T>(object search=null)
-        {
+         {
             var url = $"{Properties.Settings.Default.APIUrl}/{_route}";
             if (search != null)
             {

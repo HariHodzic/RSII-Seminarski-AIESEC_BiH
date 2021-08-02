@@ -17,6 +17,7 @@ namespace AiesecBiH.Authentication
     public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSchemeOptions>
     {
         private readonly IMemberService _memberService;
+        public static Model.Response.MemberLL LoggedMember = null;
         public BasicAuthenticationHandler(IOptionsMonitor<AuthenticationSchemeOptions> options, ILoggerFactory logger, UrlEncoder encoder, ISystemClock clock,IMemberService memberService) : base(options, logger, encoder, clock)
         {
             _memberService = memberService;
@@ -29,7 +30,6 @@ namespace AiesecBiH.Authentication
                 return AuthenticateResult.Fail("Missing authorization header!");
             }
 
-            Model.Response.MemberLL member = null;
             try
             {
                 var authHeader = AuthenticationHeaderValue.Parse(Request.Headers["Authorization"]);
@@ -37,17 +37,20 @@ namespace AiesecBiH.Authentication
                 var credentials = Encoding.UTF8.GetString(credentialBytes).Split(':');
                 var username = credentials[0];
                 var password = credentials[1];
-                member = await _memberService.Login(username, password);
+                LoggedMember = await _memberService.Login(username, password);
             }
             catch (Exception ex)
             {
-                return AuthenticateResult.Fail("Incorrect username or password!");
+                return AuthenticateResult.Fail("Invalid Authorization Header!");
             }
+            if (LoggedMember == null)
+                return AuthenticateResult.Fail("Invalid Username or Password");
 
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.NameIdentifier, member.Username),
-                new Claim(ClaimTypes.Name, member.FirstName),
+                new Claim(ClaimTypes.NameIdentifier, LoggedMember.Username),
+                new Claim(ClaimTypes.Name, LoggedMember.FirstName),
+                new Claim(ClaimTypes.Role, LoggedMember.Role.Name)
                 //new Claim(ClaimTypes.Locality, member.LocalCommittee.Name),
                 //new Claim("FunctionalField",member.FunctionalField.Name)
             };

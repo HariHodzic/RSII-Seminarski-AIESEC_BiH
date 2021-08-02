@@ -26,7 +26,7 @@ namespace AiesecBiH.Services
         }
         public async Task<IEnumerable<Model.Response.MemberLL>> Get(Model.Search.Member search=null)
         {
-            var query = _context.Members.Include(x=>x.LocalCommittee).ThenInclude(x=>x.City).Include(x=>x.FunctionalField).AsQueryable();
+            var query = _context.Members.Include(x=>x.LocalCommittee).Include(x=>x.FunctionalField).AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(search?.Username))
             {
@@ -66,6 +66,20 @@ namespace AiesecBiH.Services
 
             return result;
         }
+        public async Task<Model.Response.MemberLL> MyProfile()
+        {
+            var query = _context.Members.AsQueryable();
+
+            query = query.Where(x => x.Id == Authentication.BasicAuthenticationHandler.LoggedMember.Id);
+
+            query = query.Include(x => x.Role);
+            query = query.Include(x => x.FunctionalField);
+            query = query.Include(x => x.LocalCommittee);
+
+            var entity =await query.FirstOrDefaultAsync();
+
+            return _mapper.Map<Model.Response.MemberLL>(entity);
+        }
         public async Task<Model.Response.MemberLL> GetById(int id)
         {
             var entity = await _context.Members.FindAsync(id);
@@ -100,15 +114,24 @@ namespace AiesecBiH.Services
 
         public async Task<Model.Response.Member> Update(int id, Model.Update.Member request)
         {
-            var entity = await _context.Members.FindAsync(id);
-            _mapper.Map(request, entity);
-            _context.Update(entity);
-            await _context.SaveChangesAsync();
-            return _mapper.Map<Model.Response.Member>(entity);
+            try
+            {
+                var entity = await _context.Members.FindAsync(id);
+                _mapper.Map(request, entity);
+                _context.Update(entity);
+                await _context.SaveChangesAsync();
+                return _mapper.Map<Model.Response.Member>(entity);
+
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
+
         public async Task<Model.Response.MemberLL> Login(string username, string password)
         {
-            var entity = await _context.Members.Include(x=>x.FunctionalField).Include("Role").Include(x=>x.LocalCommittee).ThenInclude(x=>x.City).FirstOrDefaultAsync(x => x.Username == username);
+            var entity = await _context.Members.Include(x=>x.FunctionalField).Include("Role").Include(x=>x.LocalCommittee).FirstOrDefaultAsync(x => x.Username == username);
 
             if (entity == null)
             {

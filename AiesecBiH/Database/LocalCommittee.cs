@@ -12,12 +12,8 @@ namespace AiesecBiH.Database
         [DataType(DataType.Date)]
         //[DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime EstablishmentDate { get; set; }
-        
         [Required]
-        [ForeignKey(nameof(City))]
-        public int CityId { get; set; }
-        public City City { get; set; }
-
+        public string Name { get; set; }
         public ICollection<Office> Offices { get; set; }
         public IEnumerable<Event> Events { get; set; }
         public IEnumerable<Member> Members { get; set; }

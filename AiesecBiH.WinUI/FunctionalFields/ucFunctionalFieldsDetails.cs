@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using AiesecBiH.Model.Response;
+using AiesecBiH.WinUI.Helpers;
 using Task = System.Threading.Tasks.Task;
 
 namespace AiesecBiH.WinUI.FunctionalFields
@@ -58,9 +59,13 @@ namespace AiesecBiH.WinUI.FunctionalFields
                     Name = txtName.Text,
                     Active = chkActive.Checked
                 };
-                var result = await _service.Update<FunctionalField>(_functionalField.Id, request);
-                frmIndex.Instance.btnDashFF_Click(null,null);
-                MessageBox.Show("Successfully updated Functional Field!");
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to update this record?", "Caption", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes && Validation.BaseValidation(request))
+                {
+                    var result = await _service.Update<FunctionalField>(_functionalField.Id, request);
+                    frmIndex.Instance.btnDashFF_Click(null, null);
+                    MessageBox.Show("Successfully updated Functional Field!");
+                }
             }
             //INSERT
             else
@@ -73,10 +78,16 @@ namespace AiesecBiH.WinUI.FunctionalFields
                         Description = txtDescription.Text,
                         Name = txtName.Text
                     };
-                    var result = await _service.Insert<FunctionalField>(request);
-                    frmIndex.Instance.btnDashFF_Click(null, null);
-                    MessageBox.Show("Successfully created new Functional Field!");
-
+                    DialogResult dialogResult = MessageBox.Show("Are you sure you want to create new Functiona Field?", "Caption", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes && Validation.BaseValidation(request))
+                    {
+                        var result = await _service.Insert<FunctionalField>(request);
+                        if (result != null)
+                        {
+                            frmIndex.Instance.btnDashFF_Click(null, null);
+                            MessageBox.Show("Successfully created new Functional Field!");
+                        }
+                    }
                 }
                 catch (Exception exception)
                 {

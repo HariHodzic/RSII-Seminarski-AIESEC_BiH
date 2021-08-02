@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:AiesecBiH.MobileApp.ViewModels"
+             x:Class="AiesecBiH.MobileApp.Views.TasksPage">
+    <ContentPage.BindingContext>
+        <vm:TasksViewModel></vm:TasksViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Tasks" FontSize="30" VerticalOptions="Start" HorizontalOptions="Center" Margin="30"/>
+            <ListView ItemsSource="{Binding TasksList}" ItemSelected="ListView_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="5" Orientation="Horizontal">
+                                <Frame BorderColor="White" HorizontalOptions="FillAndExpand">
+                                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
+                                            <Label Text="{Binding Name}" 
+                                           LineBreakMode="NoWrap" 
+                                           Style="{DynamicResource ListItemTextStyle}" 
+                                           FontSize="16" />
+                                            <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
+                                                <Label Text="Priority:" ></Label>
+                                                <Label Text="Status" TextColor="Red"></Label>
+                                            </StackLayout>
+                                            </StackLayout>
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label Text="Deadline:" FontSize="11"/>
+                                                <Label Text="{Binding Deadline}" 
+                                                   LineBreakMode="NoWrap"
+                                                   Style="{DynamicResource ListItemDetailTextStyle}"
+                                                   FontSize="11" />
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Frame>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

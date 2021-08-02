@@ -25,8 +25,8 @@ namespace AiesecBiH.Mapping
             //LocalCommittees
             CreateMap<Model.Insert.LocalCommittee, Database.LocalCommittee>();
             CreateMap<Model.Update.LocalCommittee, Database.LocalCommittee>();
-            CreateMap<Database.LocalCommittee, Model.Response.LocalCommittee>()
-                .ForMember(dest => dest.Name, opt => opt.MapFrom(x => x.City.Name));
+            CreateMap<Database.LocalCommittee, Model.Response.LocalCommittee>();
+                //.ForMember(dest => dest.Name, opt => opt.MapFrom(x => x.City.Name));
             //Roles
             CreateMap<Database.Role, Model.Response.Role>();
 
@@ -46,10 +46,11 @@ namespace AiesecBiH.Mapping
             CreateMap<Database.Report, Model.Response.Report>();
             //Task
             CreateMap<Model.Insert.Task, Database.Task>();
+            CreateMap<Database.Task, Model.Response.TaskDetails>();
             CreateMap<Database.Task, Model.Response.Task>();
-
-
-            //
+            //Notice
+            CreateMap<Model.Insert.Notice, Database.Notice>();
+            CreateMap<Database.Notice, Model.Response.Notice>();
         }
     }
 }

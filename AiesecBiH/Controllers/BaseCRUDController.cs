@@ -13,7 +13,7 @@ namespace AiesecBiH.Controllers
     [Authorize]
     public class BaseCRUDController<T,TSearch,TUpdate, TInsert> : BaseReadController<T,TSearch>
         where T: class 
-        where TSearch:BaseSearchModel 
+        where TSearch:class 
         where TInsert:class 
         where TUpdate:class
     {

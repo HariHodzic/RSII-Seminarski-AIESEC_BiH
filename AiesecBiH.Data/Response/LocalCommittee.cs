@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -11,11 +11,11 @@ namespace AiesecBiH.Model.Response
     {
         public int Id { get; set; }
         public DateTime EstablishmentDate { get; set; }
-        public int CityId { get; set; }
-        public City City { get; set; }
+        public string Name { get; set; }
+        //public int? CityId { get; set; }
+        //public virtual City City { get; set; }
         public DateTime CreatedDate { get; set; }
         public bool Active { get; set; }
-        public string Name { get; set; }
     }
 
 }

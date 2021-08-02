@@ -8,8 +8,7 @@ using System.Threading.Tasks;
 namespace AiesecBiH.Database
 {
     public class Task:BaseEntity
-    {
-        
+    {        
         public string Name { get; set; }
         public string Description { get; set; }
         public bool Executed { get; set; }=false;//After one member executes the task, he can change this field to true. After the creator reviews it, field Active will be changed.
@@ -25,10 +24,9 @@ namespace AiesecBiH.Database
         public int MemberCreatorId { get; set; }
         public Member MemberCreator { get; set; }
 
-        [Required]
         [ForeignKey(nameof(MemberExecutor))]
         public int? MemberExecutorId { get; set; }
-        public Member MemberExecutor { get; set; }
+        public virtual Member MemberExecutor { get; set; } = null;
 
         [ForeignKey(nameof(FunctionalField))]
         public int FunctionalFieldId { get; set; }

@@ -1,17 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using AiesecBiH.Model.Response;
+using Flurl.Http;
+using AiesecBiH.WinUI.Helpers;
 using Task = System.Threading.Tasks.Task;
 
 namespace AiesecBiH.WinUI.Members
 {
+    
     public partial class ucMemberDetails : UserControl
     {
         private readonly MemberLL _member;
@@ -19,6 +25,7 @@ namespace AiesecBiH.WinUI.Members
         private readonly APIService _funcFieldService = new APIService("FunctionalFields");
         private readonly APIService _roleService = new APIService("Roles");
         private readonly APIService _localCommitteeService = new APIService("LocalCommittees");
+
         public ucMemberDetails(MemberLL member)
         {
             InitializeComponent();
@@ -112,33 +119,43 @@ namespace AiesecBiH.WinUI.Members
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
-            if (_member != null)
+            try
             {
-                Model.Update.Member model = CreateUpdateModel();
-                DialogResult dialogResult = MessageBox.Show("Are you sure you want to update this record?", "Caption", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
+                if (_member != null)
                 {
-                    await _memberService.Update<Member>(model.Id, model);
-                    MessageBox.Show("Successfully updated Member!");
-                    frmIndex.Instance.btnMembers_Click(null, null);
-                }
-            }
-            else
-            {
-                var model = CreateInsertModel();
-                DialogResult dialogResult = MessageBox.Show("Are you sure you want to creeate new record?", "Caption", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    var result= await _memberService.Insert<Member>(model);
-                    if (result != null)
+                    Model.Update.Member model = CreateUpdateModel();
+                    DialogResult dialogResult = MessageBox.Show("Are you sure you want to update this record?", "Caption", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes && Validation.BaseValidation(model))
                     {
-                        MessageBox.Show("Succesfully created new Member!");
+                        await _memberService.Update<Member>(model.Id, model);
+                        MessageBox.Show("Successfully updated Member!");
                         frmIndex.Instance.btnMembers_Click(null, null);
                     }
                 }
+                else
+                {
+                    var model = CreateInsertModel();
+                    DialogResult dialogResult = MessageBox.Show("Are you sure you want to creeate new record?", "Caption", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes && Validation.BaseValidation(model))
+                    {
+                        var result= await _memberService.Insert<Member>(model);
+                        if (result != null)
+                        {
+                            MessageBox.Show("Succesfully created new Member!");
+                            frmIndex.Instance.btnMembers_Click(null, null);
+                        }
+                    }
+                }
             }
+            catch (FlurlHttpException ex)
+            {
+                var a = await ex.GetResponseStringAsync();
+                //var b = await ex.GetResponseJsonAsync<Error>();
+                MessageBox.Show(a);
+            }
+
         }
-               
+
         private async Task LoadLocalCommittesCMB()
         {
             cmbLocalCommittee.DataSource = await _localCommitteeService.Get<List<Model.Response.LocalCommittee>>();
@@ -168,7 +185,7 @@ namespace AiesecBiH.WinUI.Members
                 frmIndex.Instance.btnMembers_Click(null, null);
             }
         }
-
+        
     }
 }
      

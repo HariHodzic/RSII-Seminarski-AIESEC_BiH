@@ -14,7 +14,7 @@ namespace AiesecBiH.Services.BaseServices
 {
     public class ReadService<T, TDb, TSearch> : IReadService<T, TSearch> 
         where T:class 
-        where TSearch:BaseSearchModel
+        where TSearch:class
         where TDb:class
     {
         protected readonly AiesecContext _context;

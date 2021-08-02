@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:AiesecBiH.MobileApp.ViewModels"
+             x:Class="AiesecBiH.MobileApp.Views.MembersPage">
+    <ContentPage.BindingContext>
+        <vm:MembersViewModel></vm:MembersViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Members" FontSize="30" VerticalOptions="Start" HorizontalOptions="Center" Margin="30"/>
+            <StackLayout Padding="5" Orientation="Horizontal">
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                    <Label Text="Functional Field" VerticalOptions="CenterAndExpand" />
+                    <Picker ItemsSource="{Binding FunctionalFieldsList}" SelectedItem="{Binding SelectedFunctionalField}"
+    ItemDisplayBinding="{Binding Name}" HorizontalOptions="Fill"></Picker>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                    <Label Text="Local Committee" VerticalOptions="CenterAndExpand" />
+                    <Picker ItemsSource="{Binding LocalCommitteesList}" SelectedItem="{Binding SelectedLocalCommittee}"
+    ItemDisplayBinding="{Binding Name}" HorizontalOptions="Fill"></Picker>
+                </StackLayout>
+            </StackLayout>
+            <ListView ItemsSource="{Binding MembersList}" ItemSelected="ListView_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="5" Orientation="Horizontal">
+                                <Frame BorderColor="White" HorizontalOptions="FillAndExpand">
+                                    <StackLayout Orientation="Vertical">
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
+                                            <Label Text="{Binding FirstName}" 
+                                           LineBreakMode="NoWrap" 
+                                           Style="{DynamicResource ListItemTextStyle}" 
+                                           FontSize="16" />
+                                            <Label Text="{Binding LastName}" 
+                                           LineBreakMode="NoWrap" 
+                                           Style="{DynamicResource ListItemTextStyle}" 
+                                           FontSize="16" />
+                                            <Label Text="{Binding Username}" 
+                                           LineBreakMode="NoWrap" 
+                                           Style="{DynamicResource ListItemTextStyle}" 
+                                           FontSize="12" />
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="{Binding PhoneNumber}" 
+                                               LineBreakMode="NoWrap"
+                                               Style="{DynamicResource ListItemDetailTextStyle}"
+                                               FontSize="11" HorizontalOptions="Start" />
+                                            <Label Text="{Binding FunctionalFieldName}" 
+                                               LineBreakMode="NoWrap"
+                                               Style="{DynamicResource ListItemDetailTextStyle}"
+                                               FontSize="11" HorizontalOptions="Center" />
+                                            <Label Text="{Binding LocalCommitteeName}" 
+                                               LineBreakMode="NoWrap"
+                                               Style="{DynamicResource ListItemDetailTextStyle}"
+                                               FontSize="11" HorizontalOptions="End" />
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Frame>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

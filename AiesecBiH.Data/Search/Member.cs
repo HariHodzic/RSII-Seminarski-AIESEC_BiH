@@ -13,7 +13,7 @@ namespace AiesecBiH.Model.Search
         public string Username { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public char Gender { get; set; }
+        public char? Gender { get; set; }
         public string PhoneNumber { get; set; }
         public int CityId { get; set; }
         public string CityName { get; set; }

@@ -19,7 +19,7 @@ namespace AiesecBiH.Services
         {
             
         }
-        public override async Task<IEnumerable<Model.Response.Office>> Get(Model.Search.Office? search)
+        public override async Task<IEnumerable<Model.Response.Office>> Get(Model.Search.Office search=null)
         {
             var query = _context.Offices.AsQueryable();
             if (search.onlyActive == true)
@@ -30,7 +30,7 @@ namespace AiesecBiH.Services
             {
                 query = query.Where(x => x.LocalCommitteeId == search.LocalCommitteeId);
             }
-            var entities = await query.Include(x => x.LocalCommittee).ThenInclude(x => x.City).ToListAsync();
+            var entities = await query.Include(x => x.LocalCommittee).ToListAsync();
             var result = _mapper.Map<IEnumerable<Model.Response.Office>>(entities);
             return result;
         }
@@ -38,7 +38,7 @@ namespace AiesecBiH.Services
         public override async Task<Office> GetById(int id)
         {
             //Include(x => x.City)
-            var result = await _context.Offices.Include(x => x.LocalCommittee).ThenInclude(x => x.City).FirstOrDefaultAsync(x=>x.Id==id);
+            var result = await _context.Offices.Include(x => x.LocalCommittee).FirstOrDefaultAsync(x=>x.Id==id);
             if (result != null)
                 return _mapper.Map<Model.Response.Office>(result);
             else
