@@ -35,5 +35,12 @@ namespace AiesecBiH.Services
 
             return string.Empty;
         }
+
+        public string GeneratePassword()
+        {
+            var buf = new byte[8];
+            (new RNGCryptoServiceProvider()).GetBytes(buf);
+            return Convert.ToBase64String(buf);
+        }
     }
 }

@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:AiesecBiH.MobileApp.ViewModels.Requests"
+             x:Class="AiesecBiH.MobileApp.Views.NewTaskPage">
+    <ContentPage.BindingContext>
+        <vm:NewTaskViewModel></vm:NewTaskViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <ScrollView Orientation="Vertical">
+            <StackLayout>
+                <Label Text="New Task" FontSize="30" VerticalOptions="Start" HorizontalOptions="Center" Margin="30" FontAttributes="Bold"/>
+                <StackLayout>
+                    <Label Text="Title" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"></Label>
+                    <Entry Text="{Binding Name}"  HorizontalTextAlignment="Center"></Entry>
+                    <Label Text="{Binding LblNameError}" VerticalTextAlignment="Center"  HorizontalTextAlignment="Center" TextColor="Red"></Label>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Body" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"></Label>
+                    <Editor Text="{Binding Description}" ></Editor>
+                    <Label Text="{Binding LblDescriptionError}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="Red"></Label>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Deadline" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"></Label>
+                    <DatePicker Date="{Binding Deadline}" ></DatePicker>
+                    <Label Text="{Binding LblDeadlineError}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="Red"></Label>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                    <Label Text="Priority" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+                    <Picker ItemsSource="{Binding PriorityList}" SelectedItem="{Binding Priority}"
+     HorizontalOptions="Fill"></Picker>
+                </StackLayout>
+                <Button  Text="Save" 
+                         Command="{Binding SaveCommand}"
+                         BackgroundColor="LightBlue" 
+                         TextColor="Black"
+                         VerticalOptions="CenterAndExpand">
+                </Button>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

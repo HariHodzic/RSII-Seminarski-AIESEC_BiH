@@ -7,7 +7,12 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Tasks" FontSize="30" VerticalOptions="Start" HorizontalOptions="Center" Margin="30"/>
+            <Label Text="Tasks" FontSize="30" VerticalOptions="Start" HorizontalOptions="Center" Margin="30" FontAttributes="Bold"/>
+            <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+                <Picker ItemsSource="{Binding SearchOptionsList}" SelectedItem="{Binding SelectedSearchOption}"
+     HorizontalOptions="Start" WidthRequest="300"></Picker>
+                <Button Text="New Task" Clicked="btnNewTask_Clicked" HorizontalOptions="EndAndExpand"></Button>
+            </StackLayout>
             <ListView ItemsSource="{Binding TasksList}" ItemSelected="ListView_ItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -22,7 +27,7 @@
                                            FontSize="16" />
                                             <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
                                                 <Label Text="Priority:" ></Label>
-                                                <Label Text="Status" TextColor="Red"></Label>
+                                                <Label Text="{Binding Priority}" TextColor="Red"></Label>
                                             </StackLayout>
                                             </StackLayout>
                                             <StackLayout Orientation="Horizontal">

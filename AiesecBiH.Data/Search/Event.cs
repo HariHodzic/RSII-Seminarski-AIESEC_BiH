@@ -11,7 +11,7 @@ namespace AiesecBiH.Model.Search
     public class Event:BaseSearchModel
     {
         public string Name { get; set; }
-        public bool IsOnline { get; set; }
+        public bool? InPast { get; set; }
         public bool AllMembers { get; set; }
         public DateTime DateTime { get; set; }
         public int FunctionalFieldId { get; set; }

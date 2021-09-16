@@ -20,6 +20,7 @@ using AiesecBiH.Services.BaseServices;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using AiesecBiH.Settings;
 
 namespace AiesecBiH
 {
@@ -56,6 +57,8 @@ namespace AiesecBiH
             services.AddScoped<INoticeService, NoticeService>();
             services.AddScoped<IMemberService, MemberService>();
             services.AddScoped<IReadService<Role,Model.Search.Role>, ReadService<Role,Database.Role, Model.Search.Role>>();
+            services.Configure<MailSettings>(Configuration.GetSection("MailSettings"));
+            services.AddTransient<IMailService, MailService>();
             services.AddAuthentication("BasicAuthentication")
                 .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication",null);
             services.AddSwaggerGen(options =>

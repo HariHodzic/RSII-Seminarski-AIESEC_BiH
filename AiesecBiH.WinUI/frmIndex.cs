@@ -51,6 +51,7 @@ namespace AiesecBiH.WinUI
         public frmIndex()
         {
             InitializeComponent();
+            btnSidebar.Text = "<";
             btnMembers_Click(null, null);
         }
         private void ShowNewForm(object sender, EventArgs e)

@@ -19,7 +19,6 @@ namespace AiesecBiH.Model.Response
         public int MemberId { get; set; }
         public Member Member { get; set; }
         public string MemberName { get; set; }
-        public bool Attended { get; set; } = false;
         public DateTime CreatedDate { get; set; }
         public bool Active { get; set; } = true;
 

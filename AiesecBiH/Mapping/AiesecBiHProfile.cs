@@ -17,7 +17,8 @@ namespace AiesecBiH.Mapping
 
             //EventAttendance
             CreateMap<Model.Insert.EventAttendance, Database.EventAttendance>();
-            
+            CreateMap<Database.EventAttendance, Model.Response.EventAttendance>();
+
             //FunctionalFields
             CreateMap<Model.Insert.FunctionalField, Database.FunctionalField>();
             CreateMap<Database.FunctionalField,Model.Response.FunctionalField>();
@@ -26,7 +27,6 @@ namespace AiesecBiH.Mapping
             CreateMap<Model.Insert.LocalCommittee, Database.LocalCommittee>();
             CreateMap<Model.Update.LocalCommittee, Database.LocalCommittee>();
             CreateMap<Database.LocalCommittee, Model.Response.LocalCommittee>();
-                //.ForMember(dest => dest.Name, opt => opt.MapFrom(x => x.City.Name));
             //Roles
             CreateMap<Database.Role, Model.Response.Role>();
 
@@ -50,7 +50,8 @@ namespace AiesecBiH.Mapping
             CreateMap<Database.Task, Model.Response.Task>();
             //Notice
             CreateMap<Model.Insert.Notice, Database.Notice>();
-            CreateMap<Database.Notice, Model.Response.Notice>();
+            CreateMap<Database.Notice, Model.Response.Notice>()
+                .ForMember(x => x.MemberUsername, opt => opt.MapFrom(y => y.Member.Username));
         }
     }
 }

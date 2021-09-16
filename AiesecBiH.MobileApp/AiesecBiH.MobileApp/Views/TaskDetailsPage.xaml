@@ -6,38 +6,62 @@
         <vm:TaskDetailsViewModel></vm:TaskDetailsViewModel>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="10">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="100"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <ScrollView>
-                <StackLayout Grid.Row="0" Grid.Column="0">
-                    <Label Text="{Binding Task.Name}" Style="{DynamicResource ListItemTextStyle}" ></Label>
-                    <Label Text="{Binding Task.Description}" FontSize="13"></Label>
-                    <StackLayout Orientation="Horizontal" Margin="0,15">
-                        <Label Text="Deadline: "></Label>
-                        <Label Text="{Binding Task.Deadline}" Style="{DynamicResource ListItemTextStyle}" ></Label>
-                    </StackLayout>
+        <StackLayout Orientation="Vertical">
+        <Label Text="Task details"
+                VerticalOptions="StartAndExpand" 
+                HorizontalOptions="CenterAndExpand" FontSize="18" FontAttributes="Bold"/>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+            <Label Text="{Binding TaskDetails.Name}"
+                    HorizontalOptions="CenterAndExpand" FontSize="22" FontAttributes="Bold"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                <Label Text="{Binding TaskDetails.Description}" 
+                         HorizontalTextAlignment="Center"
+                        FontSize="18" HorizontalOptions="CenterAndExpand"/>
+        </StackLayout>
+            <Label></Label>
+            <StackLayout Orientation="Vertical" VerticalOptions="EndAndExpand">
+                <Label Text="Deadline:" FontSize="12" TextColor="DarkGray" HorizontalOptions="Center"></Label>
+                <Label Text="{Binding TaskDetails.Deadline}" HorizontalOptions="CenterAndExpand"  
+                                        Style="{DynamicResource ListItemDetailTextStyle}"
+                                        FontSize="17" FontAttributes="Bold" />
+                <Label></Label>
+                <Label Text="Done:"  FontSize="14" TextColor="DarkGray" HorizontalOptions="Center" ></Label>
+                <Label Text="{Binding TaskDetails.Executed}" HorizontalOptions="Center" FontSize="17"></Label>
+                <Label></Label>
+                <Label Text="Executed by:"  FontSize="14" TextColor="DarkGray" HorizontalOptions="Center" ></Label>
+                <Label Text="{Binding TaskDetails.MemberExecutor.Username}" HorizontalOptions="Center" FontSize="17"></Label>
+                <Label></Label>
+                <Label Text="Priority:" FontSize="12" TextColor="DarkGray" HorizontalOptions="Center"></Label>
+                <Label Text="{Binding TaskDetails.Priority}" HorizontalOptions="Center" FontSize="17" TextColor="Red"></Label>
+            </StackLayout>
+            <StackLayout>
+                <Label></Label>
+                <Button x:Name="btnExecuteTask" Text="Change status" VerticalOptions="Center" Command="{Binding ExecuteTaskCommand}"/>
+            </StackLayout>
+        <!--TEAM-->
+            <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand">
+                <StackLayout Orientation="Vertical" HorizontalOptions="StartAndExpand">
+                    <Label Text="Local committe" FontSize="12" TextColor="DarkGray" HorizontalOptions="Center"></Label>
+                    <Label Text="{Binding TaskDetails.LocalCommittee.Name}" HorizontalOptions="Center" 
+                                    Style="{DynamicResource ListItemDetailTextStyle}"
+                                    FontSize="17" FontAttributes="Bold"/>
                 </StackLayout>
-            </ScrollView>
-            <StackLayout Grid.Row="1" Grid.Column="0">
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Fucnctional Field: "></Label>
-                    <Label Text="{Binding Task.FunctionalField.Name}" Style="{DynamicResource ListItemTextStyle}" ></Label>
+                <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
+                    <Label Text="Functional field" FontSize="12" TextColor="DarkGray" HorizontalOptions="Center"></Label>
+                    <Label Text="{Binding TaskDetails.FunctionalField.Name}" HorizontalOptions="Center"  
+                                    Style="{DynamicResource ListItemDetailTextStyle}"
+                                    FontSize="17" FontAttributes="Bold"/>
                 </StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Local Committee: "></Label>
-                    <Label Text="{Binding Task.LocalCommittee.Name}" Style="{DynamicResource ListItemTextStyle}" ></Label>
-                </StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Target Position: "></Label>
-                    <Label Text="{Binding Task.RoleName}" Style="{DynamicResource ListItemTextStyle}" ></Label>
+                <StackLayout Orientation="Vertical" HorizontalOptions="EndAndExpand">
+                    <Label Text="Role" FontSize="12" TextColor="DarkGray" HorizontalOptions="Center"></Label>
+                    <Label Text="{Binding TaskDetails.RoleName}" HorizontalOptions="CenterAndExpand" 
+                                    Style="{DynamicResource ListItemDetailTextStyle}"
+                                    FontSize="17" FontAttributes="Bold"/>
                 </StackLayout>
             </StackLayout>
-        </Grid>
+            <StackLayout Orientation="Horizontal" VerticalOptions="End" WidthRequest="500">
+        </StackLayout>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

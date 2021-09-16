@@ -11,30 +11,31 @@
                     <Label Text="Update profile" FontSize="30" Margin="5,0,0,20" HorizontalOptions="Center"></Label>
                 <StackLayout Orientation="Vertical">
                     <Label Text="First Name"/>
-                    <Entry Text="{Binding MemberUpdateRequest.FirstName}"/>
+                    <Entry Text="{Binding FirstName}"/>
+                    <Label Text="{Binding LblFirstNameErr}" HorizontalTextAlignment="Center" TextColor="Red"></Label>
                 </StackLayout>
                 <StackLayout Orientation="Vertical">
                     <Label Text="Last Name"/>
-                    <Entry Text="{Binding MemberUpdateRequest.LastName}"/>
-                </StackLayout>
-                <StackLayout Orientation="Vertical">
-                    <Label Text="Username"/>
-                    <Entry Text="{Binding MemberUpdateRequest.Username}"/>
+                    <Entry Text="{Binding LastName}"/>
+                    <Label Text="{Binding LblLastNameErr}" HorizontalTextAlignment="Center" TextColor="Red"></Label>
                 </StackLayout>
                 <StackLayout Orientation="Vertical">
                     <Label Text="Address"/>
-                    <Entry Text="{Binding MemberUpdateRequest.Address}"/>
+                    <Entry Text="{Binding Address}"/>
+                    <Label Text="{Binding LblAddressErr}" HorizontalTextAlignment="Center" TextColor="Red"></Label>
                 </StackLayout>
                 <StackLayout Orientation="Vertical">
                     <Label Text="Phone Number"/>
-                    <Entry Text="{Binding MemberUpdateRequest.PhoneNumber}"/>
+                    <Entry Text="{Binding PhoneNumber}"/>
+                    <Label Text="{Binding LblPhoneNumberErr}" HorizontalTextAlignment="Center" TextColor="Red"></Label>
                 </StackLayout>
                 <StackLayout Orientation="Vertical">
-                    <Label Text="Address"/>
+                    <Label Text="Birth Date"/>
                     <Entry Text="{Binding MemberUpdateRequest.BirthDate}"/>
+                    <!--<Label Text="{Binding }" HorizontalTextAlignment="Center" TextColor="Red"></Label>-->
                 </StackLayout>
 
-                <Button x:Name="btnSnimi" Text="Snimi profil" Command="{Binding UpdateMyProfile}"/>
+                <Button x:Name="btnSave" Text="Save changes" Command="{Binding UpdateMyProfile}"/>
 
             </StackLayout>
         </ScrollView>

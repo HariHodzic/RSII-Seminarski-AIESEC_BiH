@@ -5,30 +5,35 @@
     <ContentPage.BindingContext>
         <vm:NoticeDetailsViewModel></vm:NoticeDetailsViewModel>
     </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="10">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="100"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <ScrollView>
-                <StackLayout Grid.Row="0" Grid.Column="0">
-                    <Label Text="{Binding Notice.Title}" Style="{DynamicResource ListItemTextStyle}" ></Label>
-                    <Label Text="{Binding Notice.Body}" FontSize="13"></Label>
-                    <StackLayout Orientation="Horizontal" Margin="0,15">
-                        <Label Text="{Binding Notice.CreatedDate}" Style="{DynamicResource ListItemTextStyle}" ></Label>
-                    </StackLayout>
-                </StackLayout>
-            </ScrollView>
-            <StackLayout Grid.Row="1" Grid.Column="0">
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Published by: "></Label>
-                    <Label Text="{Binding Notice.MemberUsername}" Style="{DynamicResource ListItemTextStyle}" ></Label>
-                </StackLayout>
+        <StackLayout Orientation="Vertical">
+            <Label Text="Notice details"
+                VerticalOptions="StartAndExpand" 
+                HorizontalOptions="CenterAndExpand" FontSize="22" FontAttributes="Bold"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <Label Text="{Binding Notice.Title}"
+                    HorizontalOptions="CenterAndExpand" FontSize="17" FontAttributes="Bold"/>
             </StackLayout>
-        </Grid>
+            <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                <Label Text="{Binding Notice.Body}" 
+                         HorizontalTextAlignment="Center"
+                        FontSize="14" HorizontalOptions="CenterAndExpand"/>
+            </StackLayout>
+            <Label></Label>
+            <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+                 <Label Text="{Binding Notice.MemberUsername}" HorizontalOptions="StartAndExpand" 
+                                        Style="{DynamicResource ListItemDetailTextStyle}"
+                                        FontSize="15" FontAttributes="Bold"/>
+                <Label Text="{Binding Notice.CreatedDate}" HorizontalOptions="EndAndExpand"  
+                                        Style="{DynamicResource ListItemDetailTextStyle}"
+                                        FontSize="15"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" VerticalOptions="End" WidthRequest="100">
+            </StackLayout>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

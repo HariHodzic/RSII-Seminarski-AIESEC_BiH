@@ -85,7 +85,7 @@
                 </StackLayout>
             </Grid>
             <Button Text="Update profile" Clicked="Button_Clicked"></Button>
-            <Button BackgroundColor="LightPink" TextColor="{DynamicResource Primary}" Text="Change password" Clicked="Button_Clicked_1"></Button>
+            <Button BackgroundColor="LightPink" TextColor="Black" Text="Change password" Clicked="btnChangePass"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

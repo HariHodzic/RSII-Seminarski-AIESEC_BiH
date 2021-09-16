@@ -14,6 +14,7 @@ using AiesecBiH.Model.Response;
 using Flurl.Http;
 using AiesecBiH.WinUI.Helpers;
 using Task = System.Threading.Tasks.Task;
+using System.Data.SqlClient;
 
 namespace AiesecBiH.WinUI.Members
 {
@@ -111,10 +112,22 @@ namespace AiesecBiH.WinUI.Members
                 LocalCommitteeId = Convert.ToInt32(cmbLocalCommittee.SelectedValue),
                 FunctionalFieldId = Convert.ToInt32(cmbFunctionalField.SelectedValue),
                 RoleId = Convert.ToInt32(cmbRole.SelectedValue),
-                EmailAddress = txtEmail.Text,
-                Gender = cmbGender.SelectedItem.ToString()[0],
+                EmailAddress = txtEmail.Text
             };
             return model;
+        }
+
+        private async Task<bool> IsEmailUnique(string mail)
+        {
+            var req = new Model.Search.Member
+            {
+                Email = mail
+            };
+            var result =await _memberService.Get<List<Model.Response.MemberLL>>(req);
+            if (result.Count > 0)
+                return false;
+            else
+                return true;
         }
 
         private async void btnSave_Click(object sender, EventArgs e)
@@ -125,33 +138,45 @@ namespace AiesecBiH.WinUI.Members
                 {
                     Model.Update.Member model = CreateUpdateModel();
                     DialogResult dialogResult = MessageBox.Show("Are you sure you want to update this record?", "Caption", MessageBoxButtons.YesNo);
-                    if (dialogResult == DialogResult.Yes && Validation.BaseValidation(model))
+
+                    if (dialogResult == DialogResult.Yes && Validation.BaseValidation(model) && Validation.IsPhoneNumberValid(txtPhoneNumber.Text) && Validation.EmailValidation(txtEmail.Text))
                     {
                         await _memberService.Update<Member>(model.Id, model);
                         MessageBox.Show("Successfully updated Member!");
                         frmIndex.Instance.btnMembers_Click(null, null);
                     }
+                    else if (!Validation.IsPhoneNumberValid(txtPhoneNumber.Text))
+                        MessageBox.Show("Phone number must contain only numbers in this format eg. 000111222");
+
+                    else if (!Validation.EmailValidation(txtEmail.Text))
+                        MessageBox.Show("Invalid email");
                 }
                 else
                 {
                     var model = CreateInsertModel();
+                    bool isMailUnique = await IsEmailUnique(model.EmailAddress);
                     DialogResult dialogResult = MessageBox.Show("Are you sure you want to creeate new record?", "Caption", MessageBoxButtons.YesNo);
-                    if (dialogResult == DialogResult.Yes && Validation.BaseValidation(model))
+                    if (dialogResult == DialogResult.Yes && Validation.BaseValidation(model) && Validation.IsPhoneNumberValid(txtPhoneNumber.Text)&& Validation.EmailValidation(txtEmail.Text) && isMailUnique)
                     {
                         var result= await _memberService.Insert<Member>(model);
+
                         if (result != null)
                         {
                             MessageBox.Show("Succesfully created new Member!");
                             frmIndex.Instance.btnMembers_Click(null, null);
                         }
                     }
+                    else if (!Validation.IsPhoneNumberValid(txtPhoneNumber.Text))
+                        MessageBox.Show("Phone number must contain only numbers in this format eg. 000111222");
+
+                    else if (!Validation.EmailValidation(txtEmail.Text) || !isMailUnique)
+                        MessageBox.Show("Invalid email");
                 }
             }
             catch (FlurlHttpException ex)
             {
                 var a = await ex.GetResponseStringAsync();
-                //var b = await ex.GetResponseJsonAsync<Error>();
-                MessageBox.Show(a);
+                MessageBox.Show("There was an error!");
             }
 
         }

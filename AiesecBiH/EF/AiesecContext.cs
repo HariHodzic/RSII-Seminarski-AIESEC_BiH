@@ -28,6 +28,10 @@ namespace AiesecBiH.EF
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<Member>(entity => {
+                entity.HasIndex(e => e.EmailAddress).IsUnique();
+            });
+
             //modelBuilder.Entity<Task>() <======== Za koristenje Enum-a
             //    .Property(x => x.Priority)
             //    .HasConversion<int>(); 
@@ -88,6 +92,7 @@ namespace AiesecBiH.EF
             modelBuilder.MembersSeed();
             modelBuilder.NoticeSeed();
             modelBuilder.TasksSeed();
+            modelBuilder.EventsSeed();
 
         }
 

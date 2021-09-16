@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AiesecBiH.Model.Update;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,6 +19,9 @@ namespace AiesecBiH.IServices
         Task<Model.Response.MemberLL> Login(string username, string password);
         Task<Model.Response.Member> Remove(int id);
         Task<Model.Response.MemberLL> MyProfile();
+        bool IsUniqueEmailAddress(string emailAddress);
+        Task<Model.Response.MemberLL> ChangePassword(int id, ChangePasswordModel model);
+
 
     }
 }

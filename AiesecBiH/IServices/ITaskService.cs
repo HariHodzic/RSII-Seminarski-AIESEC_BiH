@@ -8,5 +8,7 @@ namespace AiesecBiH.IServices
 {
     public interface ITaskService:ICRUDService<Model.Response.TaskDetails, Model.Search.Task, Model.Update.Task, Model.Insert.Task>
     {
+        Task<Model.Response.TaskDetails> Execute(int id,int memberId);
+
     }
 }

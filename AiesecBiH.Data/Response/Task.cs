@@ -9,13 +9,13 @@ namespace AiesecBiH.Model.Response
     {
         public string Name { get; set; }
         public string Description { get; set; }
-        public bool Status { get; set; } = false;//After one member executes the task, he can change this field to true. After the creator reviews it, field Active will be changed.
-
+        public bool Executed { get; set; } = false;//After one member executes the task, he can change this field to true. After the creator reviews it, field Active will be changed.
+        public Priority Priority { get; set; }
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Deadline { get; set; }
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        //[DataType(DataType.Date)]
+        //[DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public int? MemberExecutorId { get; set; }
         public virtual Member MemberExecutor { get; set; }
     }

@@ -26,10 +26,16 @@ namespace AiesecBiH.MobileApp.Views
             base.OnAppearing();
             await model.Init();
         }
-
-        private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private async void btnNewEvent_Clicked(object sender, EventArgs e)
         {
+            await Navigation.PushAsync(new NewEventPage());
 
+        }
+        private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            var eventDetails = e.SelectedItem as Model.Response.Event;
+
+            await Navigation.PushAsync(new EventDetailsPage(eventDetails));
         }
     }
 }

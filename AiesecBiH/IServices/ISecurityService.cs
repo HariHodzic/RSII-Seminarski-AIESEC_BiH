@@ -9,5 +9,6 @@ namespace AiesecBiH.IServices
     {
         string GenerateHash(string salt, string password);
         string GenerateSalt();
+        string GeneratePassword();
     }
 }

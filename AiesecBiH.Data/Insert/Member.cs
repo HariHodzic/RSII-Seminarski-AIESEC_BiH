@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace AiesecBiH.Model.Insert
 {
     public class Member
-    {
+    {   
         [Required(AllowEmptyStrings = false)]
         [StringLength(maximumLength: 20, MinimumLength = 2)]
         public string FirstName { get; set; }
@@ -35,6 +35,6 @@ namespace AiesecBiH.Model.Insert
         public int FunctionalFieldId { get; set; }
         [Required]
         public int LocalCommitteeId { get; set; }
-        public bool Active { get; set; }
+        public bool Active { get; set; } = true;
     }
 }

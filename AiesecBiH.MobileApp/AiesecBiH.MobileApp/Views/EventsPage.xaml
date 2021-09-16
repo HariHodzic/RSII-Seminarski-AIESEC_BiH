@@ -7,24 +7,30 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Events" FontSize="30" VerticalOptions="Start" HorizontalOptions="Center" Margin="30"/>
-            <ListView ItemsSource="{Binding EventList}" ItemSelected="ListView_ItemSelected">
+            <Label Text="Events" FontSize="30" VerticalOptions="Start" HorizontalOptions="Center" Margin="30" FontAttributes="Bold"/>
+            <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+                <Picker ItemsSource="{Binding SearchOptionsList}" SelectedItem="{Binding SelectedSearchOption}"
+     HorizontalOptions="Start" WidthRequest="300"></Picker>
+                <Button Text="New Event" Clicked="btnNewEvent_Clicked" HorizontalOptions="EndAndExpand"></Button>
+            </StackLayout>
+
+        <ListView ItemsSource="{Binding EventsList}" ItemSelected="ListView_ItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Padding="5" Orientation="Horizontal">
                                 <Frame BorderColor="White" HorizontalOptions="FillAndExpand">
                                     <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                                        <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
                                             <Label Text="{Binding Name}" 
                                            LineBreakMode="NoWrap" 
                                            Style="{DynamicResource ListItemTextStyle}" 
                                            FontSize="16" />
-                                            <StackLayout HorizontalOptions="EndAndExpand" Orientation="Vertical" >
-                                                <Label Text="{Binding FunctionalField}" ></Label>
+                                        </StackLayout>
+                                        <StackLayout HorizontalOptions="EndAndExpand" Orientation="Vertical" >
+                                                <Label Text="{Binding FunctionalFieldName}" ></Label>
                                                 <Label Text="{Binding LocalCommitteeName}"></Label>
                                             </StackLayout>
-                                        </StackLayout>
                                         <StackLayout Orientation="Horizontal">
                                             <Label Text="Date:" FontSize="11"/>
                                             <Label Text="{Binding DateTime}" 

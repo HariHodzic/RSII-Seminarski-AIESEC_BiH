@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:AiesecBiH.MobileApp.ViewModels"
+             x:Class="AiesecBiH.MobileApp.Views.EventDetailsPage">
+    <ContentPage.BindingContext>
+        <vm:EventsViewModel></vm:EventsViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+            <Label Text="Task details"
+                VerticalOptions="StartAndExpand" 
+                HorizontalOptions="CenterAndExpand" FontSize="18" FontAttributes="Bold"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <Label Text="{Binding EventDetails.Name}"
+                    HorizontalOptions="CenterAndExpand" FontSize="22" FontAttributes="Bold"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                <Label Text="{Binding EventDetails.Description}" 
+                         HorizontalTextAlignment="Center"
+                        FontSize="18" HorizontalOptions="CenterAndExpand"/>
+            </StackLayout>
+            <Label></Label>
+            <StackLayout Orientation="Vertical" VerticalOptions="EndAndExpand">
+                <Label Text="Deadline" FontSize="12" TextColor="DarkGray" HorizontalOptions="Center"></Label>
+                <Label Text="{Binding EventDetails.DateTime}" HorizontalOptions="CenterAndExpand"  
+                                        Style="{DynamicResource ListItemDetailTextStyle}"
+                                        FontSize="17" FontAttributes="Bold" />
+                <Label></Label>
+                <!--<Label Text="Done"  FontSize="14" TextColor="DarkGray" HorizontalOptions="Center" ></Label>-->
+                <!--<CheckBox IsChecked="{Binding EventDetails.Executed}" HorizontalOptions="Center"></CheckBox>-->
+            </StackLayout>
+            <StackLayout>
+                <Button Text="Check attendance" Command="{Binding GetAttendanceCommand}" VerticalOptions="Center"></Button>
+                <Label></Label>
+                <Button x:Name="btnAttendEvent" Text="Attend" VerticalOptions="Center" Command="{Binding AttendCommand}"/>
+            </StackLayout>
+            <!--TEAM-->
+            <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand">
+                <StackLayout Orientation="Vertical" HorizontalOptions="StartAndExpand">
+                    <Label Text="Local committe" FontSize="12" TextColor="DarkGray" HorizontalOptions="Center"></Label>
+                    <Label Text="{Binding EventDetails.LocalCommittee.Name}" HorizontalOptions="Center" 
+                                    Style="{DynamicResource ListItemDetailTextStyle}"
+                                    FontSize="17" FontAttributes="Bold"/>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
+                    <Label Text="Functional field" FontSize="12" TextColor="DarkGray" HorizontalOptions="Center"></Label>
+                    <Label Text="{Binding EventDetails.FunctionalField.Name}" HorizontalOptions="Center"  
+                                    Style="{DynamicResource ListItemDetailTextStyle}"
+                                    FontSize="17" FontAttributes="Bold"/>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" HorizontalOptions="EndAndExpand">
+                    <Label Text="Created date" FontSize="12" TextColor="DarkGray" HorizontalOptions="Center"></Label>
+                    <Label Text="{Binding EventDetails.CreatedDate}" HorizontalOptions="CenterAndExpand" 
+                                    Style="{DynamicResource ListItemDetailTextStyle}"
+                                    FontSize="17" FontAttributes="Bold"/>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" VerticalOptions="End" WidthRequest="500">
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

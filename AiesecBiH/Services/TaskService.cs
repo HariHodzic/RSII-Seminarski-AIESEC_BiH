@@ -18,12 +18,34 @@ namespace AiesecBiH.Services
         {
 
         }
+
+        public async Task<TaskDetails> Execute(int id,int memberId)
+        {
+            var entity = await _context.Tasks.FirstOrDefaultAsync(x => x.Id == id);
+            if(entity==null)
+                return null;
+            if (entity.Executed == true)
+            {
+                entity.MemberExecutorId = null;
+                entity.Executed = false;
+            }
+            else
+            {
+                entity.MemberExecutorId = memberId;
+                entity.Executed = true;
+                entity.DateOfExecution = DateTime.Now;
+            }
+            _context.Tasks.Update(entity);
+            await _context.SaveChangesAsync();
+            return _mapper.Map<Model.Response.TaskDetails>(entity);
+        }
+
         public override async Task<IEnumerable<TaskDetails>> Get([FromQuery] Model.Search.Task search = null)
         {
             var query = _context.Tasks.AsQueryable();
-            if (search?.Executed == true)
+            if (search?.Executed == false)
             {
-                query = query.Where(x => x.Executed == true);
+                query = query.Where(x => x.Executed == false);
             }
             if (search?.LocalCommitteeId != 0)
             {
@@ -38,7 +60,7 @@ namespace AiesecBiH.Services
                 query = query.Where(x => x.RoleId ==search.RoleId);
             }
             //var entities = await query.Include(x => x.).ThenInclude(x => x.FunctionalField)..ToListAsync();
-            var entities = await query.Include(x => x.LocalCommittee).Include(x => x.Role).Include(x => x.FunctionalField).ToListAsync();
+            var entities = await query.Include(x => x.LocalCommittee).Include(x => x.Role).Include(x => x.FunctionalField).OrderByDescending(x=>x.Deadline).ToListAsync();
             var result = _mapper.Map<IEnumerable<Model.Response.TaskDetails>>(entities);
             return result;
         }

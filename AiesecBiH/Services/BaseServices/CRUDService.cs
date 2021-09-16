@@ -34,7 +34,6 @@ namespace AiesecBiH.Services.BaseServices
             }
             catch (Exception ex)
             {
-
                 throw ex.InnerException;
             }
             

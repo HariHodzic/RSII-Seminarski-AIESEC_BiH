@@ -14,5 +14,6 @@ namespace AiesecBiH.Model.Insert
         [StringLength(maximumLength: 40, MinimumLength = 5)]
         public string Body { get; set; }
         public DateTime CreatedDate { get; set; }
+        public int MemberId { get; set; }
     }
 }

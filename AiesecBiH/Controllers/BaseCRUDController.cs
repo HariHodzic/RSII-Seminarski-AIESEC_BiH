@@ -18,23 +18,25 @@ namespace AiesecBiH.Controllers
         where TUpdate:class
     {
         protected readonly ICRUDService<T, TSearch, TUpdate, TInsert> _crudService;
-        public BaseCRUDController(ICRUDService<T,TSearch,TUpdate,TInsert> service):base(service)
+        public BaseCRUDController(ICRUDService<T, TSearch, TUpdate, TInsert> service):base(service)
         {
             _crudService = service;
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<T> Insert([FromBody] TInsert request=null)
         {
             return await _crudService.Insert(request);
         }
 
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<T> Update(int id,[FromBody] TUpdate request = null)
         {
             return await _crudService.Update(id, request);
         }
-
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<T> Delete(int id)
         {

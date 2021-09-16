@@ -56,23 +56,6 @@ namespace AiesecBiH.EF
                 }
             );
         }
-
-        //public static void CitySeed(this ModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Entity<City>().HasData(
-        //        new City {Id = 1, Name = "Sarajevo", Postcode = "71000"},
-        //        new City {Id = 2, Name = "Mostar", Postcode = "88000"},
-        //        new City {Id = 3, Name = "Zenica", Postcode = "72000"},
-        //        new City {Id = 4, Name = "Banja Luka", Postcode = "78000"},
-        //        new City {Id = 5, Name = "Travnik", Postcode = "74000"},
-        //        new City {Id = 6, Name = "Tuzla", Postcode = "81000"},
-        //        new City {Id = 7, Name = "Gorazde", Postcode = "75000"},
-        //        new City {Id = 8, Name = "Trebinje", Postcode = "76000"},
-        //        new City {Id = 9, Name = "Bihac", Postcode = "79000" }
-        //    );
-
-        //}
-
         public static void LocalCommitteeSeed(this ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<LocalCommittee>().HasData(
@@ -185,7 +168,7 @@ namespace AiesecBiH.EF
                     FirstName = "Admin",
                     LastName = "Admin",
                     Username = "admin",
-                    EmailAddress = "aiesec@aiesec.com",
+                    EmailAddress = "aiesec@tej.com",
                     PasswordSalt = salts[0],
                     PasswordHash = securityService.GenerateHash(salts[0], "test"),
                     LocalCommitteeId=1,
@@ -201,7 +184,7 @@ namespace AiesecBiH.EF
                     LastName = "Kahrimanovic",
                     Username = "ajdinkahrimanovic",
                     Address = "Dobrinjska 12",
-                    EmailAddress = "ajdin.kahrimanovic8@aiesec.com",
+                    EmailAddress = "hari.hodzic98@gmail.com",
                     PhoneNumber = "062123344",
                     PasswordSalt = salts[4],
                     PasswordHash = securityService.GenerateHash(salts[4], "test"),
@@ -398,14 +381,28 @@ namespace AiesecBiH.EF
         public static void TasksSeed(this ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Database.Task>().HasData(
-                new Database.Task { Id = 1, Name = "Sastanak sa partnerima", Description= "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2019, 10, 12, 12, 11, 0), Deadline = new DateTime(2019, 11, 12, 12, 11, 0), MemberCreatorId = 2, Executed =false, RoleId=3,LocalCommitteeId=1, FunctionalFieldId=1},
-                new Database.Task { Id = 2, Name = "Kontaktirati Dom armije", Description= "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2020, 10, 12, 12, 11, 0), Deadline = new DateTime(2019, 11, 12, 12, 11, 0), MemberCreatorId = 2, Executed =false, RoleId = 3, LocalCommitteeId = 1, FunctionalFieldId=1 },
-                new Database.Task { Id = 3, Name = "Odrzati intervju sa novim clanovima", Description= "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2020, 10, 13, 12, 11, 0), Deadline = new DateTime(2019, 11, 12, 12, 11, 0), MemberCreatorId = 2, Executed =false, RoleId = 3, LocalCommitteeId = 1, FunctionalFieldId = 1 },
-                new Database.Task { Id = 4, Name = "Edukacija novih clanova", Description= "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2020, 10, 14, 12, 11, 0), Deadline = new DateTime(2019, 11, 12, 12, 11, 0), MemberCreatorId = 3, Executed=false, RoleId=3,LocalCommitteeId=3, FunctionalFieldId=3 },
-                new Database.Task { Id = 5, Name = "Priprema za YSF", Description= "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2021, 5, 14, 12, 11, 0), Deadline = new DateTime(2019, 11, 12, 12, 11, 0), MemberCreatorId = 3, Executed=false, RoleId=3,LocalCommitteeId=1, FunctionalFieldId = 3 },
-                new Database.Task { Id = 6, Name = "SWAT analiza za ITA", Description= "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2021, 5, 13, 12, 11, 0), Deadline = new DateTime(2019, 11, 12, 12, 11, 0), MemberCreatorId = 3, Executed=false, RoleId=3,LocalCommitteeId=1, FunctionalFieldId=3 },
-                new Database.Task { Id = 7, Name = "Kontaktirati govornike za YSF", Description= "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2021, 12, 9, 12, 11, 0), Deadline = new DateTime(2019, 11, 12, 12, 11, 0), MemberCreatorId = 5, Executed=false, RoleId=3,LocalCommitteeId=1, FunctionalFieldId=2 },
-                new Database.Task { Id = 8, Name = "Odabrati clanove za nesto", Description= "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2021, 12, 10, 12, 11, 0), Deadline = new DateTime(2019, 11, 12, 12, 11, 0), MemberCreatorId = 5, Executed=false, RoleId=3,LocalCommitteeId=1, FunctionalFieldId=2   }
+                new Database.Task { Id = 1, Name = "Sastanak sa partnerima", Description= "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2019, 10, 12, 12, 11, 0), Deadline = new DateTime(2020, 11, 12, 12, 11, 0), MemberCreatorId = 2, Executed =false, RoleId=3,LocalCommitteeId=1, FunctionalFieldId=1,Priority=Model.Priority.High,},
+                new Database.Task { Id = 2, Name = "Kontaktirati Dom armije", Description= "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2020, 10, 12, 12, 11, 0), Deadline = new DateTime(2020, 11, 11, 12, 11, 0), MemberCreatorId = 2, Executed =false, RoleId = 3, LocalCommitteeId = 1, FunctionalFieldId=1, Priority=Model.Priority.Low },
+                new Database.Task { Id = 3, Name = "Odrzati intervju sa novim clanovima", Description= "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2020, 10, 13, 12, 11, 0), Deadline = new DateTime(2020, 10, 12, 12, 11, 0), MemberCreatorId = 2, Executed =false, RoleId = 3, LocalCommitteeId = 1, FunctionalFieldId = 1,Priority=Model.Priority.Medium },
+                new Database.Task { Id = 4, Name = "Edukacija novih clanova", Description= "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2020, 10, 14, 12, 11, 0), Deadline = new DateTime(2020, 11, 12, 12, 11, 0), MemberCreatorId = 3, Executed=false, RoleId=3,LocalCommitteeId=3, FunctionalFieldId=3, Priority = Model.Priority.Medium },
+                new Database.Task { Id = 5, Name = "Priprema za YSF", Description= "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2021, 5, 14, 12, 11, 0), Deadline = new DateTime(2020, 11,9, 12, 11, 0), MemberCreatorId = 3, Executed=false, RoleId=3,LocalCommitteeId=1, FunctionalFieldId = 3, Priority = Model.Priority.Medium },
+                new Database.Task { Id = 6, Name = "SWAT analiza za ITA", Description= "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2021, 5, 13, 12, 11, 0), Deadline = new DateTime(2020, 7, 11, 12, 11, 0), MemberCreatorId = 3, Executed=false, RoleId=3,LocalCommitteeId=1, FunctionalFieldId=3, Priority = Model.Priority.Medium },
+                new Database.Task { Id = 7, Name = "Kontaktirati govornike za YSF", Description= "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2021, 12, 9, 12, 11, 0), Deadline = new DateTime(2020, 6, 12, 12, 11, 0), MemberCreatorId = 5, Executed=false, RoleId=3,LocalCommitteeId=1, FunctionalFieldId=2, Priority = Model.Priority.Low },
+                new Database.Task { Id = 8, Name = "Odabrati clanove za nesto", Description= "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2021, 12, 10, 12, 11, 0), Deadline = new DateTime(2020, 11, 12, 12, 11, 0), MemberCreatorId = 5, Executed=false, RoleId=3,LocalCommitteeId=1, FunctionalFieldId=2, Priority = Model.Priority.Medium }
+            );
+        }
+
+        public static void EventsSeed(this ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Database.Event>().HasData(
+                new Database.Event { Id = 1, Name = "Sastanak sa partnerima", Description = "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2019, 10, 12, 12, 11, 0), DateTime = new DateTime(2020, 11, 12, 12, 11, 0), LocalCommitteeId = 1, FunctionalFieldId = 1},
+                new Database.Event { Id = 2, Name = "Kontaktirati Dom armije", Description = "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2020, 10, 12, 12, 11, 0), DateTime = new DateTime(2020, 7, 7, 12, 11, 0), LocalCommitteeId = 1, FunctionalFieldId = 1 },
+                new Database.Event { Id = 3, Name = "Odrzati intervju sa novim clanovima", Description = "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2020, 10, 13, 12, 11, 0), DateTime = new DateTime(2020, 12, 16, 12, 11, 0), LocalCommitteeId = 1, FunctionalFieldId = 1 },
+                new Database.Event { Id = 4, Name = "Edukacija novih clanova", Description = "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2020, 10, 14, 12, 11, 0), DateTime = new DateTime(2020, 10, 12, 12, 11, 0), LocalCommitteeId = 3, FunctionalFieldId = 3},
+                new Database.Event { Id = 5, Name = "Priprema za YSF", Description = "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2021, 5, 14, 12, 11, 0), DateTime = new DateTime(2019, 11, 12, 12, 11, 0), LocalCommitteeId = 1, FunctionalFieldId = 3 },
+                new Database.Event { Id = 6, Name = "SWAT analiza za ITA", Description = "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2021, 5, 13, 12, 11, 0), DateTime = new DateTime(2019, 11, 12, 12, 11, 0), LocalCommitteeId = 1, FunctionalFieldId = 3 },
+                new Database.Event { Id = 7, Name = "Kontaktirati govornike za YSF", Description = "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2021, 12, 9, 12, 11, 0), DateTime = new DateTime(2019, 11, 12, 12, 11, 0), LocalCommitteeId = 1, FunctionalFieldId = 2 },
+                new Database.Event { Id = 8, Name = "Odabrati clanove za nesto", Description = "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2021, 12, 10, 12, 11, 0), DateTime = new DateTime(2019, 11, 12, 12, 11, 0), LocalCommitteeId = 1, FunctionalFieldId = 2}
             );
         }
     }

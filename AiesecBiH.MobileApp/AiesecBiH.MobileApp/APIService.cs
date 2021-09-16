@@ -47,13 +47,13 @@ namespace AiesecBiH.MobileApp
             }
             catch (FlurlHttpException ex)
             {
-                if (ex.Call.Response.StatusCode == (int)System.Net.HttpStatusCode.Unauthorized)
-                {
-                    await Application.Current.MainPage.DisplayAlert("Greška", "Pogrešan unos podataka ili nemate akaunt!", "OK");
-                }
+                //if (ex.Call.Response.StatusCode == (int)System.Net.HttpStatusCode.Unauthorized)
+                //{
+                //    await Application.Current.MainPage.DisplayAlert("Error", "Wrong input!", "OK");
+                //}
                 if (ex.Call.Response.StatusCode ==(int) System.Net.HttpStatusCode.Forbidden)
                 {
-                    await Application.Current.MainPage.DisplayAlert("Greška", "Niste autorizovani.", "OK");
+                    await Application.Current.MainPage.DisplayAlert("Error", "Not authorized", "OK");
                     return default(T);
                 }
                 throw ex;
@@ -61,7 +61,7 @@ namespace AiesecBiH.MobileApp
         }
         public async Task<T> GetById<T>(object id)
         {
-            var url = $"{_apiUrl}/{_route}";
+            var url = $"{_apiUrl}/{_route}/{id}";
 
             return await url.WithBasicAuth(Username, Password).GetJsonAsync<T>();
         }
@@ -80,7 +80,14 @@ namespace AiesecBiH.MobileApp
             }
             catch (FlurlHttpException ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Error", "Wrong username or password!", "OK");
+                var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
+
+                var stringBuilder = new StringBuilder();
+                foreach (var error in errors)
+                {
+                    stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
+                }
+                await Application.Current.MainPage.DisplayAlert("Error", stringBuilder.ToString(), "OK");
                 return default(T);
             }
         }
@@ -95,5 +102,12 @@ namespace AiesecBiH.MobileApp
             var url = $"{_apiUrl}/{_route}";
             return await url.WithBasicAuth(Username, Password).DeleteAsync().ReceiveJson<T>();
         }
+        public async Task<T> PostMethod<T>(object id, object request,string method)
+        { 
+            var url = $"{_apiUrl}/{_route}/{method}/{id}";
+
+            return await url.WithBasicAuth(Username, Password).PostJsonAsync(request).ReceiveJson<T>();
+        }
+
     }
 }

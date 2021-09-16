@@ -8,6 +8,7 @@ using AiesecBiH.EF;
 using AiesecBiH.Exceptions;
 using AiesecBiH.IServices;
 using AutoMapper;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 namespace AiesecBiH.Services
@@ -17,13 +18,17 @@ namespace AiesecBiH.Services
         public AiesecContext _context { get; set; }
         protected readonly IMapper _mapper;
         private readonly ISecurityService _securityService;
+        private readonly IMailService _mailService;
 
-        public MemberService(AiesecContext context, IMapper mapper,ISecurityService securityService)
+        public MemberService(AiesecContext context, IMapper mapper,ISecurityService securityService, IMailService mailService)
         {
             _context = context;
             _mapper = mapper;
             _securityService = securityService;
+            _mailService = mailService;
         }
+
+
         public async Task<IEnumerable<Model.Response.MemberLL>> Get(Model.Search.Member search=null)
         {
             var query = _context.Members.Include(x=>x.LocalCommittee).Include(x=>x.FunctionalField).AsQueryable();
@@ -35,6 +40,11 @@ namespace AiesecBiH.Services
             if (!string.IsNullOrWhiteSpace(search?.FirstName))
             {
                 query = query.Where(x =>x.FirstName.ToLower().StartsWith(search.FirstName.ToLower()));
+            }
+            if (!string.IsNullOrWhiteSpace(search?.Email))
+            {
+                query = query.Where(x => x.EmailAddress==search.Email);
+
             }
 
             if (!string.IsNullOrWhiteSpace(search?.LastName))
@@ -80,37 +90,43 @@ namespace AiesecBiH.Services
 
             return _mapper.Map<Model.Response.MemberLL>(entity);
         }
+
+
         public async Task<Model.Response.MemberLL> GetById(int id)
         {
             var entity = await _context.Members.FindAsync(id);
 
             return _mapper.Map<Model.Response.MemberLL>(entity);
         }
+
+
         public async Task<Model.Response.Member> Insert(Model.Insert.Member request)
         {
-            Database.Member entity = _mapper.Map<Database.Member>(request);
-            await _context.AddAsync((object) entity);
-            var username = request.FirstName + request.LastName;
-            entity.Username = username;
-            int i = 0;
-            while (await _context.Members.FirstOrDefaultAsync(x => x.Username == entity.Username) != null)
+            try
             {
-                entity.Username = username + (i++).ToString();
+                Database.Member entity = _mapper.Map<Database.Member>(request);
+                await _context.AddAsync((object) entity);
+                var username = request.FirstName + request.LastName;
+                entity.Username = username;
+                int i = 0;
+                while (await _context.Members.FirstOrDefaultAsync(x => x.Username == entity.Username) != null)
+                {
+                    entity.Username = username + (i++).ToString();
+                }
+                var generatedPassword = _securityService.GeneratePassword();
+                entity.PasswordSalt = _securityService.GenerateSalt();
+                entity.PasswordHash = _securityService.GenerateHash(entity.PasswordSalt, generatedPassword);
+                entity.RoleId = request.RoleId;
+                await _mailService.SendRegistrationConfirmaiton(entity.Username, generatedPassword, entity.FirstName, entity.LastName, entity.EmailAddress);
+                await _context.SaveChangesAsync();
+                return _mapper.Map<Model.Response.Member>(entity);
             }
-
-            //if (request.Password != request.ConfirmPassword)
-            //{
-            //    throw new UserException("Password confirmation not correct!");
-            //}
-            
-            entity.PasswordSalt = _securityService.GenerateSalt();
-            entity.PasswordHash = _securityService.GenerateHash(entity.PasswordSalt, "test");
-            entity.RoleId = request.RoleId;
-
-            await _context.SaveChangesAsync();
-            return _mapper.Map<Model.Response.Member>(entity);
-
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
+
 
         public async Task<Model.Response.Member> Update(int id, Model.Update.Member request)
         {
@@ -128,6 +144,7 @@ namespace AiesecBiH.Services
                 throw e;
             }
         }
+
 
         public async Task<Model.Response.MemberLL> Login(string username, string password)
         {
@@ -147,6 +164,8 @@ namespace AiesecBiH.Services
 
             return _mapper.Map<Model.Response.MemberLL>(entity);
         }
+
+
         public async Task<Model.Response.Member> Remove(int id)
         {
             var entity=await _context.Members.FindAsync(id);
@@ -161,6 +180,33 @@ namespace AiesecBiH.Services
 
         }
 
+        public bool IsUniqueEmailAddress(string emailAddress)
+        {
+            var result = _context.Members.FirstOrDefault(x => x.EmailAddress == emailAddress);
+            if (result != null)
+                return false;
+            return true;
+        }
+
+        public async Task<Model.Response.MemberLL> ChangePassword(int id, Model.Update.ChangePasswordModel model)
+        {
+            var member =await _context.Members.FirstOrDefaultAsync(x => x.Id == id);
+
+            if (member == null)
+            {
+                throw new UserException("User not found!");
+            }
+
+            var oldHash = _securityService.GenerateHash(member.PasswordSalt, model.OldPassword);
+            if (oldHash != member.PasswordHash)
+            {
+                throw new UserException("Wrong old password");
+            }
+
+            member.PasswordHash = _securityService.GenerateHash(member.PasswordSalt, model.NewPassword);
+            await _context.SaveChangesAsync();
+            return _mapper.Map<Model.Response.MemberLL>(member);
+        }
     }
 }
 

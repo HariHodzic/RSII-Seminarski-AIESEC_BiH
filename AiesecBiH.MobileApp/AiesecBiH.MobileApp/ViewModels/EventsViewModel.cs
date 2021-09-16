@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AiesecBiH.MobileApp.Models;
+using AiesecBiH.MobileApp.Views;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
@@ -8,24 +10,98 @@ using Xamarin.Forms;
 
 namespace AiesecBiH.MobileApp.ViewModels
 {
-    public class EventsViewModel:BaseViewModel
+    public class EventsViewModel : BaseViewModel
     {
         private readonly APIService _eventService = new APIService("Events");
         public ObservableCollection<Model.Response.Event> EventsList { get; set; } = new ObservableCollection<Model.Response.Event>();
+        public ObservableCollection<SearchOptions> SearchOptionsList { get; set; } = new ObservableCollection<SearchOptions>();
+
+        public Model.Response.Event EventDetails { get; set; }
         public ICommand InitCommand { get; set; }
+        public ICommand AttendCommand { get; set; }
+        public ICommand GetAttendanceCommand { get; set; }
+
 
         public EventsViewModel()
         {
             InitCommand = new Command(async () => await Init());
+            AttendCommand = new Command(async () => await AttendOnEvent());
+            GetAttendanceCommand= new Command(async () => await GetAttendance());
+            SearchOptionsList.Add(SearchOptions.ActiveOnly);
+            SearchOptionsList.Add(SearchOptions.AllTeam);
+            SearchOptionsList.Add(SearchOptions.All);
         }
+
+        private SearchOptions _searchOption = (SearchOptions)1;
+        public SearchOptions SelectedSearchOption
+        {
+            get { return _searchOption; }
+            set
+            {
+                SetProperty(ref _searchOption, value);
+                InitCommand.Execute(null);
+            }
+        }
+
         public async Task Init()
         {
-            var list = await _eventService.Get<IEnumerable<Model.Response.Event>>(null);
-            EventsList.Clear();
-            foreach (var item in list)
+            Model.Search.Event request;
+            if (SelectedSearchOption == SearchOptions.ActiveOnly)
             {
-                EventsList.Add(item);
+                request = new Model.Search.Event
+                {
+                    InPast = false,
+                    FunctionalFieldId = APIService.LoggedUser.FunctionalFieldId,
+                    LocalCommitteeId = APIService.LoggedUser.LocalCommitteeId
+                };
             }
+            else if (SelectedSearchOption == SearchOptions.All)
+            {
+                request = null;
+            }
+            else
+            {
+                request = new Model.Search.Event
+                {
+                    FunctionalFieldId = APIService.LoggedUser.FunctionalFieldId,
+                    LocalCommitteeId = APIService.LoggedUser.LocalCommitteeId
+                };
+            }
+            try
+            {
+                var list = await _eventService.Get<IEnumerable<Model.Response.Event>>(request);
+                EventsList.Clear();
+                foreach (var item in list)
+                {
+                    EventsList.Add(item);
+                }
+            }
+            catch(Exception ex){
+                await Application.Current.MainPage.DisplayAlert("Event", "There was an error.", "OK");
+            }
+            
+        }
+
+        public async Task GetAttendance()
+        {
+            await Shell.Current.Navigation.PushAsync(new EventAttendancePage(EventDetails.Id), true);
+
+        }
+
+        private async Task AttendOnEvent()
+        {
+            try
+            {
+                var result = await _eventService.PostMethod<Model.Response.EventAttendance>(EventDetails.Id, APIService.LoggedUser.Id, "Attend");
+                await Application.Current.MainPage.DisplayAlert("Event", "Event attendance created successfully.", "OK");
+                await Application.Current.MainPage.Navigation.PopAsync();
+
+            }
+            catch (Exception ex)
+            {
+                await Application.Current.MainPage.DisplayAlert("Event", "Event attendance already created!", "OK");
+            }
+
         }
 
     }

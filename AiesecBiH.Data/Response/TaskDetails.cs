@@ -9,17 +9,18 @@ namespace AiesecBiH.Model.Response
 {
     public class TaskDetails
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public bool Status { get; set; }=false;//After one member executes the task, he can change this field to true. After the creator reviews it, field Active will be changed.
+        public bool Executed { get; set; }=false;//After one member executes the task, he can change this field to true. After the creator reviews it, field Active will be changed.
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Deadline { get; set; }
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
-        public DateTime DateOfExecution { get; set; }
-        
+        public DateTime? DateOfExecution { get; set; }
+        public Priority Priority { get; set; }
         public int MemberCreatorId { get; set; }
         public Member MemberCreator { get; set; }
         public int? MemberExecutorId { get; set; }

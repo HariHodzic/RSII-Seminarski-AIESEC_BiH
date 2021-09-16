@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:AiesecBiH.MobileApp.ViewModels.Requests"
+             x:Class="AiesecBiH.MobileApp.Views.NewNoticePage">
+    <ContentPage.BindingContext>
+        <vm:NewNoticeViewModel></vm:NewNoticeViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <ScrollView Orientation="Vertical">
+            <StackLayout>
+                <!--<Label Text="New notice"
+                       VerticalOptions="StartAndExpand" 
+                       HorizontalOptions="CenterAndExpand" 
+                       FontAttributes="Bold"/>-->
+                <Label Text="New Notice" FontSize="30" VerticalOptions="Start" HorizontalOptions="Center" Margin="30" FontAttributes="Bold"/>
+
+                <StackLayout>
+                    <Label Text="Title" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"></Label>
+                    <Entry Text="{Binding NoticeTitle}" HorizontalTextAlignment="Center"></Entry>
+                    <Label Text="{Binding LblTitleError}" VerticalTextAlignment="Center"  HorizontalTextAlignment="Center" TextColor="Red"></Label>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Body" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"></Label>
+                    <Editor Text="{Binding Body}" ></Editor>
+                    <Label Text="{Binding LblBodyError}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="Red"></Label>
+                </StackLayout>
+                <Button  Text="Save" 
+                         Command="{Binding SaveCommand}"
+                         BackgroundColor="LightBlue" 
+                         TextColor="Black"
+                         VerticalOptions="CenterAndExpand">
+                </Button>
+            </StackLayout>
+
+        </ScrollView>
+
+    </ContentPage.Content>
+</ContentPage>

@@ -17,7 +17,7 @@ namespace AiesecBiH.MobileApp.Views
         public TaskDetailsPage(Model.Response.TaskDetails task)
         {
             InitializeComponent();
-            BindingContext = model = new TaskDetailsViewModel() { Task = task };
+            BindingContext = model = new TaskDetailsViewModel() { TaskDetails = task };
         }
     }
 }

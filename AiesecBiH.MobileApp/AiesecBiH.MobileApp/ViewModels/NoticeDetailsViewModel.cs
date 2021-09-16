@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AiesecBiH.MobileApp.ViewModels
 {
-    public class NoticeDetailsViewModel
+    public class NoticeDetailsViewModel:BaseViewModel
     {
         public Model.Response.Notice Notice { get; set; }
     }

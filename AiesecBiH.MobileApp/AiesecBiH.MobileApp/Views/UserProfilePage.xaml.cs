@@ -27,8 +27,9 @@ namespace AiesecBiH.MobileApp.Views
 
         }
 
-        private void Button_Clicked_1(object sender, EventArgs e)
+        private async void btnChangePass(object sender, EventArgs e)
         {
+            await Shell.Current.Navigation.PushAsync(new PasswordChangePage(), true);
 
         }
     }

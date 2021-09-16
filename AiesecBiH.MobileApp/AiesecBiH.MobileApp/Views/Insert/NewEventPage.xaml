@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:AiesecBiH.MobileApp.ViewModels.Requests"
+             x:Class="AiesecBiH.MobileApp.Views.NewEventPage">
+    <ContentPage.BindingContext>
+        <vm:NewEventViewModel></vm:NewEventViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <ScrollView Orientation="Vertical">
+            <StackLayout>
+                <Label Text="New Event" FontSize="30" VerticalOptions="Start" HorizontalOptions="Center" Margin="30" FontAttributes="Bold"/>
+
+                <StackLayout>
+                    <Label Text="Title" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"></Label>
+                    <Entry Text="{Binding Name}" HorizontalTextAlignment="Center"></Entry>
+                    <Label Text="{Binding LblNameError}" VerticalTextAlignment="Center"  HorizontalTextAlignment="Center" TextColor="Red"></Label>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Description" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"></Label>
+                    <Entry Text="{Binding Description}" ></Entry>
+                    <Label Text="{Binding LblDescriptionError}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="Red"></Label>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Deadline" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"></Label>
+                    <DatePicker Date="{Binding dateTime}" ></DatePicker>
+                    <Label Text="{Binding LblDateTimeError}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="Red"></Label>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout Orientation="Vertical" HorizontalOptions="Start">
+                        <Label Text="All Functional Fields" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"></Label>
+                        <CheckBox IsChecked="{Binding AllFuncFields}" HorizontalOptions="Center"></CheckBox>
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical" HorizontalOptions="End">
+                        <Label Text="All Local Committees" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"></Label>
+                        <CheckBox IsChecked="{Binding AllLCs}" HorizontalOptions="Center"></CheckBox>
+                    </StackLayout>
+                </StackLayout>
+                <Button  Text="Save" 
+                         Command="{Binding SaveCommand}"
+                         BackgroundColor="LightBlue" 
+                         TextColor="Black"
+                         VerticalOptions="CenterAndExpand">
+                </Button>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

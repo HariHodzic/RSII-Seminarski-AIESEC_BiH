@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AiesecBiH.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -11,13 +12,14 @@ namespace AiesecBiH.Database
     {        
         public string Name { get; set; }
         public string Description { get; set; }
-        public bool Executed { get; set; }=false;//After one member executes the task, he can change this field to true. After the creator reviews it, field Active will be changed.
+        public bool Executed { get; set; }=false;
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Deadline { get; set; }
+        public Priority Priority { get; set; }
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
-        public DateTime DateOfExecution { get; set; }
+        public DateTime? DateOfExecution { get; set; }
 
         [Required]
         [ForeignKey(nameof(MemberCreator))]

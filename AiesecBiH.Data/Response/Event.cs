@@ -10,9 +10,9 @@ namespace AiesecBiH.Model.Response
 {
     public class Event
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public bool IsOnline { get; set; }
         public bool AllFunctionalFields { get; set; }
         public bool AllLocalCommittees { get; set; }
         public DateTime DateTime { get; set; }

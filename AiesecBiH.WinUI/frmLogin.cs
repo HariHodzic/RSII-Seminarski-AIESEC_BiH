@@ -27,17 +27,20 @@ namespace AiesecBiH.WinUI
 
         private async void btnLogin_Click(object sender, EventArgs e)
         {
-            APIService.Username = txtUsername.Text;
-            APIService.Password = txtPassword.Text;
-            APIService x = new APIService("Offices");
             try
             {
-                var result =await _service.Get<List<Model.Response.Member>>(new Model.Search.Member { Username=txtUsername.Text});
-                ShowForm();
+                APIService.Username = txtUsername.Text;
+                APIService.Password = txtPassword.Text;
+                APIService x = new APIService("Offices");
+                var result = await _service.Get<List<Model.Response.Member>>(new Model.Search.Member { Username = txtUsername.Text });
+                if(result[0].RoleId!=1)
+                    MessageBox.Show("You are not authorized to access this application!");
+                else
+                    ShowForm();
             }
             catch(Exception ex)
             {
-                MessageBox.Show("Incorrect username or password!" + ex.Message +" / "+ ex.Source );
+                MessageBox.Show("Incorrect username or password! "+ ex.InnerException);
             }
         }
 

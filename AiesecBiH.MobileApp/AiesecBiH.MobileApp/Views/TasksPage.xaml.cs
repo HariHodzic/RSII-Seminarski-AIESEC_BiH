@@ -24,6 +24,11 @@ namespace AiesecBiH.MobileApp.Views
             base.OnAppearing();
             await model.Init();
         }
+        private async void btnNewTask_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new NewTaskPage());
+
+        }
 
         private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {

@@ -12,7 +12,7 @@ namespace AiesecBiH.Model.Search
 
     {
         public string Name { get; set; }
-        public bool Executed { get; set; }//After one member executes the task, he can change this field to true. After the creator reviews it, field Active will be changed.
+        public bool? Executed { get; set; }
         public int MemberCreatorId { get; set; }
         public int? MemberExecutorId { get; set; }
         public int FunctionalFieldId { get; set; }

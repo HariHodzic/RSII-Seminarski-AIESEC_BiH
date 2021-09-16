@@ -56,6 +56,11 @@ namespace AiesecBiH.MobileApp.ViewModels
             if (FunctionalFieldsList.Count == 0)
             {
                 var functionalFieldsList = await _functionalFieldService.Get<List<FunctionalField>>(null);
+                FunctionalFieldsList.Add(new FunctionalField
+                {
+                    Id = 0,
+                    Name = ""
+                });
 
                 foreach (var funcField in functionalFieldsList)
                 {
@@ -65,7 +70,11 @@ namespace AiesecBiH.MobileApp.ViewModels
             if (LocalCommitteesList.Count == 0)
             {
                 var localCommittees = await _localCommitteeService.Get<List<LocalCommittee>>(null);
-
+                LocalCommitteesList.Add(new LocalCommittee
+                {
+                    Id = 0,
+                    Name = ""
+                });
                 foreach (var localCommittee in localCommittees)
                 {
                     LocalCommitteesList.Add(localCommittee);

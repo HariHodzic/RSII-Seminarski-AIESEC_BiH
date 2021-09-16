@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -23,6 +22,12 @@ namespace AiesecBiH.MobileApp.Views
         {
             base.OnAppearing();
             await model.Init();
+        }
+
+        private async void btnNewNotice_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new NewNoticePage());
+
         }
 
         private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)

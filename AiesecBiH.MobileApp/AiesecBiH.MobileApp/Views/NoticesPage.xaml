@@ -1,13 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:AiesecBiH.MobileApp.ViewModels"
+             Shell.PresentationMode="ModalAnimated"
              x:Class="AiesecBiH.MobileApp.Views.NoticesPage">
+    
     <ContentPage.BindingContext>
         <vm:NoticesViewModel></vm:NoticesViewModel>
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Notices" FontSize="30" VerticalOptions="Start" HorizontalOptions="Center" Margin="30"/>
+            <Label Text="Notices" FontSize="30" VerticalOptions="Start" HorizontalOptions="Center" Margin="30" FontAttributes="Bold"/>
+            <Button Text="New Notice" Clicked="btnNewNotice_Clicked" HorizontalOptions="End"></Button>
             <ListView ItemsSource="{Binding NoticesList}" ItemSelected="ListView_ItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
