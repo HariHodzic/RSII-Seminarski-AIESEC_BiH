@@ -11,7 +11,6 @@ namespace AiesecBiH.EF
         public AiesecContext(DbContextOptions<AiesecContext> options):base(options)
         {
         }
-        //public DbSet<City> Cities { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<EventAttendance> EventAttendances { get; set; }
         public DbSet<FileModel> FileModels { get; set; }

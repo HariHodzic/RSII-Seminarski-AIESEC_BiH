@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace AiesecBiH.API.Migrations
+namespace AiesecBiH.Migrations
 {
     public partial class Initial : Migration
     {
@@ -306,11 +306,11 @@ namespace AiesecBiH.API.Migrations
                 columns: new[] { "Id", "Abbreviation", "Active", "CreatedDate", "Description", "Name" },
                 values: new object[,]
                 {
-                    { 1, "P", true, new DateTime(2021, 9, 16, 20, 1, 45, 850, DateTimeKind.Local).AddTicks(3169), "Functional field for members that lead the organization and local committees.", "Presidency" },
-                    { 2, "MKT", true, new DateTime(2021, 9, 16, 20, 1, 45, 850, DateTimeKind.Local).AddTicks(4432), "Functional field that engages the target audience, build strong relationships to create value.", "Marketing" },
-                    { 3, "IGV", true, new DateTime(2021, 9, 16, 20, 1, 45, 850, DateTimeKind.Local).AddTicks(4473), "iGV is the department that handles all that is related starting from attracting Exchange Participants (EPs) for our local projects.", "Incomming Global Volounteere" },
-                    { 4, "OGV", true, new DateTime(2021, 9, 16, 20, 1, 45, 850, DateTimeKind.Local).AddTicks(4482), "Outgoing Global Volunteer team is responsible for creating local strategies on converting opens to applicants.", "Outgoing Global Volounteere" },
-                    { 5, "PD", true, new DateTime(2021, 9, 16, 20, 1, 45, 850, DateTimeKind.Local).AddTicks(4490), "Partnership Development is the department responsible for raising and maintaining the contact with our partners with activities ranging from cold calls.", "Partnership Development" }
+                    { 1, "P", true, new DateTime(2021, 9, 16, 22, 43, 2, 346, DateTimeKind.Local).AddTicks(5918), "Functional field for members that lead the organization and local committees.", "Presidency" },
+                    { 2, "MKT", true, new DateTime(2021, 9, 16, 22, 43, 2, 346, DateTimeKind.Local).AddTicks(7423), "Functional field that engages the target audience, build strong relationships to create value.", "Marketing" },
+                    { 3, "IGV", true, new DateTime(2021, 9, 16, 22, 43, 2, 346, DateTimeKind.Local).AddTicks(7459), "iGV is the department that handles all that is related starting from attracting Exchange Participants (EPs) for our local projects.", "Incomming Global Volounteere" },
+                    { 4, "OGV", true, new DateTime(2021, 9, 16, 22, 43, 2, 346, DateTimeKind.Local).AddTicks(7468), "Outgoing Global Volunteer team is responsible for creating local strategies on converting opens to applicants.", "Outgoing Global Volounteere" },
+                    { 5, "PD", true, new DateTime(2021, 9, 16, 22, 43, 2, 346, DateTimeKind.Local).AddTicks(7478), "Partnership Development is the department responsible for raising and maintaining the contact with our partners with activities ranging from cold calls.", "Partnership Development" }
                 });
 
             migrationBuilder.InsertData(
@@ -318,10 +318,10 @@ namespace AiesecBiH.API.Migrations
                 columns: new[] { "Id", "Active", "CreatedDate", "EstablishmentDate", "Name" },
                 values: new object[,]
                 {
-                    { 1, true, new DateTime(2021, 9, 16, 20, 1, 45, 854, DateTimeKind.Local).AddTicks(1199), new DateTime(2021, 9, 16, 20, 1, 45, 854, DateTimeKind.Local).AddTicks(429), "  " },
-                    { 2, true, new DateTime(2021, 9, 16, 20, 1, 45, 854, DateTimeKind.Local).AddTicks(1366), new DateTime(2021, 9, 16, 20, 1, 45, 854, DateTimeKind.Local).AddTicks(1337), "Sarajevo" },
-                    { 3, true, new DateTime(2021, 9, 16, 20, 1, 45, 854, DateTimeKind.Local).AddTicks(1388), new DateTime(2021, 9, 16, 20, 1, 45, 854, DateTimeKind.Local).AddTicks(1381), "Mostar" },
-                    { 4, true, new DateTime(2021, 9, 16, 20, 1, 45, 854, DateTimeKind.Local).AddTicks(1409), new DateTime(2021, 9, 16, 20, 1, 45, 854, DateTimeKind.Local).AddTicks(1402), "Zenica" }
+                    { 1, true, new DateTime(2021, 9, 16, 22, 43, 2, 349, DateTimeKind.Local).AddTicks(6213), new DateTime(2021, 9, 16, 22, 43, 2, 349, DateTimeKind.Local).AddTicks(5719), "  " },
+                    { 2, true, new DateTime(2021, 9, 16, 22, 43, 2, 349, DateTimeKind.Local).AddTicks(6309), new DateTime(2021, 9, 16, 22, 43, 2, 349, DateTimeKind.Local).AddTicks(6293), "Sarajevo" },
+                    { 3, true, new DateTime(2021, 9, 16, 22, 43, 2, 349, DateTimeKind.Local).AddTicks(6326), new DateTime(2021, 9, 16, 22, 43, 2, 349, DateTimeKind.Local).AddTicks(6321), "Mostar" },
+                    { 4, true, new DateTime(2021, 9, 16, 22, 43, 2, 349, DateTimeKind.Local).AddTicks(6338), new DateTime(2021, 9, 16, 22, 43, 2, 349, DateTimeKind.Local).AddTicks(6334), "Zenica" }
                 });
 
             migrationBuilder.InsertData(
@@ -355,25 +355,25 @@ namespace AiesecBiH.API.Migrations
                 columns: new[] { "Id", "Active", "Address", "BirthDate", "CreatedDate", "EmailAddress", "FirstName", "FunctionalFieldId", "Gender", "LastName", "LocalCommitteeId", "PasswordHash", "PasswordSalt", "PhoneNumber", "RoleId", "Username" },
                 values: new object[,]
                 {
-                    { 8, true, "Borik 4", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 9, 16, 20, 1, 45, 877, DateTimeKind.Local).AddTicks(2188), "nikola.bujak@gmail.com", "Nikola", 2, "M", "Bujak", 2, "nPmsyXpwT80PLl1HVnuYX9vmvm1aFUFn+1mCIzG8/2g/9AKsvIVNRDEVzB+/bekUy+qwf/czzT2vyJzrTZS4RQ==", "XyJdN9xa+NZ794Ir7rAxNg==", "062123344", 3, "nikolabujak" },
-                    { 9, true, "Gospodska 4", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 9, 16, 20, 1, 45, 877, DateTimeKind.Local).AddTicks(2324), "nevzudindosic@gmail.com", "Nevzudin", 3, "M", "Dosic", 2, "o1rN4RulF46vwM61uH067RaKI29xlYctP9TwwyQbwudk/jJCdpjrp0kHNCImcRxMZR74no0r/PJqU7AEURL9kA==", "/1EdHsTq9/Su/IYrmSNOZQ==", "062123344", 4, "nevzudindosic" },
-                    { 11, true, "Centar 4", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 9, 16, 20, 1, 45, 877, DateTimeKind.Local).AddTicks(2471), "hanakulenovic@gmail.com", "Hana", 5, "F", "Kulenovic", 2, "7Wb8b1/oa6uBe/ITFrVxPWiRUMxdNbn2Z+WE8z+LlPG+DaHilpALUC9MDT5jrwr6rdh7LE2LnHjp7uitxvo7dw==", "Xvl2u+Bz8G6ZCBlrn0JB1Q==", "062123344", 4, "hanakulenovic" },
-                    { 12, true, "Test 4", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 9, 16, 20, 1, 45, 877, DateTimeKind.Local).AddTicks(2541), "test3@gmail.com", "Haris", 3, "M", "Brulic", 3, "7Wb8b1/oa6uBe/ITFrVxPWiRUMxdNbn2Z+WE8z+LlPG+DaHilpALUC9MDT5jrwr6rdh7LE2LnHjp7uitxvo7dw==", "2Zy2YSIJNjdBd+WH+vQm9g==", "062123344", 4, "harisbrulic" },
-                    { 13, true, "Test 4", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 9, 16, 20, 1, 45, 877, DateTimeKind.Local).AddTicks(2608), "amelmusic@gmail.com", "Amel", 4, "M", "Music", 3, "7Wb8b1/oa6uBe/ITFrVxPWiRUMxdNbn2Z+WE8z+LlPG+DaHilpALUC9MDT5jrwr6rdh7LE2LnHjp7uitxvo7dw==", "W2xHANyzkQ310+WboBYYog==", "062123344", 4, "amelmusic" },
-                    { 16, true, "Test 6", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 9, 16, 20, 1, 45, 877, DateTimeKind.Local).AddTicks(2833), "irmasaric@gmail.com", "Irma", 2, "M", "Saric", 4, "7Wb8b1/oa6uBe/ITFrVxPWiRUMxdNbn2Z+WE8z+LlPG+DaHilpALUC9MDT5jrwr6rdh7LE2LnHjp7uitxvo7dw==", "JUiIOiPbc0hxErylNOZJVg==", "0621112222", 4, "irmasaric" },
-                    { 15, true, "Test 4", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 9, 16, 20, 1, 45, 877, DateTimeKind.Local).AddTicks(2747), "elmirbabovic@gmail.com", "Elmir", 4, "M", "Babovic", 3, "7Wb8b1/oa6uBe/ITFrVxPWiRUMxdNbn2Z+WE8z+LlPG+DaHilpALUC9MDT5jrwr6rdh7LE2LnHjp7uitxvo7dw==", "cCU863j17LCNXXapzuqHuw==", "062123344", 4, "elmirbabovic" },
-                    { 7, true, "Grbavica 4", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 9, 16, 20, 1, 45, 877, DateTimeKind.Local).AddTicks(2078), "doraglinac@gmail.com", "Dora", 2, "F", "Glinac", 2, "IlfS1mapuLpBG0ktblsDbMIjp/8i5uGBBXodXw4CzUTnNWVRS1ynmQyXn9Y+559X2T/2VadczHTYIMICCeG5gA==", "g7XRr1WV0kvQ3B4mEzewWg==", "062123344", 4, "doraglinac" },
-                    { 17, true, "Dobrinja 4", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 9, 16, 20, 1, 45, 877, DateTimeKind.Local).AddTicks(2903), "test2@gmail.com", "Ajla", 3, "M", "Brulic", 4, "7Wb8b1/oa6uBe/ITFrVxPWiRUMxdNbn2Z+WE8z+LlPG+DaHilpALUC9MDT5jrwr6rdh7LE2LnHjp7uitxvo7dw==", "JUiIOiPbc0hxErylNOZJVg==", "062123344", 4, "ajlabrulic" },
-                    { 14, true, "Test 4", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 9, 16, 20, 1, 45, 877, DateTimeKind.Local).AddTicks(2681), "denis@gmail.com", "Denis", 5, "M", "Music", 3, "7Wb8b1/oa6uBe/ITFrVxPWiRUMxdNbn2Z+WE8z+LlPG+DaHilpALUC9MDT5jrwr6rdh7LE2LnHjp7uitxvo7dw==", "dpU9KKb0sGRQm5Uz1XEZjQ==", "062123344", 4, "denismusic" },
-                    { 6, true, "Doglodi 12", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 9, 16, 20, 1, 45, 877, DateTimeKind.Local).AddTicks(1972), "emir.zukic@gmail.com", "Emir", 1, "M", "Zukic", 2, "90fDQeYPAJ+iCWEYlLh3cwkagwoiPYnmHqmm3+lwYYdOMzKqZayg3uCcs1b1gobbJCu2ce6ca2lGUGOAec8bCg==", "VLUkVnvE//CasUAmpit3ew==", "062123344", 4, "emirzukic" },
-                    { 19, true, "Test 4", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 9, 16, 20, 1, 45, 877, DateTimeKind.Local).AddTicks(3045), "nejiravrana@gmail.com", "Nejira", 3, "Z", "Vrana", 4, "7Wb8b1/oa6uBe/ITFrVxPWiRUMxdNbn2Z+WE8z+LlPG+DaHilpALUC9MDT5jrwr6rdh7LE2LnHjp7uitxvo7dw==", "JUiIOiPbc0hxErylNOZJVg==", "062567948", 4, "nejiravrana" },
-                    { 4, true, "Zahira Panjete 298", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 9, 16, 20, 1, 45, 877, DateTimeKind.Local).AddTicks(1751), "tarik.bucan98@gmail.com", "Tarik", 1, "M", "Bucan", 2, "XZ9UNMblHwPRrxHed7Z3nAnA+8MbgnpRgBSwt3HMn7nCHWqqTW+4wQ74poxBLaMCe8cZ3sbyVyqh0tdNemuvwQ==", "etaTX/AdQk9Dgzf9eDiWQA==", "062123344", 4, "user1" },
-                    { 10, true, "Mostar 4", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 9, 16, 20, 1, 45, 877, DateTimeKind.Local).AddTicks(2401), "klarazovko@gmail.com", "Klara", 4, "F", "Zovko", 2, "7Wb8b1/oa6uBe/ITFrVxPWiRUMxdNbn2Z+WE8z+LlPG+DaHilpALUC9MDT5jrwr6rdh7LE2LnHjp7uitxvo7dw==", "Xvl2u+Bz8G6ZCBlrn0JB1Q==", "062123344", 3, "klarazovko" },
-                    { 18, true, "Test 4", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 9, 16, 20, 1, 45, 877, DateTimeKind.Local).AddTicks(2977), "test1@gmail.com", "Haris", 4, "M", "Brulic", 4, "7Wb8b1/oa6uBe/ITFrVxPWiRUMxdNbn2Z+WE8z+LlPG+DaHilpALUC9MDT5jrwr6rdh7LE2LnHjp7uitxvo7dw==", "JUiIOiPbc0hxErylNOZJVg==", "062123344", 4, "harisbrulic" },
-                    { 3, true, "Safeta Zajke 298", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 9, 16, 20, 1, 45, 877, DateTimeKind.Local).AddTicks(1481), "sulejman.tutnjevic98@gmail.com", "Sulejman", 1, "M", "Tutnjevic", 2, "f6FtJwTkn58ik0LdivfV4oaPud3lpbbha5lJC5BC8orBgqzr5A8NQeR1hHjV53yz1adk7O/eSNSTiTKN7X4/ZQ==", "OuWEKFl5dUPdN4APPBfLoQ==", "062123344", 3, "sulejmantutnjevic" },
-                    { 2, true, "Dobrinjska 12", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 9, 16, 20, 1, 45, 876, DateTimeKind.Local).AddTicks(9446), "ajdin@gmail.com", "Ajdin", 1, "M", "Kahrimanovic", 2, "orDmtUZlGmkt8EclflC7AL+lvk8+V+okIAJA+AD37SF15qP9ck1s/SlqzmRuFk1rGSBp4qCpai3s5bCvhppzaw==", "2u0JGc5U25mxy5HXN18/GA==", "062123344", 2, "user2" },
-                    { 1, true, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 9, 16, 20, 1, 45, 865, DateTimeKind.Local).AddTicks(1323), "aiesec@tej.com", "Admin", 1, "M", "Admin", 1, "oERT/MdLh4c1hpFWzkdX9ELGTDem7T2V+3BaPTA2z9+gttYrZEiEGTGgBmgCG/M9EBNGIxwDBa7S7+O5M6zgSw==", "ZOGrarBJW3YFKMdwVay7vw==", "03355123", 1, "admin" },
-                    { 5, true, "Grbavica 12", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 9, 16, 20, 1, 45, 877, DateTimeKind.Local).AddTicks(1876), "selma.idic@aiesec.com", "Selma", 1, "M", "Idic", 2, "qzWMLV1QH8iRh1nzsM3V5PTBfM941Bz69EK6aFM5wI35ntCIWKcjuntoz6xjSQoIH0U64ztk0/m7/IZtMmmQPw==", "xLF2IAeladF0lPvym9Havg==", "062123344", 4, "selmaidic" }
+                    { 8, true, "Borik 4", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 9, 16, 22, 43, 2, 371, DateTimeKind.Local).AddTicks(5372), "nikola.bujak@gmail.com", "Nikola", 2, "M", "Bujak", 2, "WN+4Bux9TmD1SjJ7Vl1tIPzfb2RMgfS/12bVOQTyJPGru+EvYU8Kvs6vCTsYN/yY8PlgFf4pfkL0x3WLq2z6kw==", "LfqPW+bMhybteNXpceHCqw==", "062123344", 3, "nikolabujak" },
+                    { 9, true, "Gospodska 4", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 9, 16, 22, 43, 2, 371, DateTimeKind.Local).AddTicks(5530), "nevzudindosic@gmail.com", "Nevzudin", 3, "M", "Dosic", 2, "xs+49PIRY7fbO+qqOFnoKv/LUArqt6P8r/vp5zFXechz7ys61AdOQi5g3hjqYSKTEW4bR7hUb7c0itEi5CHagQ==", "w4/oAQprarbWGfEKgR/0XA==", "062123344", 4, "nevzudindosic" },
+                    { 11, true, "Centar 4", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 9, 16, 22, 43, 2, 371, DateTimeKind.Local).AddTicks(5864), "hanakulenovic@gmail.com", "Hana", 5, "F", "Kulenovic", 2, "GfJJ3y1r2tzIs16pNaOqhcfXGgtjOSJ/9A4XbLHBp6MZJhEquff5jy2NLUc6NDtLuINsFcVz1W0KFxJ7liCFnw==", "+Vs+qRIlucFY1TuCONgtVQ==", "062123344", 4, "hanakulenovic" },
+                    { 12, true, "Test 4", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 9, 16, 22, 43, 2, 371, DateTimeKind.Local).AddTicks(5988), "test3@gmail.com", "Haris", 3, "M", "Brulic", 3, "GfJJ3y1r2tzIs16pNaOqhcfXGgtjOSJ/9A4XbLHBp6MZJhEquff5jy2NLUc6NDtLuINsFcVz1W0KFxJ7liCFnw==", "J52uxvDItGMt2Fph72BVNQ==", "062123344", 4, "harisbrulic" },
+                    { 13, true, "Test 4", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 9, 16, 22, 43, 2, 371, DateTimeKind.Local).AddTicks(6034), "amelmusic@gmail.com", "Amel", 4, "M", "Music", 3, "GfJJ3y1r2tzIs16pNaOqhcfXGgtjOSJ/9A4XbLHBp6MZJhEquff5jy2NLUc6NDtLuINsFcVz1W0KFxJ7liCFnw==", "wK4fGmWK9D0LM0bCiLoBXA==", "062123344", 4, "amelmusic" },
+                    { 16, true, "Test 6", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 9, 16, 22, 43, 2, 371, DateTimeKind.Local).AddTicks(6154), "irmasaric@gmail.com", "Irma", 2, "M", "Saric", 4, "GfJJ3y1r2tzIs16pNaOqhcfXGgtjOSJ/9A4XbLHBp6MZJhEquff5jy2NLUc6NDtLuINsFcVz1W0KFxJ7liCFnw==", "UEQ3ZuKXPnus3wTF0T3HhA==", "0621112222", 4, "irmasaric" },
+                    { 15, true, "Test 4", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 9, 16, 22, 43, 2, 371, DateTimeKind.Local).AddTicks(6113), "elmirbabovic@gmail.com", "Elmir", 4, "M", "Babovic", 3, "GfJJ3y1r2tzIs16pNaOqhcfXGgtjOSJ/9A4XbLHBp6MZJhEquff5jy2NLUc6NDtLuINsFcVz1W0KFxJ7liCFnw==", "zRypcHvcreZVqWIhz6CkjQ==", "062123344", 4, "elmirbabovic" },
+                    { 7, true, "Grbavica 4", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 9, 16, 22, 43, 2, 371, DateTimeKind.Local).AddTicks(5275), "doraglinac@gmail.com", "Dora", 2, "F", "Glinac", 2, "iYHWYARfwICfSXySGHMCmXCgzVEZC56Xha7wVcn/M02xuB6ttQgwZ0/LMPIFI+Pq9Zg4tEMtZKG3ZGfA9OU6gA==", "N2J1LxCBCDryIuLkc70hAQ==", "062123344", 4, "doraglinac" },
+                    { 17, true, "Dobrinja 4", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 9, 16, 22, 43, 2, 371, DateTimeKind.Local).AddTicks(6194), "test2@gmail.com", "Ajla", 3, "M", "Brulic", 4, "GfJJ3y1r2tzIs16pNaOqhcfXGgtjOSJ/9A4XbLHBp6MZJhEquff5jy2NLUc6NDtLuINsFcVz1W0KFxJ7liCFnw==", "UEQ3ZuKXPnus3wTF0T3HhA==", "062123344", 4, "ajlabrulic" },
+                    { 14, true, "Test 4", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 9, 16, 22, 43, 2, 371, DateTimeKind.Local).AddTicks(6074), "denis@gmail.com", "Denis", 5, "M", "Music", 3, "GfJJ3y1r2tzIs16pNaOqhcfXGgtjOSJ/9A4XbLHBp6MZJhEquff5jy2NLUc6NDtLuINsFcVz1W0KFxJ7liCFnw==", "Xo0BRrRAmdzlJ0WP+RkLaA==", "062123344", 4, "denismusic" },
+                    { 6, true, "Doglodi 12", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 9, 16, 22, 43, 2, 371, DateTimeKind.Local).AddTicks(5087), "emir.zukic@gmail.com", "Emir", 1, "M", "Zukic", 2, "n+hWDxTrJfGJ0FXWxdYiXCRm78NZKTz0J7b8YY6YdHaVAvYKVsFrr5e21Dy3aF+zq/9UEN1s1WMtsNA2jpcWwg==", "A1XVjjBusXS+xjP9QWvsoA==", "062123344", 4, "emirzukic" },
+                    { 19, true, "Test 4", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 9, 16, 22, 43, 2, 371, DateTimeKind.Local).AddTicks(6329), "nejiravrana@gmail.com", "Nejira", 3, "Z", "Vrana", 4, "GfJJ3y1r2tzIs16pNaOqhcfXGgtjOSJ/9A4XbLHBp6MZJhEquff5jy2NLUc6NDtLuINsFcVz1W0KFxJ7liCFnw==", "UEQ3ZuKXPnus3wTF0T3HhA==", "062567948", 4, "nejiravrana" },
+                    { 4, true, "Zahira Panjete 298", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 9, 16, 22, 43, 2, 371, DateTimeKind.Local).AddTicks(4903), "tarik.bucan98@gmail.com", "Tarik", 1, "M", "Bucan", 2, "PwPvJGmkPnF21X0CDq1XS0ZejwL/mHVqwYKreD9wZsYEFyuUouf2xPygbJcXE10Ds74SvbI5z5fzMj3XPnMHZA==", "X26y1QmF9F1IE4esKDKA9A==", "062123344", 4, "user1" },
+                    { 10, true, "Mostar 4", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 9, 16, 22, 43, 2, 371, DateTimeKind.Local).AddTicks(5617), "klarazovko@gmail.com", "Klara", 4, "F", "Zovko", 2, "GfJJ3y1r2tzIs16pNaOqhcfXGgtjOSJ/9A4XbLHBp6MZJhEquff5jy2NLUc6NDtLuINsFcVz1W0KFxJ7liCFnw==", "+Vs+qRIlucFY1TuCONgtVQ==", "062123344", 3, "klarazovko" },
+                    { 18, true, "Test 4", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 9, 16, 22, 43, 2, 371, DateTimeKind.Local).AddTicks(6234), "test1@gmail.com", "Haris", 4, "M", "Brulic", 4, "GfJJ3y1r2tzIs16pNaOqhcfXGgtjOSJ/9A4XbLHBp6MZJhEquff5jy2NLUc6NDtLuINsFcVz1W0KFxJ7liCFnw==", "UEQ3ZuKXPnus3wTF0T3HhA==", "062123344", 4, "harisbrulic" },
+                    { 3, true, "Safeta Zajke 298", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 9, 16, 22, 43, 2, 371, DateTimeKind.Local).AddTicks(4503), "sulejman.tutnjevic98@gmail.com", "Sulejman", 1, "M", "Tutnjevic", 2, "7RIXCpOWBDGO1lZuvsvjYDwO74rp+zEstBwdPRdMpJaoZpPUZMHjbFEfJtI3aJDz4RjJ2a5ha9+2juSsBEQa8w==", "2+e+0O2XEkxCKitKg2oxdg==", "062123344", 3, "sulejmantutnjevic" },
+                    { 2, true, "Dobrinjska 12", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 9, 16, 22, 43, 2, 371, DateTimeKind.Local).AddTicks(2646), "ajdin@gmail.com", "Ajdin", 1, "M", "Kahrimanovic", 2, "ztblJEiTkDgYFjk6ZyEFGzb6sflP77JmuHwdiHHlaVGQv2KCAQpcxfQ0ugp9u0pBBrMcEJ0U3pVhC+7cv4LWzA==", "bJEeQ97v+gQNn8hTMeehag==", "062123344", 2, "user2" },
+                    { 1, true, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 9, 16, 22, 43, 2, 361, DateTimeKind.Local).AddTicks(1997), "aiesec@tej.com", "Admin", 1, "M", "Admin", 1, "pn/WgztugkbmCa64nrMv4S535UAvqNnzW6V8vd+wtr2ndgMXea7yXv3tdhAL7T3ucdcnolj3WSQZ0ag4P6m5GQ==", "ghJrTVtOxX5EWrUcPp6HCA==", "03355123", 1, "admin" },
+                    { 5, true, "Grbavica 12", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 9, 16, 22, 43, 2, 371, DateTimeKind.Local).AddTicks(5011), "selma.idic@aiesec.com", "Selma", 1, "M", "Idic", 2, "Lu4FnQtpSmgevjuxoKm/OPdQk1bjRBmOZoAKrQEj3GSksPDTPT/Cl3y8vLPKH7C1R3VWOcW9LKflbEyuea8A0g==", "5lQigGG92qUru1Epwfvcrw==", "062123344", 4, "selmaidic" }
                 });
 
             migrationBuilder.InsertData(
@@ -381,10 +381,10 @@ namespace AiesecBiH.API.Migrations
                 columns: new[] { "Id", "Active", "Address", "Capacity", "CreatedDate", "EstablishmentDate", "LocalCommitteeId" },
                 values: new object[,]
                 {
-                    { 4, true, "Ulica 22", 20, new DateTime(2021, 9, 16, 20, 1, 45, 855, DateTimeKind.Local).AddTicks(4376), new DateTime(2021, 9, 16, 20, 1, 45, 855, DateTimeKind.Local).AddTicks(4383), 4 },
-                    { 3, true, "Ulica 4", 20, new DateTime(2021, 9, 16, 20, 1, 45, 855, DateTimeKind.Local).AddTicks(4350), new DateTime(2021, 9, 16, 20, 1, 45, 855, DateTimeKind.Local).AddTicks(4358), 3 },
-                    { 2, true, "Ulica 3", 10, new DateTime(2021, 9, 16, 20, 1, 45, 855, DateTimeKind.Local).AddTicks(4233), new DateTime(2021, 9, 16, 20, 1, 45, 855, DateTimeKind.Local).AddTicks(4316), 2 },
-                    { 1, true, "Trg Alije Izetbegovica 2", 20, new DateTime(2021, 9, 16, 20, 1, 45, 855, DateTimeKind.Local).AddTicks(1677), new DateTime(2021, 9, 16, 20, 1, 45, 855, DateTimeKind.Local).AddTicks(3546), 1 }
+                    { 4, true, "Ulica 22", 20, new DateTime(2021, 9, 16, 22, 43, 2, 350, DateTimeKind.Local).AddTicks(4090), new DateTime(2021, 9, 16, 22, 43, 2, 350, DateTimeKind.Local).AddTicks(4095), 4 },
+                    { 3, true, "Ulica 4", 20, new DateTime(2021, 9, 16, 22, 43, 2, 350, DateTimeKind.Local).AddTicks(4072), new DateTime(2021, 9, 16, 22, 43, 2, 350, DateTimeKind.Local).AddTicks(4077), 3 },
+                    { 2, true, "Ulica 3", 10, new DateTime(2021, 9, 16, 22, 43, 2, 350, DateTimeKind.Local).AddTicks(3993), new DateTime(2021, 9, 16, 22, 43, 2, 350, DateTimeKind.Local).AddTicks(4048), 2 },
+                    { 1, true, "Trg Alije Izetbegovica 2", 20, new DateTime(2021, 9, 16, 22, 43, 2, 350, DateTimeKind.Local).AddTicks(1959), new DateTime(2021, 9, 16, 22, 43, 2, 350, DateTimeKind.Local).AddTicks(3479), 1 }
                 });
 
             migrationBuilder.InsertData(
@@ -392,24 +392,24 @@ namespace AiesecBiH.API.Migrations
                 columns: new[] { "Id", "Active", "Attended", "CreatedDate", "EventId", "MemberId" },
                 values: new object[,]
                 {
-                    { 1, true, false, new DateTime(2021, 9, 16, 20, 1, 45, 887, DateTimeKind.Local).AddTicks(9617), 1, 2 },
-                    { 15, true, false, new DateTime(2021, 9, 16, 20, 1, 45, 888, DateTimeKind.Local).AddTicks(1552), 6, 11 },
-                    { 13, true, false, new DateTime(2021, 9, 16, 20, 1, 45, 888, DateTimeKind.Local).AddTicks(1537), 4, 5 },
-                    { 8, true, false, new DateTime(2021, 9, 16, 20, 1, 45, 888, DateTimeKind.Local).AddTicks(1504), 3, 5 },
-                    { 4, true, false, new DateTime(2021, 9, 16, 20, 1, 45, 888, DateTimeKind.Local).AddTicks(1478), 1, 5 },
-                    { 10, true, false, new DateTime(2021, 9, 16, 20, 1, 45, 888, DateTimeKind.Local).AddTicks(1517), 4, 4 },
-                    { 18, true, false, new DateTime(2021, 9, 16, 20, 1, 45, 888, DateTimeKind.Local).AddTicks(1572), 7, 11 },
-                    { 7, true, false, new DateTime(2021, 9, 16, 20, 1, 45, 888, DateTimeKind.Local).AddTicks(1497), 2, 4 },
-                    { 3, true, false, new DateTime(2021, 9, 16, 20, 1, 45, 888, DateTimeKind.Local).AddTicks(1469), 1, 4 },
-                    { 17, true, false, new DateTime(2021, 9, 16, 20, 1, 45, 888, DateTimeKind.Local).AddTicks(1566), 7, 10 },
-                    { 14, true, false, new DateTime(2021, 9, 16, 20, 1, 45, 888, DateTimeKind.Local).AddTicks(1545), 5, 10 },
-                    { 9, true, false, new DateTime(2021, 9, 16, 20, 1, 45, 888, DateTimeKind.Local).AddTicks(1510), 3, 4 },
-                    { 16, true, false, new DateTime(2021, 9, 16, 20, 1, 45, 888, DateTimeKind.Local).AddTicks(1559), 6, 12 },
-                    { 5, true, false, new DateTime(2021, 9, 16, 20, 1, 45, 888, DateTimeKind.Local).AddTicks(1485), 2, 2 },
-                    { 11, true, false, new DateTime(2021, 9, 16, 20, 1, 45, 888, DateTimeKind.Local).AddTicks(1524), 4, 3 },
-                    { 6, true, false, new DateTime(2021, 9, 16, 20, 1, 45, 888, DateTimeKind.Local).AddTicks(1491), 2, 3 },
-                    { 2, true, false, new DateTime(2021, 9, 16, 20, 1, 45, 888, DateTimeKind.Local).AddTicks(1375), 1, 3 },
-                    { 12, true, false, new DateTime(2021, 9, 16, 20, 1, 45, 888, DateTimeKind.Local).AddTicks(1531), 4, 2 }
+                    { 1, true, false, new DateTime(2021, 9, 16, 22, 43, 2, 378, DateTimeKind.Local).AddTicks(6904), 1, 2 },
+                    { 15, true, false, new DateTime(2021, 9, 16, 22, 43, 2, 378, DateTimeKind.Local).AddTicks(8937), 6, 11 },
+                    { 13, true, false, new DateTime(2021, 9, 16, 22, 43, 2, 378, DateTimeKind.Local).AddTicks(8924), 4, 5 },
+                    { 8, true, false, new DateTime(2021, 9, 16, 22, 43, 2, 378, DateTimeKind.Local).AddTicks(8890), 3, 5 },
+                    { 4, true, false, new DateTime(2021, 9, 16, 22, 43, 2, 378, DateTimeKind.Local).AddTicks(8863), 1, 5 },
+                    { 10, true, false, new DateTime(2021, 9, 16, 22, 43, 2, 378, DateTimeKind.Local).AddTicks(8903), 4, 4 },
+                    { 18, true, false, new DateTime(2021, 9, 16, 22, 43, 2, 378, DateTimeKind.Local).AddTicks(8958), 7, 11 },
+                    { 7, true, false, new DateTime(2021, 9, 16, 22, 43, 2, 378, DateTimeKind.Local).AddTicks(8883), 2, 4 },
+                    { 3, true, false, new DateTime(2021, 9, 16, 22, 43, 2, 378, DateTimeKind.Local).AddTicks(8853), 1, 4 },
+                    { 17, true, false, new DateTime(2021, 9, 16, 22, 43, 2, 378, DateTimeKind.Local).AddTicks(8951), 7, 10 },
+                    { 14, true, false, new DateTime(2021, 9, 16, 22, 43, 2, 378, DateTimeKind.Local).AddTicks(8930), 5, 10 },
+                    { 9, true, false, new DateTime(2021, 9, 16, 22, 43, 2, 378, DateTimeKind.Local).AddTicks(8897), 3, 4 },
+                    { 16, true, false, new DateTime(2021, 9, 16, 22, 43, 2, 378, DateTimeKind.Local).AddTicks(8944), 6, 12 },
+                    { 5, true, false, new DateTime(2021, 9, 16, 22, 43, 2, 378, DateTimeKind.Local).AddTicks(8870), 2, 2 },
+                    { 11, true, false, new DateTime(2021, 9, 16, 22, 43, 2, 378, DateTimeKind.Local).AddTicks(8911), 4, 3 },
+                    { 6, true, false, new DateTime(2021, 9, 16, 22, 43, 2, 378, DateTimeKind.Local).AddTicks(8876), 2, 3 },
+                    { 2, true, false, new DateTime(2021, 9, 16, 22, 43, 2, 378, DateTimeKind.Local).AddTicks(8761), 1, 3 },
+                    { 12, true, false, new DateTime(2021, 9, 16, 22, 43, 2, 378, DateTimeKind.Local).AddTicks(8917), 4, 2 }
                 });
 
             migrationBuilder.InsertData(

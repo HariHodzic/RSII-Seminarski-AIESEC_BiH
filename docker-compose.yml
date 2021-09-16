@@ -1,0 +1,32 @@
+version: '3'
+services:
+#mssql docker
+ aiesec-sql:
+  image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
+  restart: unless-stopped
+  environment:
+   - ACCEPT_EULA=Y
+   - SA_PASSWORD=QWElkj132!
+   - MSSQL_PID=Developer
+  ports:
+   - 1401:1433
+  networks:
+   - aiesecnet
+
+ aiesec-api:
+  restart: unless-stopped
+  build:
+   context: .
+  environment:
+   - ConnectionStrings:AiesecBiH=Server=aiesec-sql,1433;Database=IB160195;User=sa;Password=QWElkj132!;ConnectRetryCount=0
+  ports:
+   - 5010:5010
+  networks:
+   - aiesecnet
+  links:
+   - aiesec-sql
+  depends_on:
+   - aiesec-sql
+networks:
+ aiesecnet:
+  driver: bridge

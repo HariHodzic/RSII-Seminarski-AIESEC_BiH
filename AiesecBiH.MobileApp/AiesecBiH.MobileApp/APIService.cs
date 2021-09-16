@@ -16,7 +16,7 @@ namespace AiesecBiH.MobileApp
         public static Model.Response.MemberLL LoggedUser { get; set; }
 
 #if DEBUG
-        private string _apiUrl = "http://localhost:11848/api";
+        private string _apiUrl = "http://localhost:5010/api";
 #endif
 #if RELEASE
 #endif

@@ -25,7 +25,7 @@ namespace AiesecBiH.WinUI.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:11848/api")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:5010/api")]
         public string APIUrl {
             get {
                 return ((string)(this["APIUrl"]));

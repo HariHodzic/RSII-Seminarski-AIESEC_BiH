@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31025.194
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AiesecBiH.API", "AiesecBiH\AiesecBiH.API.csproj", "{A1E1DFBE-F487-4D8F-9E44-E19C9192AEDF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AiesecBiH", "AiesecBiH\AiesecBiH.csproj", "{A1E1DFBE-F487-4D8F-9E44-E19C9192AEDF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AiesecBiH.Model", "AiesecBiH.Data\AiesecBiH.Model.csproj", "{DD604AD9-3633-43AB-B1F0-6436B9873DE5}"
 EndProject
