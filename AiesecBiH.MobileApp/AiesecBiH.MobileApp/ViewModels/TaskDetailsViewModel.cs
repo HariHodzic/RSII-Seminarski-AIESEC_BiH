@@ -20,10 +20,13 @@ namespace AiesecBiH.MobileApp.ViewModels
         {
             try
             {
-                if (TaskDetails.MemberCreatorId!=APIService.LoggedUser.Id && TaskDetails.MemberExecutorId != APIService.LoggedUser.Id)
+                if (TaskDetails.Executed == true)
                 {
-                    await Application.Current.MainPage.DisplayAlert("Task", "You are not authorized to change the status of this task.", "OK");
-                    return;
+                    if (TaskDetails.MemberCreatorId!=APIService.LoggedUser.Id && TaskDetails.MemberExecutorId != APIService.LoggedUser.Id)
+                    {
+                        await Application.Current.MainPage.DisplayAlert("Task", "You are not authorized to change the status of this task.", "OK");
+                        return;
+                    }
                 }
                 var result = await _taskService.PostMethod<Model.Response.TaskDetails>(TaskDetails.Id, APIService.LoggedUser.Id,"Execute");
                 await Application.Current.MainPage.DisplayAlert("Task", "Task status changed successfully.", "OK");

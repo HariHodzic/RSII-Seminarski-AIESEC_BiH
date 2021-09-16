@@ -60,7 +60,7 @@ namespace AiesecBiH.Services
                 query = query.Where(x => x.RoleId ==search.RoleId);
             }
             //var entities = await query.Include(x => x.).ThenInclude(x => x.FunctionalField)..ToListAsync();
-            var entities = await query.Include(x => x.LocalCommittee).Include(x => x.Role).Include(x => x.FunctionalField).OrderByDescending(x=>x.Deadline).ToListAsync();
+            var entities = await query.Include(x => x.LocalCommittee).Include(x => x.Role).Include(x=>x.MemberExecutor).Include(x => x.FunctionalField).OrderByDescending(x=>x.Deadline).ToListAsync();
             var result = _mapper.Map<IEnumerable<Model.Response.TaskDetails>>(entities);
             return result;
         }

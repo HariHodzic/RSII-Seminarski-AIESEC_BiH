@@ -25,16 +25,6 @@
                     <DatePicker Date="{Binding dateTime}" ></DatePicker>
                     <Label Text="{Binding LblDateTimeError}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="Red"></Label>
                 </StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <StackLayout Orientation="Vertical" HorizontalOptions="Start">
-                        <Label Text="All Functional Fields" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"></Label>
-                        <CheckBox IsChecked="{Binding AllFuncFields}" HorizontalOptions="Center"></CheckBox>
-                    </StackLayout>
-                    <StackLayout Orientation="Vertical" HorizontalOptions="End">
-                        <Label Text="All Local Committees" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"></Label>
-                        <CheckBox IsChecked="{Binding AllLCs}" HorizontalOptions="Center"></CheckBox>
-                    </StackLayout>
-                </StackLayout>
                 <Button  Text="Save" 
                          Command="{Binding SaveCommand}"
                          BackgroundColor="LightBlue" 

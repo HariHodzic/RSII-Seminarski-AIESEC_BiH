@@ -12,15 +12,12 @@ namespace AiesecBiH.Model.Update
         //[Required]
         public string Name { get; set; }
         public string Description { get; set; }
-        public bool IsOnline { get; set; }
         public bool AllMembers { get; set; }
         public DateTime DateTime { get; set; }
         public int FunctionalFieldId { get; set; } 
         public string FunctionalFieldName { get; set; }
         public int LocalCommitteeId { get; set; }
         public string LocalCommitteeName { get; set; }
-        public bool AllFunctionalFields { get; set; }
-        public bool AllLocalCommittees { get; set; }
 
     }
 }

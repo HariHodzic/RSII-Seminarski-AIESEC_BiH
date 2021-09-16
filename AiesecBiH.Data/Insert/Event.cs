@@ -11,11 +11,9 @@ namespace AiesecBiH.Model.Insert
     {
         public string Name { get; set; }
         public string Description { get; set; }
-        public bool IsOnline { get; set; }
         public bool AllMembers { get; set; }
         public DateTime DateTime { get; set; }
         public int? FunctionalFieldId { get; set; } = null;
-        
         public int? LocalCommitteeId { get; set; } = null;
         public bool AllFunctionalFields { get; set; }
         public bool AllLocalCommittees { get; set; }

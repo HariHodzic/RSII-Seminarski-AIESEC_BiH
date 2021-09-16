@@ -92,9 +92,17 @@ namespace AiesecBiH.MobileApp.ViewModels
         {
             try
             {
-                var result = await _eventService.PostMethod<Model.Response.EventAttendance>(EventDetails.Id, APIService.LoggedUser.Id, "Attend");
-                await Application.Current.MainPage.DisplayAlert("Event", "Event attendance created successfully.", "OK");
-                await Application.Current.MainPage.Navigation.PopAsync();
+                if(DateTime.Compare(EventDetails.DateTime,DateTime.Now)<0)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Event", "Event attendance cannot be created after the event.", "OK");
+                }
+                else
+                {
+                    var result = await _eventService.PostMethod<Model.Response.EventAttendance>(EventDetails.Id, APIService.LoggedUser.Id, "Attend");
+                    await Application.Current.MainPage.DisplayAlert("Event", "Event attendance created successfully.", "OK");
+                    await Application.Current.MainPage.Navigation.PopAsync();
+
+                }
 
             }
             catch (Exception ex)

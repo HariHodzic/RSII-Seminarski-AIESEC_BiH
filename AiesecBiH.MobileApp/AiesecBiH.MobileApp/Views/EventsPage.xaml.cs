@@ -28,7 +28,16 @@ namespace AiesecBiH.MobileApp.Views
         }
         private async void btnNewEvent_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new NewEventPage());
+            if (APIService.LoggedUser.RoleId == 4)
+            {
+                await Application.Current.MainPage.DisplayAlert("Event", "You are not authorized to create event.", "OK");
+
+            }
+            else
+            {
+                await Navigation.PushAsync(new NewEventPage());
+
+            }
 
         }
         private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)

@@ -32,14 +32,6 @@ namespace AiesecBiH.EF
                 entity.HasIndex(e => e.EmailAddress).IsUnique();
             });
 
-            //modelBuilder.Entity<Task>() <======== Za koristenje Enum-a
-            //    .Property(x => x.Priority)
-            //    .HasConversion<int>(); 
-            //LocalCommittee
-            //modelBuilder.Entity<LocalCommittee>()
-            //    .HasOne<City>(c => c.City)
-            //    .WithOne()
-            //    .OnDelete(DeleteBehavior.NoAction);
             //Office
             modelBuilder.Entity<Office>()
                 .HasOne<LocalCommittee>(l => l.LocalCommittee)
@@ -70,10 +62,6 @@ namespace AiesecBiH.EF
                 .HasOne<Member>(l => l.MemberCreator)
                 .WithMany(x => x.CreatedTasks)
                 .OnDelete(DeleteBehavior.NoAction);
-            //modelBuilder.Entity<Task>()
-            //    .HasOne<Member>(l => l.MemberExecutor)
-            //    .WithMany(x => x.ExecutedTasks)
-            //    .OnDelete(DeleteBehavior.NoAction);
             modelBuilder.Entity<Member>()
                 .HasOne(l => l.FunctionalField)
                 .WithMany(x => x.Members)
@@ -85,7 +73,6 @@ namespace AiesecBiH.EF
 
 
             modelBuilder.FunctionalFieldsSeed();
-            //modelBuilder.CitySeed();
             modelBuilder.LocalCommitteeSeed();
             modelBuilder.OfficeSeed();
             modelBuilder.RoleSeed();
@@ -93,6 +80,7 @@ namespace AiesecBiH.EF
             modelBuilder.NoticeSeed();
             modelBuilder.TasksSeed();
             modelBuilder.EventsSeed();
+            modelBuilder.EventAttendanceSeed();
 
         }
 

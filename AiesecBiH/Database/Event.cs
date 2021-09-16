@@ -11,11 +11,7 @@ namespace AiesecBiH.Database
     {
         public string Name { get; set; }
         public string Description { get; set; }
-        public bool IsOnline { get; set; } = false;
         public DateTime DateTime { get; set; }
-        public bool AllFunctionalFields { get; set; } = false;
-        public bool AllLocalCommittees { get; set; } = false;
-        public bool AllMembers { get; set; }
 
         [ForeignKey(nameof(FunctionalField))]
         public int? FunctionalFieldId { get; set; }

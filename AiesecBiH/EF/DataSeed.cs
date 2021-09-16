@@ -21,7 +21,8 @@ namespace AiesecBiH.EF
                     Abbreviation = "P",
                     Active = true,
                     CreatedDate = DateTime.Now,
-                    Id = 1
+                    Id = 1,
+                    Description="Functional field for members that lead the organization and local committees."
                 },
                 new FunctionalField
                 {
@@ -29,7 +30,9 @@ namespace AiesecBiH.EF
                     Abbreviation = "MKT",
                     Active = true,
                     CreatedDate = DateTime.Now,
-                    Id = 2
+                    Id = 2,
+                    Description = "Functional field that engages the target audience, build strong relationships to create value."
+
                 },
                 new FunctionalField
                 {
@@ -37,14 +40,17 @@ namespace AiesecBiH.EF
                     Abbreviation = "IGV",
                     Active = true,
                     CreatedDate = DateTime.Now,
-                    Id = 3
+                    Id = 3,
+                    Description= "iGV is the department that handles all that is related starting from attracting Exchange Participants (EPs) for our local projects."
                 },
                 new FunctionalField
                 {
                     Name = "Outgoing Global Volounteere",
                     Abbreviation = "OGV",
                     Active = true,
-                    CreatedDate = DateTime.Now, Id = 4
+                    CreatedDate = DateTime.Now,
+                    Id = 4,
+                    Description= "Outgoing Global Volunteer team is responsible for creating local strategies on converting opens to applicants."
                 },
                 new FunctionalField
                 {
@@ -52,7 +58,8 @@ namespace AiesecBiH.EF
                     Abbreviation = "PD",
                     Active = true,
                     CreatedDate = DateTime.Now,
-                    Id = 5
+                    Id = 5,
+                    Description= "Partnership Development is the department responsible for raising and maintaining the contact with our partners with activities ranging from cold calls."
                 }
             );
         }
@@ -61,7 +68,7 @@ namespace AiesecBiH.EF
             modelBuilder.Entity<LocalCommittee>().HasData(
                 new LocalCommittee
                 {
-                    Name = "<Undefined>",
+                    Name = "  ",
                     Active = true,
                     EstablishmentDate = DateTime.Now,
                     CreatedDate = DateTime.Now,
@@ -74,7 +81,6 @@ namespace AiesecBiH.EF
                     EstablishmentDate = DateTime.Now,
                     CreatedDate = DateTime.Now,
                     Id = 2
-                    //CityId = 1
                 },
                 new LocalCommittee
                 {
@@ -83,7 +89,6 @@ namespace AiesecBiH.EF
                     EstablishmentDate = DateTime.Now,
                     CreatedDate = DateTime.Now,
                     Id = 3
-                    //CityId = 2
                 },
                 new LocalCommittee
                 {
@@ -92,16 +97,6 @@ namespace AiesecBiH.EF
                     EstablishmentDate = DateTime.Now,
                     CreatedDate = DateTime.Now,
                     Id = 4
-                    //CityId = 3
-                },
-                new LocalCommittee
-                {
-                    Name = "Banja Luka",
-                    Active = true,
-                    EstablishmentDate = DateTime.Now,
-                    CreatedDate = DateTime.Now,
-                    Id = 5
-                    //CityId = 4
                 }
             );
         }
@@ -156,7 +151,7 @@ namespace AiesecBiH.EF
         {
             var securityService = new SecurityService();
             var salts = new List<string>();
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < 20; i++)
             {
                 salts.Add(securityService.GenerateSalt());
             }
@@ -182,9 +177,9 @@ namespace AiesecBiH.EF
                     Id = 2,
                     FirstName = "Ajdin",
                     LastName = "Kahrimanovic",
-                    Username = "ajdinkahrimanovic",
+                    Username = "user2",
                     Address = "Dobrinjska 12",
-                    EmailAddress = "hari.hodzic98@gmail.com",
+                    EmailAddress = "ajdin@gmail.com",
                     PhoneNumber = "062123344",
                     PasswordSalt = salts[4],
                     PasswordHash = securityService.GenerateHash(salts[4], "test"),
@@ -195,7 +190,7 @@ namespace AiesecBiH.EF
                 },
                 new Member
                 {
-                    Id = 5,
+                    Id = 3,
                     FirstName = "Sulejman",
                     LastName = "Tutnjevic",
                     Username = "sulejmantutnjevic",
@@ -204,30 +199,30 @@ namespace AiesecBiH.EF
                     PasswordSalt = salts[1],
                     PasswordHash = securityService.GenerateHash(salts[1], "test"),
                     PhoneNumber = "062123344",
-                    RoleId = 2,
+                    RoleId = 3,
                     LocalCommitteeId = 2,
-                    FunctionalFieldId = 2,
-                    Gender = 'M'
-                },
-                new Member
-                {
-                    Id = 3,
-                    FirstName = "Tarik",
-                    LastName = "Bucan",
-                    Username = "tarikbucan",
-                    Address = "Zahira Panjete 298",
-                    EmailAddress = "tarik.bucan98@gmail.com",
-                    PasswordSalt = salts[2],
-                    PasswordHash = securityService.GenerateHash(salts[2], "test"),
-                    PhoneNumber = "062123344",
-                    RoleId = 2,
-                    LocalCommitteeId = 2,
-                    FunctionalFieldId = 3,
+                    FunctionalFieldId = 1,
                     Gender = 'M'
                 },
                 new Member
                 {
                     Id = 4,
+                    FirstName = "Tarik",
+                    LastName = "Bucan",
+                    Username = "user1",
+                    Address = "Zahira Panjete 298",
+                    EmailAddress = "tarik.bucan98@gmail.com",
+                    PasswordSalt = salts[2],
+                    PasswordHash = securityService.GenerateHash(salts[2], "test"),
+                    PhoneNumber = "062123344",
+                    RoleId = 4,
+                    LocalCommitteeId = 2,
+                    FunctionalFieldId = 1,
+                    Gender = 'M'
+                },
+                new Member
+                {
+                    Id = 5,
                     FirstName = "Selma",
                     LastName = "Idic",
                     Username = "selmaidic",
@@ -236,9 +231,9 @@ namespace AiesecBiH.EF
                     PasswordSalt = salts[3],
                     PasswordHash = securityService.GenerateHash(salts[3], "test"),
                     PhoneNumber = "062123344",
-                    RoleId = 2,
-                    LocalCommitteeId = 1,
-                    FunctionalFieldId = 4,
+                    RoleId = 4,
+                    LocalCommitteeId = 2,
+                    FunctionalFieldId = 1,
                     Gender = 'M'
                 },
                 new Member
@@ -252,9 +247,9 @@ namespace AiesecBiH.EF
                     PasswordSalt = salts[5],
                     PasswordHash = securityService.GenerateHash(salts[5], "test"),
                     PhoneNumber = "062123344",
-                    RoleId = 2,
-                    LocalCommitteeId = 3,
-                    FunctionalFieldId = 5,
+                    RoleId = 4,
+                    LocalCommitteeId = 2,
+                    FunctionalFieldId = 1,
                     Gender = 'M'
                 },
                 new Member
@@ -268,9 +263,9 @@ namespace AiesecBiH.EF
                     PasswordSalt = salts[6],
                     PasswordHash = securityService.GenerateHash(salts[6], "test"),
                     PhoneNumber = "062123344",
-                    RoleId = 3,
+                    RoleId = 4,
                     LocalCommitteeId = 2,
-                    FunctionalFieldId = 1,
+                    FunctionalFieldId = 2,
                     Gender = 'F'
                 },
                 new Member
@@ -284,7 +279,7 @@ namespace AiesecBiH.EF
                     PhoneNumber = "062123344",
                     PasswordSalt = salts[7],
                     PasswordHash = securityService.GenerateHash(salts[7], "test"),
-                    RoleId = 2,
+                    RoleId = 3,
                     LocalCommitteeId = 2,
                     FunctionalFieldId = 2,
                     Gender = 'M'
@@ -301,9 +296,9 @@ namespace AiesecBiH.EF
                     PasswordHash = securityService.GenerateHash(salts[8], "test"),
                     PhoneNumber = "062123344",
                     Gender = 'M',
-                    RoleId = 2,
+                    RoleId = 4,
                     LocalCommitteeId = 2,
-                    FunctionalFieldId = 2
+                    FunctionalFieldId = 3
                 },
                 new Member
                 {
@@ -318,8 +313,8 @@ namespace AiesecBiH.EF
                     PhoneNumber = "062123344",
                     Gender = 'F',
                     RoleId = 3,
-                    FunctionalFieldId = 2,
-                    LocalCommitteeId = 1
+                    FunctionalFieldId = 4,
+                    LocalCommitteeId = 2
                 },
                 new Member
                 {
@@ -334,8 +329,8 @@ namespace AiesecBiH.EF
                     PhoneNumber = "062123344",
                     Gender = 'F',
                     RoleId = 4,
-                    FunctionalFieldId = 1,
-                    LocalCommitteeId = 4
+                    FunctionalFieldId = 5,
+                    LocalCommitteeId = 2
                 },
                 new Member
                 {
@@ -344,14 +339,126 @@ namespace AiesecBiH.EF
                     LastName = "Brulic",
                     Username = "harisbrulic",
                     Address = "Test 4",
-                    EmailAddress = "harisbrulic@gmail.com",
-                    PasswordSalt = salts[9],
+                    EmailAddress = "test3@gmail.com",
+                    PasswordSalt = salts[10],
                     PasswordHash = securityService.GenerateHash(salts[9], "test"),
                     PhoneNumber = "062123344",
                     Gender = 'M',
                     RoleId = 4,
-                    FunctionalFieldId = 2,
+                    FunctionalFieldId = 3,
                     LocalCommitteeId = 3
+                },
+                new Member
+                {
+                    Id = 13,
+                    FirstName = "Amel",
+                    LastName = "Music",
+                    Username = "amelmusic",
+                    Address = "Test 4",
+                    EmailAddress = "amelmusic@gmail.com",
+                    PasswordSalt = salts[11],
+                    PasswordHash = securityService.GenerateHash(salts[9], "test"),
+                    PhoneNumber = "062123344",
+                    Gender = 'M',
+                    RoleId = 4,
+                    FunctionalFieldId = 4,
+                    LocalCommitteeId = 3
+                },
+                new Member
+                {
+                    Id = 14,
+                    FirstName = "Denis",
+                    LastName = "Music",
+                    Username = "denismusic",
+                    Address = "Test 4",
+                    EmailAddress = "denis@gmail.com",
+                    PasswordSalt = salts[12],
+                    PasswordHash = securityService.GenerateHash(salts[9], "test"),
+                    PhoneNumber = "062123344",
+                    Gender = 'M',
+                    RoleId = 4,
+                    FunctionalFieldId = 5,
+                    LocalCommitteeId = 3
+                },
+                new Member
+                {
+                    Id = 15,
+                    FirstName = "Elmir",
+                    LastName = "Babovic",
+                    Username = "elmirbabovic",
+                    Address = "Test 4",
+                    EmailAddress = "elmirbabovic@gmail.com",
+                    PasswordSalt = salts[13],
+                    PasswordHash = securityService.GenerateHash(salts[9], "test"),
+                    PhoneNumber = "062123344",
+                    Gender = 'M',
+                    RoleId = 4,
+                    FunctionalFieldId = 4,
+                    LocalCommitteeId = 3
+                },
+                new Member
+                {
+                    Id = 16,
+                    FirstName = "Irma",
+                    LastName = "Saric",
+                    Username = "irmasaric",
+                    Address = "Test 6",
+                    EmailAddress = "irmasaric@gmail.com",
+                    PasswordSalt = salts[15],
+                    PasswordHash = securityService.GenerateHash(salts[9], "test"),
+                    PhoneNumber = "0621112222",
+                    Gender = 'M',
+                    RoleId = 4,
+                    FunctionalFieldId = 2,
+                    LocalCommitteeId = 4
+                },
+                new Member
+                {
+                    Id = 17,
+                    FirstName = "Ajla",
+                    LastName = "Brulic",
+                    Username = "ajlabrulic",
+                    Address = "Dobrinja 4",
+                    EmailAddress = "test2@gmail.com",
+                    PasswordSalt = salts[15],
+                    PasswordHash = securityService.GenerateHash(salts[9], "test"),
+                    PhoneNumber = "062123344",
+                    Gender = 'M',
+                    RoleId = 4,
+                    FunctionalFieldId = 3,
+                    LocalCommitteeId = 4
+                },
+                new Member
+                {
+                    Id = 18,
+                    FirstName = "Haris",
+                    LastName = "Brulic",
+                    Username = "harisbrulic",
+                    Address = "Test 4",
+                    EmailAddress = "test1@gmail.com",
+                    PasswordSalt = salts[15],
+                    PasswordHash = securityService.GenerateHash(salts[9], "test"),
+                    PhoneNumber = "062123344",
+                    Gender = 'M',
+                    RoleId = 4,
+                    FunctionalFieldId = 4,
+                    LocalCommitteeId = 4
+                },
+                new Member
+                {
+                    Id = 19,
+                    FirstName = "Nejira",
+                    LastName = "Vrana",
+                    Username = "nejiravrana",
+                    Address = "Test 4",
+                    EmailAddress = "nejiravrana@gmail.com",
+                    PasswordSalt = salts[15],
+                    PasswordHash = securityService.GenerateHash(salts[9], "test"),
+                    PhoneNumber = "062567948",
+                    Gender = 'Z',
+                    RoleId = 4,
+                    FunctionalFieldId = 3,
+                    LocalCommitteeId = 4
                 }
             );
         }
@@ -381,30 +488,73 @@ namespace AiesecBiH.EF
         public static void TasksSeed(this ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Database.Task>().HasData(
-                new Database.Task { Id = 1, Name = "Sastanak sa partnerima", Description= "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2019, 10, 12, 12, 11, 0), Deadline = new DateTime(2020, 11, 12, 12, 11, 0), MemberCreatorId = 2, Executed =false, RoleId=3,LocalCommitteeId=1, FunctionalFieldId=1,Priority=Model.Priority.High,},
-                new Database.Task { Id = 2, Name = "Kontaktirati Dom armije", Description= "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2020, 10, 12, 12, 11, 0), Deadline = new DateTime(2020, 11, 11, 12, 11, 0), MemberCreatorId = 2, Executed =false, RoleId = 3, LocalCommitteeId = 1, FunctionalFieldId=1, Priority=Model.Priority.Low },
-                new Database.Task { Id = 3, Name = "Odrzati intervju sa novim clanovima", Description= "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2020, 10, 13, 12, 11, 0), Deadline = new DateTime(2020, 10, 12, 12, 11, 0), MemberCreatorId = 2, Executed =false, RoleId = 3, LocalCommitteeId = 1, FunctionalFieldId = 1,Priority=Model.Priority.Medium },
-                new Database.Task { Id = 4, Name = "Edukacija novih clanova", Description= "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2020, 10, 14, 12, 11, 0), Deadline = new DateTime(2020, 11, 12, 12, 11, 0), MemberCreatorId = 3, Executed=false, RoleId=3,LocalCommitteeId=3, FunctionalFieldId=3, Priority = Model.Priority.Medium },
-                new Database.Task { Id = 5, Name = "Priprema za YSF", Description= "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2021, 5, 14, 12, 11, 0), Deadline = new DateTime(2020, 11,9, 12, 11, 0), MemberCreatorId = 3, Executed=false, RoleId=3,LocalCommitteeId=1, FunctionalFieldId = 3, Priority = Model.Priority.Medium },
-                new Database.Task { Id = 6, Name = "SWAT analiza za ITA", Description= "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2021, 5, 13, 12, 11, 0), Deadline = new DateTime(2020, 7, 11, 12, 11, 0), MemberCreatorId = 3, Executed=false, RoleId=3,LocalCommitteeId=1, FunctionalFieldId=3, Priority = Model.Priority.Medium },
-                new Database.Task { Id = 7, Name = "Kontaktirati govornike za YSF", Description= "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2021, 12, 9, 12, 11, 0), Deadline = new DateTime(2020, 6, 12, 12, 11, 0), MemberCreatorId = 5, Executed=false, RoleId=3,LocalCommitteeId=1, FunctionalFieldId=2, Priority = Model.Priority.Low },
-                new Database.Task { Id = 8, Name = "Odabrati clanove za nesto", Description= "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2021, 12, 10, 12, 11, 0), Deadline = new DateTime(2020, 11, 12, 12, 11, 0), MemberCreatorId = 5, Executed=false, RoleId=3,LocalCommitteeId=1, FunctionalFieldId=2, Priority = Model.Priority.Medium }
+                new Database.Task {
+                    Id = 1,
+                    Name = "Sastanak sa partnerima",
+                    Description= "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.",
+                    CreatedDate = new DateTime(2019, 10, 12, 12, 11, 0),
+                    Deadline = new DateTime(2020, 11, 12, 12, 11, 0),
+                    MemberCreatorId = 2,
+                    Executed =true,
+                    MemberExecutorId=2,
+                    RoleId=2,
+                    LocalCommitteeId=2,
+                    FunctionalFieldId=1,
+                    Priority=Model.Priority.High
+                },
+                new Database.Task { Id = 2, Name = "Kontaktirati Dom armije", Description= "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2020, 9, 9, 12, 11, 0), Deadline = new DateTime(2020, 11, 11, 12, 11, 0), MemberCreatorId = 2, Executed =true, RoleId = 3, LocalCommitteeId = 2, FunctionalFieldId=1, Priority=Model.Priority.Low, MemberExecutorId = 2 },
+                new Database.Task { Id = 3, Name = "Odrzati intervju sa novim clanovima", Description= "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2020, 10, 9, 12, 11, 0), Deadline = new DateTime(2020, 10, 12, 12, 11, 0), MemberCreatorId = 2, Executed =true, RoleId = 3, LocalCommitteeId = 2, FunctionalFieldId = 1,Priority=Model.Priority.Medium, MemberExecutorId = 3 },
+                new Database.Task { Id = 4, Name = "Edukacija novih clanova", Description= "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2020, 10, 10, 12, 11, 0), Deadline = new DateTime(2020, 11, 12, 12, 11, 0), MemberCreatorId = 3, Executed=true, RoleId=3,LocalCommitteeId=2, FunctionalFieldId=1, Priority = Model.Priority.Medium, MemberExecutorId = 3 },
+                new Database.Task { Id = 5, Name = "Priprema za YSF", Description= "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2021, 1, 1, 12, 11, 0), Deadline = new DateTime(2021,1,9, 12, 11, 0), MemberCreatorId = 3, Executed=true, RoleId=3,LocalCommitteeId=2, FunctionalFieldId = 1, Priority = Model.Priority.Medium, MemberExecutorId = 1 },
+                new Database.Task { Id = 6, Name = "SWAT analiza za ITA", Description= "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2021, 5, 13, 12, 11, 0), Deadline = new DateTime(2021, 7, 11, 12, 11, 0), MemberCreatorId = 3, Executed=false, RoleId=3,LocalCommitteeId=2, FunctionalFieldId=1, Priority = Model.Priority.Medium },
+                new Database.Task { Id = 7, Name = "Kontaktirati govornike za YSF", Description= "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2021, 12, 9, 12, 11, 0), Deadline = new DateTime(2021, 6, 12, 12, 11, 0), MemberCreatorId = 5, Executed=false, RoleId=3,LocalCommitteeId=2, FunctionalFieldId=1, Priority = Model.Priority.Low },
+                new Database.Task { Id = 8, Name = "Odlazak na aerodrom", Description= "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2020, 1, 10, 12, 11, 0), Deadline = new DateTime(2020, 2, 12, 12, 11, 0), MemberCreatorId = 5, Executed=true, RoleId=3,LocalCommitteeId=2, FunctionalFieldId=1, Priority = Model.Priority.Medium,MemberExecutorId=7 },
+                new Database.Task { Id = 9, Name = "Sastanak sa Coca-Colom", Description= "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2021, 1, 10, 12, 11, 0), Deadline = new DateTime(2020, 2, 12, 12, 11, 0), MemberCreatorId = 5, Executed=true, RoleId=3,LocalCommitteeId=2, FunctionalFieldId=1, Priority = Model.Priority.Low, MemberExecutorId = 6 },
+                new Database.Task { Id = 10, Name = "Kontaktirati sponzore za BSA", Description= "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2021, 1, 10, 12, 11, 0), Deadline = new DateTime(2020, 2, 12, 12, 11, 0), MemberCreatorId = 5, Executed=true, RoleId=3,LocalCommitteeId=3, FunctionalFieldId=2, Priority = Model.Priority.Medium, MemberExecutorId = 7 },
+                new Database.Task { Id = 11, Name = "Kupiti panel za BSA", Description= "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2021, 1, 10, 12, 11, 0), Deadline = new DateTime(2021, 2, 12, 12, 11, 0), MemberCreatorId = 5, Executed=false, RoleId=3,LocalCommitteeId=4, FunctionalFieldId=4, Priority = Model.Priority.High, MemberExecutorId = 6 },
+                new Database.Task { Id = 12, Name = "Kontaktirati sponzore za hranu, BSA", Description= "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2021, 1, 10, 12, 11, 0), Deadline = new DateTime(2021, 2, 12, 12, 11, 0), MemberCreatorId = 5, Executed=false, RoleId=3,LocalCommitteeId=4, FunctionalFieldId=2, Priority = Model.Priority.Medium, MemberExecutorId = 7 },
+                new Database.Task { Id = 13, Name = "Kontaktirati Dom Armije za YSF", Description= "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2021, 1, 10, 12, 11, 0), Deadline = new DateTime(2021, 2, 12, 12, 11, 0), MemberCreatorId = 5, Executed=false, RoleId=3,LocalCommitteeId=3, FunctionalFieldId=3, Priority = Model.Priority.Medium, MemberExecutorId = 6 }
             );
         }
 
         public static void EventsSeed(this ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Database.Event>().HasData(
-                new Database.Event { Id = 1, Name = "Sastanak sa partnerima", Description = "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2019, 10, 12, 12, 11, 0), DateTime = new DateTime(2020, 11, 12, 12, 11, 0), LocalCommitteeId = 1, FunctionalFieldId = 1},
-                new Database.Event { Id = 2, Name = "Kontaktirati Dom armije", Description = "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2020, 10, 12, 12, 11, 0), DateTime = new DateTime(2020, 7, 7, 12, 11, 0), LocalCommitteeId = 1, FunctionalFieldId = 1 },
-                new Database.Event { Id = 3, Name = "Odrzati intervju sa novim clanovima", Description = "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2020, 10, 13, 12, 11, 0), DateTime = new DateTime(2020, 12, 16, 12, 11, 0), LocalCommitteeId = 1, FunctionalFieldId = 1 },
-                new Database.Event { Id = 4, Name = "Edukacija novih clanova", Description = "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2020, 10, 14, 12, 11, 0), DateTime = new DateTime(2020, 10, 12, 12, 11, 0), LocalCommitteeId = 3, FunctionalFieldId = 3},
-                new Database.Event { Id = 5, Name = "Priprema za YSF", Description = "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2021, 5, 14, 12, 11, 0), DateTime = new DateTime(2019, 11, 12, 12, 11, 0), LocalCommitteeId = 1, FunctionalFieldId = 3 },
-                new Database.Event { Id = 6, Name = "SWAT analiza za ITA", Description = "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2021, 5, 13, 12, 11, 0), DateTime = new DateTime(2019, 11, 12, 12, 11, 0), LocalCommitteeId = 1, FunctionalFieldId = 3 },
-                new Database.Event { Id = 7, Name = "Kontaktirati govornike za YSF", Description = "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2021, 12, 9, 12, 11, 0), DateTime = new DateTime(2019, 11, 12, 12, 11, 0), LocalCommitteeId = 1, FunctionalFieldId = 2 },
-                new Database.Event { Id = 8, Name = "Odabrati clanove za nesto", Description = "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2021, 12, 10, 12, 11, 0), DateTime = new DateTime(2019, 11, 12, 12, 11, 0), LocalCommitteeId = 1, FunctionalFieldId = 2}
+                new Database.Event { Id = 1, Name = "YSF 2020", Description = "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2020, 10, 12, 12, 11, 0), DateTime = new DateTime(2021, 11, 12, 12, 11, 0), LocalCommitteeId = 2, FunctionalFieldId = 1},
+                new Database.Event { Id = 2, Name = "LCM", Description = "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2020, 10, 12, 12, 11, 0), DateTime = new DateTime(2021, 7, 10, 12, 11, 0), LocalCommitteeId = 2, FunctionalFieldId = 1 },
+                new Database.Event { Id = 3, Name = "Lorem", Description = "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2021, 8, 13, 12, 11, 0), DateTime = new DateTime(2021,10, 16, 12, 11, 0), LocalCommitteeId = 2, FunctionalFieldId = 1 },
+                new Database.Event { Id = 4, Name = "Event 2", Description = "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2021, 10, 14, 12, 11, 0), DateTime = new DateTime(2020, 10, 12, 12, 11, 0), LocalCommitteeId = 2, FunctionalFieldId = 1},
+                new Database.Event { Id = 5, Name = "Event 3", Description = "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2021, 11, 14, 12, 11, 0), DateTime = new DateTime(2019, 11, 12, 12, 11, 0), LocalCommitteeId = 2, FunctionalFieldId = 3 },
+                new Database.Event { Id = 6, Name = "Natco", Description = "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2021, 5, 13, 12, 11, 0), DateTime = new DateTime(2019, 11, 12, 12, 11, 0), LocalCommitteeId = 2, FunctionalFieldId = 1 },
+                new Database.Event { Id = 7, Name = "BSA", Description = "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2021, 2, 9, 12, 11, 0), DateTime = new DateTime(2019, 11, 12, 12, 11, 0), LocalCommitteeId = 3, FunctionalFieldId = 3 },
+                new Database.Event { Id = 8, Name = "Event", Description = "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2020, 12, 10, 12, 11, 0), DateTime = new DateTime(2019, 11, 12, 12, 11, 0), LocalCommitteeId = 4, FunctionalFieldId = 3}
             );
         }
+
+        public static void EventAttendanceSeed(this ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Database.EventAttendance>().HasData(
+                new Database.EventAttendance { Id = 1, EventId = 1, MemberId = 2 },
+                new Database.EventAttendance { Id = 2, EventId = 1, MemberId = 3 },
+                new Database.EventAttendance { Id = 3, EventId = 1, MemberId = 4 },
+                new Database.EventAttendance { Id = 4, EventId = 1, MemberId = 5 },
+                new Database.EventAttendance { Id = 5, EventId = 2, MemberId = 2 },
+                new Database.EventAttendance { Id = 6, EventId = 2, MemberId = 3 },
+                new Database.EventAttendance { Id = 7, EventId = 2, MemberId = 4 },
+                new Database.EventAttendance { Id = 8, EventId = 3, MemberId = 5 },
+                new Database.EventAttendance { Id = 9, EventId = 3, MemberId = 4 },
+                new Database.EventAttendance { Id = 10, EventId = 4, MemberId = 4 },
+                new Database.EventAttendance { Id = 11, EventId = 4, MemberId = 3 },
+                new Database.EventAttendance { Id = 12, EventId = 4, MemberId = 2 },
+                new Database.EventAttendance { Id = 13, EventId = 4, MemberId = 5 },
+                new Database.EventAttendance { Id = 14, EventId = 5, MemberId = 10 },
+                new Database.EventAttendance { Id = 15, EventId = 6, MemberId = 11 },
+                new Database.EventAttendance { Id = 16, EventId = 6, MemberId = 12 },
+                new Database.EventAttendance { Id = 17, EventId = 7, MemberId = 10 },
+                new Database.EventAttendance { Id = 18, EventId = 7, MemberId = 11 }
+            );
+        }
+
     }
 }
 
