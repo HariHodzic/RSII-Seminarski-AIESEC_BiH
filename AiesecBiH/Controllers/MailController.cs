@@ -1,5 +1,6 @@
 ﻿using AiesecBiH.IServices;
 using AiesecBiH.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,7 @@ namespace AiesecBiH.Controllers
             this.mailService = mailService;
         }
 
+        [Authorize]
         [HttpPost("Send")]
         public async Task<IActionResult> Send([FromForm] MailRequest request)
         {

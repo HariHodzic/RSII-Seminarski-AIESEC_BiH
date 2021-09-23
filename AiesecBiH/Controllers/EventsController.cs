@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AiesecBiH.IServices;
 using AutoMapper.Configuration;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AiesecBiH.Controllers
 {
@@ -17,6 +18,7 @@ namespace AiesecBiH.Controllers
             _eventService = service;
         }
 
+        [Authorize]
         [HttpPost("Attend/{id}")]
         public async Task<Model.Response.EventAttendance> Attend(int id, [FromBody] int memberId)
         {
@@ -25,6 +27,8 @@ namespace AiesecBiH.Controllers
             var result = await _eventService.Attend(id, memberId);
             return result;
         }
+
+        [Authorize]
         [HttpGet("GetAttendances/{id}")]
         public async Task<IEnumerable<Model.Response.EventAttendance>> GetAttendance(int id)
         {

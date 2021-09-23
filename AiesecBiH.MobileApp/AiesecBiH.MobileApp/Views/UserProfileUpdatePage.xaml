@@ -9,6 +9,7 @@
         <ScrollView>
             <StackLayout Padding="10">
                     <Label Text="Update profile" FontSize="30" Margin="5,0,0,20" HorizontalOptions="Center"></Label>
+                
                 <StackLayout Orientation="Vertical">
                     <Label Text="First Name"/>
                     <Entry Text="{Binding FirstName}"/>

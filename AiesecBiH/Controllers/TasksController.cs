@@ -1,4 +1,5 @@
 ﻿using AiesecBiH.IServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace AiesecBiH.Controllers
             _taskService = service;
         }
 
-
+        [Authorize]
         [HttpPost("Execute/{id}")]
         public async Task<Model.Response.TaskDetails> Execute(int id,[FromBody]int memberId)
         {

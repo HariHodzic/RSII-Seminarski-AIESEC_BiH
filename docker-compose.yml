@@ -9,7 +9,7 @@ services:
    - SA_PASSWORD=QWElkj132!
    - MSSQL_PID=Developer
   ports:
-   - 1433:1433
+   - 8010:1433
   networks:
    - aiesecnet
 
@@ -18,7 +18,7 @@ services:
   build:
    context: .
   environment:
-   - ConnectionStrings:AiesecBiH=Server=aiesec-sql,1433;Database=IB160195;User=sa;Password=QWElkj132!;ConnectRetryCount=0
+   - ConnectionStrings:local=Server=aiesec-sql,1433;Database=IB160195RSII;User=sa;Password=QWElkj132!;ConnectRetryCount=0
   ports:
    - 5010:5010
   networks:

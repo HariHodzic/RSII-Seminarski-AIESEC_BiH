@@ -36,7 +36,7 @@ namespace AiesecBiH.Controllers
         {
             return await _crudService.Update(id, request);
         }
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         [HttpDelete("{id}")]
         public async Task<T> Delete(int id)
         {

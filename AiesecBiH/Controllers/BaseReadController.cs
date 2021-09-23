@@ -9,7 +9,7 @@ namespace AiesecBiH.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize]
+    [Authorize]
     public class BaseReadController<T,TSearch> : ControllerBase 
         where T:class 
         where  TSearch:class

@@ -36,7 +36,7 @@ namespace AiesecBiH.Controllers
             return await _service.GetById(id);
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         public async Task<Model.Response.Member> Insert([FromBody]Model.Insert.Member member)
         {
@@ -58,7 +58,7 @@ namespace AiesecBiH.Controllers
             return await _service.Update(id, request);
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Administrator")]
         [HttpDelete("{id}")]
         public async Task<Model.Response.Member> Remove(int id)
         {
