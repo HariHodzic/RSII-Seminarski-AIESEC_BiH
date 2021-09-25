@@ -32,7 +32,7 @@ namespace AiesecBiH.MobileApp.ViewModels.Requests
             }
             catch (Exception ex)
             {
-                await Application.Current.MainPage.DisplayAlert("Info", "Time recommendation doesn=t because of lack of inputs", "OK");
+                await Application.Current.MainPage.DisplayAlert("Info", "Time recommendation doesn't work because of lack of inputs", "OK");
             }
         }
 

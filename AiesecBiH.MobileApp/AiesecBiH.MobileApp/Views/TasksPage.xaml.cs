@@ -26,7 +26,15 @@ namespace AiesecBiH.MobileApp.Views
         }
         private async void btnNewTask_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new NewTaskPage());
+            if (APIService.LoggedUser.RoleId == 1)
+            {
+                await Application.Current.MainPage.DisplayAlert("Event", "Admin is not allowed to create task.", "OK");
+
+            }
+            else
+            {
+                await Navigation.PushAsync(new NewTaskPage());
+            }
 
         }
 

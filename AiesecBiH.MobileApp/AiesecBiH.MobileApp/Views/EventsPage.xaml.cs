@@ -33,6 +33,11 @@ namespace AiesecBiH.MobileApp.Views
                 await Application.Current.MainPage.DisplayAlert("Event", "You are not authorized to create event.", "OK");
 
             }
+            else if (APIService.LoggedUser.RoleId == 1)
+            {
+                await Application.Current.MainPage.DisplayAlert("Event", "Admin is not allowed to create event.", "OK");
+
+            }
             else
             {
                 await Navigation.PushAsync(new NewEventPage());
