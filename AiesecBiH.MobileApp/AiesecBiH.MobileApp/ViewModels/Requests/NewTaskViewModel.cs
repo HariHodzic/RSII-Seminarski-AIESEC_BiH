@@ -108,7 +108,7 @@ namespace AiesecBiH.MobileApp.ViewModels.Requests
 
         private bool Validate()
         {
-            if (NameValidation() && DescriptionValidation())
+            if (NameValidation() && DescriptionValidation() && DeadlineValidation())
                 return true;
             return false;
         }
@@ -120,9 +120,14 @@ namespace AiesecBiH.MobileApp.ViewModels.Requests
                 isValid = false;
                 LblDeadlineError = Messages.RequiredField;
             }
+            if (DateTime.Compare(Deadline, DateTime.Now) <= 0)
+            {
+                isValid = false;
+                LblDeadlineError = "Date and time of event must be set in the future.";
+            }
             if (isValid == true)
             {
-                LblNameError = null;
+                LblDeadlineError = null;
 
             }
             return isValid;

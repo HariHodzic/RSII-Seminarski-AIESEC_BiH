@@ -23,6 +23,7 @@
                 <StackLayout>
                     <Label Text="Deadline" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"></Label>
                     <DatePicker Date="{Binding dateTime}" ></DatePicker>
+                    <TimePicker Time="{Binding dateTime}"></TimePicker>
                     <Label Text="{Binding LblDateTimeError}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="Red"></Label>
                 </StackLayout>
                 <Button  Text="Save" 

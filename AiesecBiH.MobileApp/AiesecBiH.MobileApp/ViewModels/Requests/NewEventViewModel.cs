@@ -11,10 +11,18 @@ namespace AiesecBiH.MobileApp.ViewModels.Requests
     {
         private readonly APIService _EventsService = new APIService("Events");
         public ICommand SaveCommand { get; set; }
+        private DateTime recommendedTime;
 
         public NewEventViewModel()
         {
+            GetRecommendedTime();
+            dateTime = DateTime.Now.Date.Add(recommendedTime.TimeOfDay).AddDays(1);
+
             SaveCommand = new Command(async () => await SaveEventAsync());
+        }
+        private async Task GetRecommendedTime()
+        {
+            recommendedTime = await _EventsService.GetWithSingleQuery<DateTime>("RecommendTime", "FunctionalFieldId", APIService.LoggedUser.FunctionalFieldId.ToString());
         }
 
         public async Task SaveEventAsync()
@@ -63,12 +71,13 @@ namespace AiesecBiH.MobileApp.ViewModels.Requests
             set { SetProperty(ref _description, value); }
         }
 
-        private DateTime _dateTime=DateTime.Now;
+        private DateTime _dateTime;
         public DateTime dateTime
         {
             get { return _dateTime; }
             set { SetProperty(ref _dateTime, value); }
         }
+        
 
         private bool _allFuncFields;
         public bool AllFuncFields
@@ -120,6 +129,11 @@ namespace AiesecBiH.MobileApp.ViewModels.Requests
                 isValid = false;
                 LblDateTimeError = Messages.RequiredField;
             }
+            if(DateTime.Compare(dateTime,DateTime.Now)<=0)
+            {
+                isValid = false;
+                LblDateTimeError = "Date and time of event must be set in the future.";
+            }    
             if (isValid == true)
             {
                 LblNameError = null;

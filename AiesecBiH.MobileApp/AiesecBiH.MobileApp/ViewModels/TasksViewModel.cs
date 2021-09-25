@@ -21,9 +21,10 @@ namespace AiesecBiH.MobileApp.ViewModels
         public TasksViewModel()
         {
             InitCommand = new Command(async () => await Init());
-            SearchOptionsList.Add(SearchOptions.ActiveOnly);
+            SearchOptionsList.Add(SearchOptions.TeamActive);
             SearchOptionsList.Add(SearchOptions.AllTeam);
             SearchOptionsList.Add(SearchOptions.All);
+            SearchOptionsList.Add(SearchOptions.AllActive);
         }
 
 
@@ -43,7 +44,7 @@ namespace AiesecBiH.MobileApp.ViewModels
             try
             {
                 Model.Search.Task req;
-                if(SelectedSearchOption== SearchOptions.ActiveOnly)
+                if(SelectedSearchOption== SearchOptions.TeamActive)
                 {
                     req = new Model.Search.Task
                     {
@@ -51,18 +52,33 @@ namespace AiesecBiH.MobileApp.ViewModels
                         FunctionalFieldId = APIService.LoggedUser.FunctionalFieldId,
                         LocalCommitteeId = APIService.LoggedUser.LocalCommitteeId
                     };
+                    if (APIService.LoggedUser.FunctionalFieldId == 1)
+                    {
+                        req.FunctionalFieldId = 0;
+                    }
                 }
-                else if (SelectedSearchOption == SearchOptions.All)
+                else if (SelectedSearchOption == SearchOptions.AllActive)
                 {
-                    req = null;
+                    req = new Model.Search.Task
+                    {
+                        Executed = false
+                    };
                 }
-                else
+                else if(SelectedSearchOption==SearchOptions.AllTeam)
                 {
                     req = new Model.Search.Task
                     {
                         FunctionalFieldId = APIService.LoggedUser.FunctionalFieldId,
                         LocalCommitteeId = APIService.LoggedUser.LocalCommitteeId
                     };
+                    if (APIService.LoggedUser.FunctionalFieldId == 1)
+                    {
+                        req.FunctionalFieldId = 0;
+                    }
+                }
+                else
+                {
+                    req = null;
                 }
                 var list = await _tasksService.Get<IEnumerable<Model.Response.TaskDetails>>(req);
                 TasksList.Clear();

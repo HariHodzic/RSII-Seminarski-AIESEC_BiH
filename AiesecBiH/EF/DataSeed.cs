@@ -201,7 +201,7 @@ namespace AiesecBiH.EF
                     PhoneNumber = "062123344",
                     RoleId = 3,
                     LocalCommitteeId = 2,
-                    FunctionalFieldId = 1,
+                    FunctionalFieldId = 2,
                     Gender = 'M'
                 },
                 new Member
@@ -217,7 +217,7 @@ namespace AiesecBiH.EF
                     PhoneNumber = "062123344",
                     RoleId = 4,
                     LocalCommitteeId = 2,
-                    FunctionalFieldId = 1,
+                    FunctionalFieldId = 2,
                     Gender = 'M'
                 },
                 new Member
@@ -233,7 +233,7 @@ namespace AiesecBiH.EF
                     PhoneNumber = "062123344",
                     RoleId = 4,
                     LocalCommitteeId = 2,
-                    FunctionalFieldId = 1,
+                    FunctionalFieldId = 2,
                     Gender = 'M'
                 },
                 new Member
@@ -249,7 +249,7 @@ namespace AiesecBiH.EF
                     PhoneNumber = "062123344",
                     RoleId = 4,
                     LocalCommitteeId = 2,
-                    FunctionalFieldId = 1,
+                    FunctionalFieldId = 2,
                     Gender = 'M'
                 },
                 new Member
@@ -265,7 +265,7 @@ namespace AiesecBiH.EF
                     PhoneNumber = "062123344",
                     RoleId = 4,
                     LocalCommitteeId = 2,
-                    FunctionalFieldId = 2,
+                    FunctionalFieldId = 3,
                     Gender = 'F'
                 },
                 new Member
@@ -281,7 +281,7 @@ namespace AiesecBiH.EF
                     PasswordHash = securityService.GenerateHash(salts[7], "test"),
                     RoleId = 3,
                     LocalCommitteeId = 2,
-                    FunctionalFieldId = 2,
+                    FunctionalFieldId = 3,
                     Gender = 'M'
                 },
                 new Member
@@ -520,14 +520,14 @@ namespace AiesecBiH.EF
         public static void EventsSeed(this ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Database.Event>().HasData(
-                new Database.Event { Id = 1, Name = "YSF 2020", Description = "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2020, 10, 12, 12, 11, 0), DateTime = new DateTime(2021, 11, 12, 12, 11, 0), LocalCommitteeId = 2, FunctionalFieldId = 1},
-                new Database.Event { Id = 2, Name = "LCM", Description = "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2020, 10, 12, 12, 11, 0), DateTime = new DateTime(2021, 7, 10, 12, 11, 0), LocalCommitteeId = 2, FunctionalFieldId = 1 },
-                new Database.Event { Id = 3, Name = "Lorem", Description = "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2021, 8, 13, 12, 11, 0), DateTime = new DateTime(2021,10, 16, 12, 11, 0), LocalCommitteeId = 2, FunctionalFieldId = 1 },
-                new Database.Event { Id = 4, Name = "Event 2", Description = "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2021, 10, 14, 12, 11, 0), DateTime = new DateTime(2020, 10, 12, 12, 11, 0), LocalCommitteeId = 2, FunctionalFieldId = 1},
-                new Database.Event { Id = 5, Name = "Event 3", Description = "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2021, 11, 14, 12, 11, 0), DateTime = new DateTime(2019, 11, 12, 12, 11, 0), LocalCommitteeId = 2, FunctionalFieldId = 3 },
-                new Database.Event { Id = 6, Name = "Natco", Description = "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2021, 5, 13, 12, 11, 0), DateTime = new DateTime(2019, 11, 12, 12, 11, 0), LocalCommitteeId = 2, FunctionalFieldId = 1 },
-                new Database.Event { Id = 7, Name = "BSA", Description = "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2021, 2, 9, 12, 11, 0), DateTime = new DateTime(2019, 11, 12, 12, 11, 0), LocalCommitteeId = 3, FunctionalFieldId = 3 },
-                new Database.Event { Id = 8, Name = "Event", Description = "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2020, 12, 10, 12, 11, 0), DateTime = new DateTime(2019, 11, 12, 12, 11, 0), LocalCommitteeId = 4, FunctionalFieldId = 3}
+                new Database.Event { Id = 1, Name = "YSF 2020", Description = "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2020, 10, 12, 12, 11, 0), DateTime = new DateTime(2021, 11, 12, 12,11, 0), LocalCommitteeId = 2, FunctionalFieldId = 1,TimeUid=4},
+                new Database.Event { Id = 2, Name = "LCM", Description = "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2020, 10, 12, 12, 11, 0), DateTime = new DateTime(2021, 7, 10, 12, 10, 0), LocalCommitteeId = 2, FunctionalFieldId = 2, TimeUid = 3 },
+                new Database.Event { Id = 3, Name = "Lorem", Description = "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2021, 8, 13, 12, 11, 0), DateTime = new DateTime(2021,10, 16, 12, 10, 0), LocalCommitteeId = 2, FunctionalFieldId = 2, TimeUid = 3 },
+                new Database.Event { Id = 4, Name = "Event 2", Description = "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2021, 10, 14, 12, 11, 0), DateTime = new DateTime(2020, 10, 12, 12, 11, 0), LocalCommitteeId = 2, FunctionalFieldId = 2, TimeUid = 4 },
+                new Database.Event { Id = 5, Name = "Event 3", Description = "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2021, 11, 14, 12, 11, 0), DateTime = new DateTime(2019, 11, 12, 12, 9, 0), LocalCommitteeId = 2, FunctionalFieldId = 3, TimeUid = 2 },
+                new Database.Event { Id = 6, Name = "Natco", Description = "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2021, 5, 13, 12, 11, 0), DateTime = new DateTime(2019, 11, 12, 12, 16, 0), LocalCommitteeId = 2, FunctionalFieldId = 2, TimeUid = 9 },
+                new Database.Event { Id = 7, Name = "BSA", Description = "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2021, 2, 9, 12, 11, 0), DateTime = new DateTime(2019, 11, 12, 12, 17, 0), LocalCommitteeId = 3, FunctionalFieldId = 3, TimeUid = 10 },
+                new Database.Event { Id = 8, Name = "Event", Description = "Vestibulum semper lacus vel dolor consectetur, eu consequat lorem hendrerit.", CreatedDate = new DateTime(2020, 12, 10, 12, 11, 0), DateTime = new DateTime(2019, 11, 12, 12, 11, 0), LocalCommitteeId = 4, FunctionalFieldId = 3, TimeUid = 4 }
             );
         }
 

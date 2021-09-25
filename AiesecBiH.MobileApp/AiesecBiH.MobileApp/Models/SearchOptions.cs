@@ -7,11 +7,13 @@ namespace AiesecBiH.MobileApp.Models
 {
     public enum SearchOptions
     {
-        [Display(Name ="Active only")]
-        ActiveOnly,
-        [Display(Name = "Team only")]
+        [Display(Name ="Team Active")]
+        TeamActive,
+        [Display(Name = "All from team")]
         AllTeam,
         [Display(Name = "All")]
         All,
+        [Display(Name = "All active")]
+        AllActive,
     }
 }

@@ -11,6 +11,7 @@ namespace AiesecBiH.IServices
         Task<Model.Response.EventAttendance> Attend(int id, int memberId);
         bool isAttending(int eventId, int memberId);
         Task<IEnumerable<Model.Response.EventAttendance>> GetAttendance(int id);
+        Task<DateTime> GetRecommendedEventTime(int functionalFieldId);
 
     }
 }

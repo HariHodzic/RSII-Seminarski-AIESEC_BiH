@@ -7,15 +7,18 @@ using AiesecBiH.IServices;
 using AutoMapper.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
+using AiesecBiH.EF;
 
 namespace AiesecBiH.Controllers
 {
     public class EventsController : BaseCRUDController<Model.Response.Event,Model.Search.Event,Model.Update.Event,Model.Insert.Event>
     {
+        AiesecContext _dbContext;
         private readonly IEventService _eventService;
-        public EventsController(IEventService service):base(service)
+        public EventsController(IEventService service,AiesecContext context):base(service)
         {
             _eventService = service;
+            _dbContext = context;
         }
 
         [Authorize]
@@ -35,5 +38,16 @@ namespace AiesecBiH.Controllers
             return await _eventService.GetAttendance(id);
         }
 
+        [Authorize]
+        [HttpGet("RecommendTime")]
+        public async Task<IActionResult> RecommendTime([FromQuery] int functionalField)
+        {
+            var funcField = _dbContext.FunctionalFields.FirstOrDefaultAsync(x => x.Id == functionalField);
+            if(funcField==null)
+                return BadRequest("Non existing functional field");
+            var recommended = await _eventService.GetRecommendedEventTime(functionalField);
+
+            return Ok(recommended);
+        }
     }
 }

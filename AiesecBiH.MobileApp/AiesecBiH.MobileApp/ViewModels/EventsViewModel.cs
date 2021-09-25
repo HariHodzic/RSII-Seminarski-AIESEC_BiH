@@ -27,9 +27,11 @@ namespace AiesecBiH.MobileApp.ViewModels
             InitCommand = new Command(async () => await Init());
             AttendCommand = new Command(async () => await AttendOnEvent());
             GetAttendanceCommand= new Command(async () => await GetAttendance());
-            SearchOptionsList.Add(SearchOptions.ActiveOnly);
+            SearchOptionsList.Add(SearchOptions.TeamActive);
             SearchOptionsList.Add(SearchOptions.AllTeam);
             SearchOptionsList.Add(SearchOptions.All);
+            SearchOptionsList.Add(SearchOptions.AllActive);
+
         }
 
         private SearchOptions _searchOption = (SearchOptions)1;
@@ -46,7 +48,7 @@ namespace AiesecBiH.MobileApp.ViewModels
         public async Task Init()
         {
             Model.Search.Event request;
-            if (SelectedSearchOption == SearchOptions.ActiveOnly)
+            if (SelectedSearchOption == SearchOptions.TeamActive)
             {
                 request = new Model.Search.Event
                 {
@@ -54,18 +56,33 @@ namespace AiesecBiH.MobileApp.ViewModels
                     FunctionalFieldId = APIService.LoggedUser.FunctionalFieldId,
                     LocalCommitteeId = APIService.LoggedUser.LocalCommitteeId
                 };
+                if (APIService.LoggedUser.FunctionalFieldId == 1)
+                {
+                    request.FunctionalFieldId = 0;
+                }
             }
-            else if (SelectedSearchOption == SearchOptions.All)
+            else if (SelectedSearchOption == SearchOptions.AllActive)
             {
-                request = null;
+                request = new Model.Search.Event
+                {
+                    InPast = false
+                };
             }
-            else
+            else if(SelectedSearchOption == SearchOptions.AllTeam)
             {
                 request = new Model.Search.Event
                 {
                     FunctionalFieldId = APIService.LoggedUser.FunctionalFieldId,
                     LocalCommitteeId = APIService.LoggedUser.LocalCommitteeId
                 };
+                if (APIService.LoggedUser.FunctionalFieldId == 1)
+                {
+                    request.FunctionalFieldId = 0;
+                }
+            }
+            else
+            {
+                request = null;
             }
             try
             {

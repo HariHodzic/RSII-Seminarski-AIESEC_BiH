@@ -14,12 +14,14 @@ namespace AiesecBiH.Database
         public DateTime DateTime { get; set; }
 
         [ForeignKey(nameof(FunctionalField))]
-        public int? FunctionalFieldId { get; set; }
-        public FunctionalField? FunctionalField { get; set; }
+        public int FunctionalFieldId { get; set; }
+        public FunctionalField FunctionalField { get; set; }
 
         [ForeignKey(nameof(LocalCommittee))]
         public int? LocalCommitteeId { get; set; }
         public LocalCommittee? LocalCommittee { get; set; }
-        
+        public uint TimeUid { get; set; }
+
+
     }
 }
