@@ -10,7 +10,6 @@ namespace AiesecBiH.Database
     public class LocalCommittee:BaseEntity
     {
         [DataType(DataType.Date)]
-        //[DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime EstablishmentDate { get; set; }
         [Required]
         public string Name { get; set; }

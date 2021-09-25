@@ -22,7 +22,18 @@ namespace AiesecBiH.MobileApp.ViewModels.Requests
         }
         private async Task GetRecommendedTime()
         {
-            recommendedTime = await _EventsService.GetWithSingleQuery<DateTime>("RecommendTime", "FunctionalFieldId", APIService.LoggedUser.FunctionalFieldId.ToString());
+            try
+            {
+                recommendedTime = await _EventsService.GetWithSingleQuery<DateTime>("RecommendTime", "FunctionalFieldId", APIService.LoggedUser.FunctionalFieldId.ToString());
+                if (recommendedTime == null)
+                {
+                    recommendedTime = DateTime.Now;
+                }
+            }
+            catch (Exception ex)
+            {
+                await Application.Current.MainPage.DisplayAlert("Info", "Time recommendation doesn=t because of lack of inputs", "OK");
+            }
         }
 
         public async Task SaveEventAsync()

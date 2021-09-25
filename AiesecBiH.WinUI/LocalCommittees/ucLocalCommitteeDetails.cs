@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using AiesecBiH.Model.Update;
+using AiesecBiH.WinUI.GeneratedReports;
 using AiesecBiH.WinUI.Helpers;
 using Task = System.Threading.Tasks.Task;
 
@@ -40,22 +41,17 @@ namespace AiesecBiH.WinUI.LocalCommittees
             dtpEstDate.Text = result.EstablishmentDate.ToString();
             txtName.Text = result.Name;
             cbxActive.Checked = result.Active;
-            //APIService cityService = new APIService("Cities");
-            //await cityService.LoadComboBox<Model.Response.City>(comboBoxCity, "Name",result.CityId);
             dgvOffices.DataSource = await officeService.Get<List<Model.Response.Office>>(new Model.Search.Office()
                 {LocalCommitteeId = _localCommitteeId});
             dgvMembers.DataSource = await memberService.Get<List<Model.Response.Member>>(new Model.Search.Member()
             {
                 LocalCommitteeId = _localCommitteeId
-                //IncludeList = new[] { "Role" }
 
             });
         }
 
-        private async void LoadLocalCommitteeCreate()
+        private void LoadLocalCommitteeCreate()
         {
-            //APIService cityService = new APIService("Cities");
-            //await cityService.LoadComboBox<Model.Response.City>( comboBoxCity, "Name");
             cbxActive.Visible = false;
             lblCreatedDate.Visible = false;
             cbxActive.Checked = true;
@@ -132,5 +128,6 @@ namespace AiesecBiH.WinUI.LocalCommittees
             }
             
         }
+
     }
 }

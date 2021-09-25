@@ -118,30 +118,37 @@ namespace AiesecBiH.Services
         {
             mlContext = new MLContext();
             ITransformer model = await CreateModel();
-
-            var predictionResult = new List<Tuple<uint, float>>();
-            var predictionEngine = mlContext.Model.CreatePredictionEngine<FunctFieldEventTimeModel, PredictionResult>(model);
-
-            foreach (var Uid in TimeOfDayUids)
+            try
             {
-                var prediction = predictionEngine.Predict(new FunctFieldEventTimeModel
+
+                var predictionResult = new List<Tuple<uint, float>>();
+                var predictionEngine = mlContext.Model.CreatePredictionEngine<FunctFieldEventTimeModel, PredictionResult>(model);
+
+                foreach (var Uid in TimeOfDayUids)
                 {
-                    FunctionalFieldId = (uint)functionalFieldId,
-                    EventTimeUid = Uid
-                });
+                    var prediction = predictionEngine.Predict(new FunctFieldEventTimeModel
+                    {
+                        FunctionalFieldId = (uint)functionalFieldId,
+                        EventTimeUid = Uid
+                    });
 
-                predictionResult.Add(new Tuple<uint, float>(Uid, prediction.Score));
+                    predictionResult.Add(new Tuple<uint, float>(Uid, prediction.Score));
+                }
+
+                predictionResult = predictionResult.OrderByDescending(x => x.Item2).ToList(); //Highest score on top
+                foreach (var predict in predictionResult)
+                {
+                    if (predict != null)
+                        Console.WriteLine($@"{predict.Item1} => {predict.Item2}");
+                }
+
+                Console.WriteLine();
+                return predictionResult.First().Item1;
             }
-
-            predictionResult = predictionResult.OrderByDescending(x => x.Item2).ToList(); //Highest score on top
-            foreach (var predict in predictionResult)
+            catch (Exception ex)
             {
-                if (predict != null)
-                    Console.WriteLine($@"{predict.Item1} => {predict.Item2}");
+                return (uint)1;
             }
-
-            Console.WriteLine();
-            return predictionResult.First().Item1;
         }
 
         private async Task AddAndTrainModel(FunctFieldEventTimeModel toAdd)

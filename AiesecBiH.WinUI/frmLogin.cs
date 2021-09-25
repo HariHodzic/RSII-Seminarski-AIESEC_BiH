@@ -13,7 +13,6 @@ namespace AiesecBiH.WinUI
     public partial class frmLogin : Form
     {
         private APIService _service = new APIService("Members");
-        private frmIndex frmIndex;
 
         public frmLogin()
         {
@@ -36,7 +35,12 @@ namespace AiesecBiH.WinUI
                 if(result[0].RoleId!=1)
                     MessageBox.Show("You are not authorized to access this application!");
                 else
-                    ShowForm();
+                {
+                    var frm = new frmIndex();
+                    this.Hide();
+                    if (frm.ShowDialog() == DialogResult.Cancel)
+                        this.Visible = true;
+                }
             }
             catch(Exception ex)
             {
@@ -44,23 +48,5 @@ namespace AiesecBiH.WinUI
             }
         }
 
-        private void ShowForm()
-        {
-            if (frmIndex == null)
-            {
-                frmIndex = new frmIndex();
-                frmIndex.Show();
-            }
-            else if (!frmIndex.Visible)
-            {
-                frmIndex.Dispose();
-                frmIndex = new frmIndex();
-                frmIndex.Show();
-            }
-            else
-            {
-                frmIndex.BringToFront();
-            }
-        }
     }
 }

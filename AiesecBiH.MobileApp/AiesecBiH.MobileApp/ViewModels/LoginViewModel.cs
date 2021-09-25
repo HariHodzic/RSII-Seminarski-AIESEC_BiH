@@ -42,6 +42,11 @@ namespace AiesecBiH.MobileApp.ViewModels
                 //await _service.Get<dynamic>(null);
                 APIService.LoggedUser = await _service.Get<Model.Response.MemberLL>(null,"MyProfile");
                 UserId = APIService.LoggedUser.Id;
+                //if (APIService.LoggedUser.RoleId == 1)
+                //{
+                //    await Application.Current.MainPage.DisplayAlert("Error", "Mobile application is for users only!", "OK");
+
+                //}
                 Application.Current.MainPage = new AppShell();
             }
             catch (FlurlHttpException ex)

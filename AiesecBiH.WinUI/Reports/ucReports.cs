@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using AiesecBiH.Model.Insert;
 using Task = System.Threading.Tasks.Task;
+using AiesecBiH.WinUI.GeneratedReports;
 
 namespace AiesecBiH.WinUI.Reports
 {
@@ -81,6 +82,12 @@ namespace AiesecBiH.WinUI.Reports
                     frmIndex.Instance.btnDashR_Click(null, null);
                 }
             }
+        }
+
+        private void btnReport_Click(object sender, EventArgs e)
+        {
+            var frmReport = new frmChartReport();
+            frmReport.ShowDialog();
         }
     }
 }
